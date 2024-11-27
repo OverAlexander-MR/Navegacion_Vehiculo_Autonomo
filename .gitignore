@@ -1,0 +1,14 @@
+# Ignorar archivos de caché
+
+# Ignorar todos los archivos en Latex
+Latex/*
+
+# No ignorar los archivos específicos
+!Latex/main.tex
+!Latex/main.pdf
+!Latex/suplemento.pdf
+!Latex/suplemento.tex
+!Latex/Referencias.bib
+
+# No ignorar los subdirectorios dentro de Latex
+!Latex/**/
