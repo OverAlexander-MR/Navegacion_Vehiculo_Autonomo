@@ -5,8 +5,8 @@ python==3.12.3
 
 ### Autores
 
-# Over Alexander Mejia Rosadp
+- Over Alexander Mejia Rosadp
 
-# Ronald Mateo Ceballos Lozano
+- Ronald Mateo Ceballos Lozano
 
-# Rhonald Jose Torres Diaz
+- Rhonald Jose Torres Diaz
