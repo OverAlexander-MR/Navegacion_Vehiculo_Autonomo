@@ -1,2 +1,2 @@
-# Navegaci-n_Veh-culo_Aut-nomo
+# Navegacion_Vehiculo_Autonomo
 Proyecto en desarrollo de Inteligencia Artificial
