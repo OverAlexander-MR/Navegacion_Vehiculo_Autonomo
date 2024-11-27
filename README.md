@@ -34,6 +34,6 @@ El proyecto **Navegacion_Vehiculo_Autonomo** tiene como objetivo desarrollar una
 
 ## Autores
 
-- Over Alexander Mejia Rosadp
+- Over Alexander Mejia Rosado
 - Ronald Mateo Ceballos Lozano
 - Rhonald Jose Torres Diaz
