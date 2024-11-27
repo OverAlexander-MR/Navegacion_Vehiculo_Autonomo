@@ -5,7 +5,7 @@ import neat
 import csv
 import os
 
-
+# Para guaradar los datos de fitness en un archivo CSV
 if (
     not os.path.exists("Chebyshev/datos_fitness.csv")
     or os.path.getsize("Chebyshev/datos_fitness.csv") == 0
@@ -20,7 +20,6 @@ pygame.init()  # Inicializar Pygame antes de cualquier otra cosa
 
 # Constantes
 TRACK_COLOR = (0, 0, 0)  # Negro para la pista
-BORDER_COLOR = (255, 255, 255)  # Blanco para los bordes
 
 
 class Map:
@@ -404,9 +403,10 @@ class Game:
                     car.speed = max(0, min(5, output[1] * 5))
                     ge[i].fitness = car.calculate_fitness()
 
-                    # if car.speed < 0.1:
-                    #     car.angle += (output[0] - 0.5) * 10
-                    #     car.speed = 5
+                    # Refuerzo Forzado o Metodo de Aceleracion
+                    if car.speed < 0.1:
+                        car.angle += (output[0] - 0.5) * 10
+                        car.speed = 5
 
                 else:
                     # Guardar el fitness antes de eliminar

@@ -5,7 +5,7 @@ import neat
 import csv
 import os
 
-
+# Para guaradar los datos de fitness en un archivo CSV
 if (
     not os.path.exists("Manhatan/datos_fitness.csv")
     or os.path.getsize("Manhatan/datos_fitness.csv") == 0

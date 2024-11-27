@@ -2,11 +2,10 @@ import pygame
 import sys
 import math
 import neat
-import time  # Importar time para medir el tiempo de ejecución
-import csv  # Importar csv para guardar datos en CSV
+import csv
 import os
 
-# Inicializar 'datos_fitness.csv' si está vacío o no existe
+# Para guaradar los datos de fitness en un archivo CSV
 if (
     not os.path.exists("Euclidiana/datos_fitness.csv")
     or os.path.getsize("Euclidiana/datos_fitness.csv") == 0
@@ -21,7 +20,6 @@ pygame.init()  # Inicializar Pygame antes de cualquier otra cosa
 
 # Constantes
 TRACK_COLOR = (0, 0, 0)  # Negro para la pista
-BORDER_COLOR = (255, 255, 255)  # Blanco para los bordes
 
 
 class Map:
@@ -406,6 +404,7 @@ class Game:
                     car.speed = max(0, min(5, output[1] * 5))
                     ge[i].fitness = car.calculate_fitness()
 
+                    # Refuerzo Forzado o Metodo de Aceleracion
                     if car.speed < 0.1:
                         car.angle += (output[0] - 0.5) * 10
                         car.speed = 5
