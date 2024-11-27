@@ -20,8 +20,6 @@ pygame.init()  # Inicializar Pygame antes de cualquier otra cosa
 
 # Constantes
 TRACK_COLOR = (0, 0, 0)  # Negro para la pista
-BORDER_COLOR = (255, 255, 255)  # Blanco para los bordes
-
 
 class Map:
     def __init__(self, path, check_var, objetivo, check_point):
@@ -403,6 +401,7 @@ class Game:
                     car.speed = max(0, min(5, output[1] * 5))
                     ge[i].fitness = car.calculate_fitness()
 
+                    # Refuerzo Forzado o Metodo de Aceleracion	
                     if car.speed < 0.1:
                         car.angle += (output[0] - 0.5) * 10
                         car.speed = 5
