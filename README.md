@@ -11,6 +11,24 @@ El proyecto **Navegacion_Vehiculo_Autonomo** tiene como objetivo desarrollar una
 - **Toma de Decisiones:** Redes neuronales que procesan la información de los sensores para tomar decisiones en tiempo real.
 - **Integración de Sensores:** Combinación de datos de múltiples entradas para una percepción precisa del entorno.
 
+### Contenido del respositorio
+
+En las carperas Chebyshev, Euclidiana y Manhattan, encontrará un archivo .py para la ejecución de la simulación. Cada uno consta con la función fitness aplicadno la distancia seleciona, en caso de que seleccione la distancia Manhattan, el calculo fitness correspondiente, estaría dado de la sigueinte maenra:
+
+```python
+   def calculate_fitness(self):
+        distance_to_goal = self.calculate_manhattan_distance(self.map.lista_objetivo[0])
+        fitness = max(
+            0, 10000 - distance_to_goal
+        )  # Ajusta el valor base según sea necesario
+        return fitness
+
+     def calculate_manhattan_distance(self, target_position):
+        dx = abs(self.center[0] - target_position[0])
+        dy = abs(self.center[1] - target_position[1])
+        return dx + dy
+```
+
 ## Requisitos
 
 - Python 3.12.3

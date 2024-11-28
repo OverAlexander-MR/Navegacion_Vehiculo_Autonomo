@@ -248,13 +248,13 @@ class Vehicle:
             pygame.draw.circle(screen, (0, 255, 0), (x, y), 2)
 
     def calculate_fitness(self):
-        distance_to_goal = self.calculate_manhattan_distance(self.map.lista_objetivo[0])
+        distance_to_goal = self.calculate_chebyshev_distance(self.map.lista_objetivo[0])
         fitness = max(
             0, 10000 - distance_to_goal
         )  # Ajusta el valor base según sea necesario
         return fitness
 
-    def calculate_manhattan_distance(self, target_position):
+    def calculate_chebyshev_distance(self, target_position):
         dx = abs(self.center[0] - target_position[0])
         dy = abs(self.center[1] - target_position[1])
         mas = max(dx, dy)
