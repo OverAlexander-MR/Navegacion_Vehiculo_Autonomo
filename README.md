@@ -29,6 +29,17 @@ En las carperas Chebyshev, Euclidiana y Manhattan, encontrará un archivo .py pa
         return dx + dy
 ```
 
+Para variar la cantidad de genreaciones que desea en cada simulación, modifique la función:
+
+```python
+def run_neat(self, config):
+        population = neat.Population(config)
+        population.add_reporter(neat.StdOutReporter(True))
+        stats = neat.StatisticsReporter()
+        population.add_reporter(stats)
+        winner = population.run(self.eval_genomes, 50) # 50 genracones, variar segun las geraciones que desea
+```
+
 ## Requisitos
 
 - Python 3.12.3
@@ -49,6 +60,18 @@ En las carperas Chebyshev, Euclidiana y Manhattan, encontrará un archivo .py pa
    ```bash
    pip install -r requirements.txt
    ```
+
+## Ejeción
+
+Si ha isntaldo correctamente las dependencias, el sigueinte paso es ejecutar el archivo para vesualizar la simulación:
+
+```bash
+cd Manhattan
+python Manhattan.py
+```
+
+En el directorio de ejecución, se generan dos archivos csv que continen los fitness obtenidos por los agentes en la simulación. Con estos archivos usted podra analizar los fitness promedio de cada simulacion, las desviaciones y fitness maximos. Cómo por ejemplo:
+![Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones](Latex/Euclidiana/Fitness_Acumulado_Eucli_50Gen.png "Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones")
 
 ## Autores
 

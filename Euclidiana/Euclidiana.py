@@ -290,7 +290,7 @@ class Game:
         population.add_reporter(neat.StdOutReporter(True))
         stats = neat.StatisticsReporter()
         population.add_reporter(stats)
-        winner = population.run(self.eval_genomes, 50)
+        winner = population.run(self.eval_genomes, 50)  # 50 generaciones
 
         # Al finalizar, generar las gráficas
         self.plot_statistics(stats)

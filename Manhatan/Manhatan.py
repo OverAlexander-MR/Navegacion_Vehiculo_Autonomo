@@ -21,6 +21,7 @@ pygame.init()  # Inicializar Pygame antes de cualquier otra cosa
 # Constantes
 TRACK_COLOR = (0, 0, 0)  # Negro para la pista
 
+
 class Map:
     def __init__(self, path, check_var, objetivo, check_point):
         self.image = pygame.image.load(path)
@@ -287,7 +288,7 @@ class Game:
         population.add_reporter(neat.StdOutReporter(True))
         stats = neat.StatisticsReporter()
         population.add_reporter(stats)
-        winner = population.run(self.eval_genomes, 50)
+        winner = population.run(self.eval_genomes, 50)  # 50 generaciones
 
         # Al finalizar, generar las gráficas
         self.plot_statistics(stats)
@@ -401,7 +402,7 @@ class Game:
                     car.speed = max(0, min(5, output[1] * 5))
                     ge[i].fitness = car.calculate_fitness()
 
-                    # Refuerzo Forzado o Metodo de Aceleracion	
+                    # Refuerzo Forzado o Metodo de Aceleracion
                     if car.speed < 0.1:
                         car.angle += (output[0] - 0.5) * 10
                         car.speed = 5
