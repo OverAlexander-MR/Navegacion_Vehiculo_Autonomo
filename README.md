@@ -66,8 +66,8 @@ def run_neat(self, config):
 Si ha isntaldo correctamente las dependencias, el sigueinte paso es ejecutar el archivo para vesualizar la simulación:
 
 ```bash
-cd Manhattan
-python Manhattan.py
+cd Euclidiana
+python Euclidiana.py
 ```
 
 En el directorio de ejecución, se generan dos archivos csv que continen los fitness obtenidos por los agentes en la simulación. Con estos archivos usted podra analizar los fitness promedio de cada simulacion, las desviaciones y fitness maximos. Cómo por ejemplo:
