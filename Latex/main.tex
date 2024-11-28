@@ -16,6 +16,7 @@
 \usepackage{csquotes} %Relación con el idimoa
 \usepackage[backend=biber, style=ieee]{biblatex}
 \usepackage{xr}
+\usepackage{cuted}
 \usepackage{caption}
 \externaldocument{suplemento}
 \bibliography{Referencias}
@@ -44,15 +45,13 @@ Valledupar
 
 \maketitle
 
+\begin{strip}
+\section*{Resumen}
+Este proyecto se centra en el desarrollo de un sistema de navegación para vehículos autónomos utilizando NEAT (NeuroEvolution of Augmenting Topologies). El objetivo principal es diseñar e implementar un vehículo capaz de desplazarse en un mapa en 2D, el cual consta de un punto inical y un objetivo para el vehiculo autonomo. A través de sensores virtuales, el vehículo es capaz de identificar la vía por la cual puede avanzar y cuales los los limites de esta. Se utilizan métricas de distancia como la Euclidiana, Manhattan y Chebyshev cómo sistema de recompensas, que constantemente calculan las posiciones de los agentes, entre más cercano esté el vehiculo del objetivo, su fitness incrementa, de esa manera se esttablece la función aptitud. Se crea y se implementa un sistema de refuerzo forzado, que permite al vehículo avanzar en caso de que su velocidad sea menor a 0.1, evitando así que el vehículo se estanque. Los resultados obtenidos muestran que el vehículo autónomo es capaz de desplazarse de manera autónoma en el mapa, aumentando su aptitud en cada generación dependiendo de la metrica de distancia utilizada.
+\end{strip}
+
 \section{Introducción}
-
-%Buscar indice de accidentes de transito en vehiculos
-
-%Borrador - Ideas
-%Vehiculos y transporte
-
-%Accidentes
-Uno de los mayores problemas del transporte moderno es el alto indice de accidentes en el tránsito terrestre, la gran cantidad de trafico atribuida a factores como errores humanos, falla mecánicas y fenómenos naturales. %Porcentaje
+Uno de los mayores problemas del transporte moderno es el alto indice de accidentes en el tránsito terrestre, la gran cantidad de trafico atribuida a factores como errores humanos, falla mecánicas y fenómenos naturales. 
 
 Según un estudio realizado por la Organización Mundial de la Salud (OMS) en 2023, entre 2010 y 2021 el número de vehículos a nivel mundial se duplicó, superando los mil millones. Este crecimiento ha contribuido a un incremento en los accidentes de tránsito, que provocaron aproximadamente 1,19 millones de muertes en todo el mundo, con una tasa de mortalidad de 15 personas por cada 100,000 habitantes, lo que representa una disminución del 5\% en comparación con 2010. Además, cerca del 80\% de las vías de tránsito a nivel mundial no cumplen con los estándares básicos de seguridad para peatones y ciclistas. Esta falta de infraestructura segura expone a ciclistas y peatones a un alto riesgo de accidentes, especialmente en entornos urbanos con alta densidad de tráfico, lo que también genera congestión vehicular, alargando los tiempos de trayecto, incrementando las emisiones de gases contaminantes y provocando un desperdicio de combustible \cite{Accidentes}.
 
@@ -747,9 +746,6 @@ La gráfica general obtenida después de cada entrenamiento para la distancia Ma
 
 Para la distancia Manhattan el fitness más alto obtenido en estas simulaciones realizadas para es para el entrenamiento numero 2, con un puntaje máximo de 9890 y una desviación que supera los 8900 puntos. Además obvtuvo un incremento en el fitness promedio a partir de la genración 47. Con un fitness maximo de 9679, los entenamientos 4 y 3 obtuvieron los siguiente puntajes más altos. El cuarto entrenamiento empezó a disminuir su fitness promedio a partir de la genración 30, mientras que el tercer entrenamiento mantuvo un fitness ascendente. El quinnto y primer entrenamiento obtuvieron los puntajes mas bajos, con 9507 y 8532 respectivamente. Las desviaciones presentadas por el quinto entrenamiento superan los 8800 puntos, mientras que el primer entrenamiento no pasa de los 8550 puntos (Fig. \ref{fig:manh_1_50_m2} hasta \ref{fig:manh_5_50_sombra_m2})
 
-
-
-
 \subsubsection{Distancia Chebyshev}
 La gráfica general obtenida después de cada entrenamiento para la distancia Chebyshev es:
 \begin{figure}[H]
@@ -758,17 +754,11 @@ La gráfica general obtenida después de cada entrenamiento para la distancia Ch
     \caption{Gráfica de promedios fitness generales y desviaciones en cada entrenamiento para la distancia Chebyshev correspondiente a una generación de 50 y el segundo mapa}
     \label{fig:chy_mapa_2}
 \end{figure}
+El entrenamiento que mayor fitness obtuvo en esta sección corresponde al cuarto entrenamiento con un puntaje de 9683, con una desviación que se acerca a los 9100 puttos. El segundo entrenamiento obtuvo el segundo mejor puntaje con 9671, con una desviación que no supera los 9000 puntos, sin embargo una característica particular de este entenamiento es que no posee desviaciones elevadas hasta la cuarta genración, sin embargo a partir de la generación numero 5, la desviacón se despira a los 8700 puntos hata llegar de forma gradual a los 8900. El entrenamiento numero 3 y 1 obtuvieron un puntaje fitness muy cercano entre ellos, solo con una diferencia de tres puntos. Para el tercer entrenamiento el fitness maximo obtenido es de 9764, mientras que para el primero fue de 9571 además de poseer una desvición mayor. Por último el peor fitness obtenido lo obtuvo el entrenamietno numero 5 con 8985 puntos y un decrecisimiento en la desviación a partir de la genración 30 (Fig. \ref{fig:cheb_1_50_m2} hasta \ref{fig:cheb_5_50_sombra_m2}).
 
 \section{Conclusiones}
+La implementación de la librería NEAT para un vehículo autónomo permitió analizar distintos aspectos del aprendizaje y desempeño del agente en diversos entornos. En este caso se realizaron dos pruebas, el entorno podría encontraba libre de obstáculos, mientras que en la otra se añadió un bloqueo de ruta. Se observó que el agente mostró un mejor rendimiento en el entorno libre de obstáculos, en comparación del entorno con la ruta bloqueada. Al agente le tomaba más generaciones aprender en comparación cuándo algunas de las vías era obstruida. En cuanto a las métricas de distancia, la distancia Chebyshev demostró ser más óptima que la Manhattan y Euclidiana en entornos libres de obstáculos. Sin embargo, en escenarios con obstáculos, la distancia Euclidiana ofreció un mejor desempeño que las demás obteniendo un alto valor fitness. La distancia Euclidiana aumentaba al igual que la de Chebyshev con el pasar de las generaciones, sin embargo la distancia Manhattan obtuvo su mayor fitness con una generación de 30. Con los datos obtenidos en la sección de resultados, se puede que puede concluir que para la distancia Manhattan y Chebyshev con 30 generaciones ya se obtienen unos excelentes puntajes, ya que para Chebyshev las simulaciones realizadas con 50 generaciones solo le aumentaron en dos puntos. 
 
-La implementación de la librería NEAT para un vehículo autónomo permitió analizar distintos aspectos del aprendizaje y desempeño del agente en diversos entornos. En este caso se realizaron dos pruebas, el entorno podría encontraba libre de obstáculos, mientras que en la otra se añadió un bloqueo de ruta. Se observó que el agente mostró un mejor rendimiento en el entorno libre de obstáculos, en comparación del entorno con la ruta bloqueada. Al agente le tomaba más generaciones aprender en comparación cuándo algunas de las vías era obstruida. En cuanto a las métricas de distancia, la distancia Chebyshev demostró ser más óptima que la Manhattan y Euclidiana en entornos libres de obstáculos. Sin embargo, en escenarios con obstáculos, la distancia Euclidiana ofreció un mejor desempeño que las demás obteniendo un alto valor fitness.
-La distancia Euclidiana aumentaba al igual que la de Chebyshev con el pasar de las generaciones, sin embargo la distancia Manhattan obtuvo su mayor fitness con una generación de 30.
-Con los datos obtenidos en la sección de resultados, se puede que puede concluir que para la distancia Manhattan y Chebyshev con 30 generaciones ya se obtienen unos excelentes puntajes, ya que para Chebyshev las simulaciones realizadas con 50 generaciones solo le aumentaron en dos. 
-
-%%La Euclidiana en cambio 
-
-Por otro lado, la implementación del refuerzo forzado generó mejoras importantes, ya que disminuyó el tiempo requerido para que el agente alcanzara un fitness significativo. Además, permitiendo que el agente aprendiera a girar en pocas generaciones. 
-
-%%Finalmente, la resolución de los sensores tuvo un impacto directo en la suavidad de los movimientos del agente, aunque una mayor resolución también permitió que este pudiera girar sobre su propio eje, lo cual podría influir en su desempeño en determinadas situaciones.
+Por otro lado, la implementación del refuerzo forzado generó mejoras importantes, ya que disminuyó el tiempo requerido para que el agente alcanzara un fitness significativo. Además, permitiendo que el agente aprendiera a girar en pocas generaciones. Por otra parte sin la aplicación del refuerzo forzado, el agente no lograba obtener fitness altos, lo que se traduce en un aprendizaje más lento y menos eficiente. Sin embargo la distancia de Chebyshev demostró ser las más eficiente sin la aplicación del refuerzo forzado, obteniendo un fitness de 9885, superando a la Euclidiana y Manhattan. 
 \printbibliography
 \end{document}
