@@ -13,7 +13,7 @@ El proyecto **Navegacion_Vehiculo_Autonomo** tiene como objetivo desarrollar una
 
 ### Contenido del respositorio
 
-En las carperas Chebyshev, Euclidiana y Manhattan, encontrará un archivo .py para la ejecución de la simulación. Cada uno consta con la función fitness aplicadno la distancia seleciona, en caso de que seleccione la distancia Manhattan, el calculo fitness correspondiente, estaría dado de la sigueinte maenra:
+En las carperas Chebyshev, Euclidiana y Manhattan, encontrará un archivo .py para la ejecución de la simulación. Cada uno consta con la función fitness aplicadno la distancia seleciona, en caso de que seleccione la distancia Manhattan, el calculo fitness correspondiente, estaría dado de la sigueinte manera:
 
 ```python
    def calculate_fitness(self):
