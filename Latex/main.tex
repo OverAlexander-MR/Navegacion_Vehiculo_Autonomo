@@ -327,100 +327,98 @@ Sin embargo, en la configuración para determinar los limites de la vía se opta
 
 \subsection{Configuraciones principales del algoritmo NEAT}
 El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate.
-\begin{table*}[ht]
+\begin{table}[ht]
     \centering
-    % Primer minipage para los Cuadros IV y V
-    \begin{minipage}[t]{0.45\textwidth}
-        \centering
-        \captionof{table}{\texttt{[NEAT]}}
-        \label{tab:NEAT}
-        \begin{tabular}{ll}
-        \toprule
-        \textbf{Variable} & \textbf{Valor} \\
-        \midrule
-        fitness\_criterion     & max \\
-        fitness\_threshold     & 10000 \\
-        pop\_size              & 50 \\
-        reset\_on\_extinction   & True  \\
-        \bottomrule
-        \end{tabular}
-        \vspace{0.5cm}
+    % Primera tabla
+    \captionof{table}{\texttt{[NEAT]}}
+    \label{tab:NEAT}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Variable} & \textbf{Valor} \\
+    \midrule
+    fitness\_criterion     & max \\
+    fitness\_threshold     & 10000 \\
+    pop\_size              & 50 \\
+    reset\_on\_extinction  & True  \\
+    \bottomrule
+    \end{tabular}
+    \vspace{0.5cm}
     
-        \captionof{table}{\texttt{[DefaultReproduction]}}
-        \label{tab:DefaultReproduction}
-        \begin{tabular}{ll}
-        \toprule
-        \textbf{Variable} & \textbf{Valor} \\
-        \midrule
-        excess\_coeff                & 1.0 \\
-        disjoint\_coeff              & 1.0 \\
-        weight\_diff\_coeff          & 0.5 \\
-        compatibility\_threshold     & 3.0 \\
-        elitism                      & 5 \\
-        survival\_threshold          & 0.2 \\
-        \bottomrule
+    % Segunda tabla
+    \captionof{table}{\texttt{[DefaultReproduction]}}
+    \label{tab:DefaultReproduction}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Variable} & \textbf{Valor} \\
+    \midrule
+    excess\_coeff            & 1.0 \\
+    disjoint\_coeff          & 1.0 \\
+    weight\_diff\_coeff      & 0.5 \\
+    compatibility\_threshold & 3.0 \\
+    elitism                  & 5 \\
+    survival\_threshold      & 0.2 \\
+    \bottomrule
+    \end{tabular}
+    \vspace{0.5cm}
+\end{table}
 
-        \end{tabular}
-    \end{minipage}
-    \hfill
-    % Segundo minipage para el Cuadro VI
-    \begin{minipage}[t]{0.52\textwidth}
-        \centering
-        \captionof{table}{\texttt{[DefaultGenome]}}
-        \label{tab:DefaultGenome}
-        \begin{tabular}{ll}
-        \toprule
-        \textbf{Variable} & \textbf{Valor} \\
-        \midrule
-        \multicolumn{2}{l}{\textbf{Opciones de Activación de Nodos}} \\
-        activation\_default      & tanh \\
-        activation\_mutate\_rate  & 0.01 \\
-        activation\_options      & tanh, relu, sigmoid \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Opciones de Agregación de Nodos}} \\
-        aggregation\_default     & sum \\
-        aggregation\_mutate\_rate & 0.01 \\
-        aggregation\_options     & sum \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Opciones de Sesgo de Nodos}} \\
-        bias\_init\_mean          & 0.0 \\
-        bias\_init\_stdev         & 1.0 \\
-        bias\_max\_value          & 30.0 \\
-        bias\_min\_value          & -30.0 \\
-        bias\_mutate\_power       & 0.5 \\
-        bias\_mutate\_rate        & 0.7 \\
-        bias\_replace\_rate       & 0.1 \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Opciones de Compatibilidad del Genoma}} \\
-        compatibility\_disjoint\_coefficient & 1.0 \\
-        compatibility\_weight\_coefficient   & 0.5 \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Conexiones}} \\
-        conn\_add\_prob             & 0.5 \\
-        conn\_delete\_prob          & 0.5 \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Opciones de Habilitación de Conexiones}} \\
-        enabled\_default           & True \\
-        enabled\_mutate\_rate      & 0.1 \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Configuraciones de Topología}} \\
-        feed\_forward              & False \\
-        initial\_connection        & full \\
-        \addlinespace
-        
-        \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Nodos}} \\
-        node\_add\_prob             & 0.2 \\
-        node\_delete\_prob          & 0.2 \\
-        \bottomrule
-        \end{tabular}
-    \end{minipage}
-\end{table*}
+\begin{table}
+    % Tercera tabla
+    \centering
+    \captionof{table}{\texttt{[DefaultGenome]}}
+    \label{tab:DefaultGenome}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Variable} & \textbf{Valor} \\
+    \midrule
+    \multicolumn{2}{l}{\textbf{Opciones de Activación de Nodos}} \\
+    activation\_default       & tanh \\
+    activation\_mutate\_rate  & 0.01 \\
+    activation\_options       & tanh, relu, sigmoid \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Opciones de Agregación de Nodos}} \\
+    aggregation\_default      & sum \\
+    aggregation\_mutate\_rate & 0.01 \\
+    aggregation\_options      & sum \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Opciones de Sesgo de Nodos}} \\
+    bias\_init\_mean         & 0.0 \\
+    bias\_init\_stdev        & 1.0 \\
+    bias\_max\_value         & 30.0 \\
+    bias\_min\_value         & -30.0 \\
+    bias\_mutate\_power      & 0.5 \\
+    bias\_mutate\_rate       & 0.7 \\
+    bias\_replace\_rate      & 0.1 \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Opciones de Compatibilidad del Genoma}} \\
+    compatibility\_disjoint\_coefficient & 1.0 \\
+    compatibility\_weight\_coefficient   & 0.5 \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Conexiones}} \\
+    conn\_add\_prob        & 0.5 \\
+    conn\_delete\_prob     & 0.5 \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Opciones de Habilitación de Conexiones}} \\
+    enabled\_default       & True \\
+    enabled\_mutate\_rate  & 0.1 \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Configuraciones de Topología}} \\
+    feed\_forward          & False \\
+    initial\_connection    & full \\
+    \addlinespace
+    
+    \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Nodos}} \\
+    node\_add\_prob        & 0.2 \\
+    node\_delete\_prob     & 0.2 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{Resultados de las simulaciones aplicando la distancia Euclidiana}
 \subsection{50 Generaciones}
@@ -435,14 +433,14 @@ Durante las simulaciones realizadas se almacenaban los datos del fitness corresp
 La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio, basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos. De manera individual, el entrenamiento (simulación) 4 tiene el siguiente comportamiento:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen.png}
+    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen.png}
     \caption{Fitness individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
     \label{fig:Fitnes_ecu_4_50_inv}
 \end{figure}
 De todas las simulaciones realizadas para esta sección, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen_Sombra.png}
+    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen_Sombra.png}
     \caption{Fitness promedio y desviación individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
     \label{fig:Fitnes_ecu_4_50_inv_sombra}
 \end{figure}
@@ -465,7 +463,7 @@ En el caso de la Figura \ref{fig:Euclidiana_30_refuerzo}, los entrenamientos que
 Tambien el tercer entrenamiento presentó la mayor desviación de todas para esta sección, con un valor de 9400:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{Euclidiana/Fitness_individual_30/Fitness_3_Eucli_30Gen_Sombra.png}
+    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitness_individual_30/Fitness_3_Eucli_30Gen_Sombra.png}
     \caption{Fitness promedio y desviación individual para el entrenamiento 3 de 30 generaciones aplicando la distancia Euclidiana}
     \label{fig:Fitnes_ecu_3_30_inv_sombra}
 \end{figure}
@@ -514,7 +512,7 @@ En el entrenamiento número 4 se presentó el fitness mas alto con 9978 junto co
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{Manhattan/Fitness_Individual_50Gen/Fitness_4_Manh_50Gen_Sombra.png}
+    \includegraphics[width=0.9\linewidth]{Manhattan/Fitness_Individual_50Gen/Fitness_4_Manh_50Gen_Sombra.png}
     \caption{Fitness promedio y desviación individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Manhattan}
     \label{fig:Fitnes_ecu_4_50_inv_sombra_1}
 \end{figure}
@@ -586,21 +584,21 @@ De las simulaciones realizadas aplicando la distancia Chebyshev, se obtienen los
 Analizando la gráfica, los valores fitness más altos corresponden al entrenamiento 1 y 5. Por un lado el entrenamiento número 1 presenta el mayor puntaje con 9988:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_1_Cheby_50Gen.png}
+    \includegraphics[width=0.9\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_1_Cheby_50Gen.png}
     \caption{Mejor fitness para una generación de 50 aplicando la distancia de Chebyshev}
     \label{fig:chy_1_best}
 \end{figure}
 Mientras que el puntaje para el entrenamiento 5 es de 9986
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_5_Cheby_50Gen.png}
+    \includegraphics[width=0.9\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_5_Cheby_50Gen.png}
     \caption{Mejor fitness para el entrenamiento 5 de una generación de 50 aplicando la distancia de Chebyshev}
     \label{fig:chy_5_best}
 \end{figure}
 Sin embargo en este caso particular la mayor desviación la posee el entrenamiento número 5
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_5_Cheby_50Gen_Sombra.png}
+    \includegraphics[width=0.9\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_5_Cheby_50Gen_Sombra.png}
     \caption{Mayor desviación en el entrenamiento numero 5, para una generación de 50 con la distancia de Chebyshev}
     \label{fig:che_5_desv}
 \end{figure}
@@ -709,7 +707,7 @@ De igual manera, Manhattan también presenta la mayor desviación en la décima 
 Por ultimo, en esta sección la distancia de Chebyshev presentó los mejores resultados, con un puntaje fitness máximo obtenido de 9885, y una desviación que ronda los 8800 puntos.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen.png}
+    \includegraphics[width=1\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen.png}
     \caption{Mejor promedio fitness para la distancia Chebyshev sin la aplicación del Refuerzo forzado}
     \label{fig:no_refoice_chy}
 \end{figure}
