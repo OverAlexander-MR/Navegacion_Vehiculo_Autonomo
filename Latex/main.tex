@@ -101,38 +101,39 @@ Este trabajo examinó cómo el algoritmo NEAT (NeuroEvolution of Augmenting Topo
 %La implementación de estos sistemas autónomos incorpora herramientas de retroalimentación como el aprendizaje reforzado y redes neuronales, que permiten evaluar cada acción tomada por el agente inteligente y ajustar parámetros para mejorar las decisiones y alcanzar los objetivos propuestos \cite{Smart_Car}.
 
 \section{Metodología}
-Para la construcción del sistema de navegación adaptativa, se uso el entorno con la librería \href{https://www.pygame.org/wiki/GettingStarted}{Pygame} de python. Se asigna un mapa y un agente principal (Vehículo Autónomo). El entorno implementado es una fracción del mapa clásico del video juego \href{https://www.rockstargames.com/games/gta2}{GTAII}, además la imagen del agente, y parámetros iniciales de configuración es proporcionada por el repositorio \href{https://github.com/NeuralNine/ai-car-simulation}{NeuralNine}, tambien se hace uso de algunas imagenes que pertenecen al repositorio \href{https://github.com/mihir-m-gandhi/Traffic-Intersection-Simulation-with-Stats}{Mihir Gandhi}.
-Se establecen los estados, un estado inicial donde se ubica el vehículo autónomo y un estado final. Se asignan pixeles verdes RBG(0, 0, 255) al mapa, que será el objetivo.
+Para la construcción del sistema de navegación adaptativa, se uso el entorno con la librería \href{https://www.pygame.org/wiki/GettingStarted}{Pygame} de python. Se asigna un mapa y un agente principal (Vehículo Autónomo). El entorno implementado es una fracción del mapa clásico del video juego \href{https://www.rockstargames.com/games/gta2}{GTAII}, además la imagen del agente (ver Figura \ref{fig:agente}), y parámetros iniciales de configuración es proporcionada por el repositorio \href{https://github.com/NeuralNine/ai-car-simulation}{NeuralNine}, también se hace uso de algunas imagenes que pertenecen al repositorio \href{https://github.com/mihir-m-gandhi/Traffic-Intersection-Simulation-with-Stats}{Mihir Gandhi}.
+Se establecen los estados, un estado inicial donde se ubica el vehículo autónomo y un estado final. Se asignan pixeles verdes RBG (0, 0, 255) al mapa, que será el objetivo.
 \begin{figure}[H]
-    \centering    \includegraphics[width=0.5\linewidth]{images/car.png}
+    \centering    \includegraphics[width=0.3\linewidth]{images/car.png}
     \caption{Agente previo a la aplicación de la red neuronal}
     \label{fig:agente}
 \end{figure}
 
 
 \subsection{NEAT-Python}
-El agente debe aprender a moverse en el entorno, NEAT permite que el agente recorra el espacio asignándoles valores de salida dependiendo de los valores de entrada. Los valores de entrada son valores que se toman del entorno, para este caso en particular, las entradas estarían dadas por el color de cada pixel, dependiendo del color del pixel, el agente cambia o no de dirección,  a esto se le conoce como acción o salida.
-\begin{figure}[H]
-    \centering    \includegraphics[width=0.5\linewidth]{images/neural_network.png}
-    \caption{Ejemplo de una red neuronal por \cite{red_neuronal}}
-    \label{fig:Red-neuronal}
-\end{figure}
+El agente debe aprender a moverse en el entorno, NEAT permite que el agente recorra el espacio asignándoles valores de salida dependiendo de los valores de entrada. Los valores de entrada son valores que se toman del entorno, para este caso en particular, las entradas estarían dadas por el color de cada pixel, dependiendo del color del pixel, el agente cambia o no de dirección,  a esto se le conoce como acción o salida. NEAT le otorga al agente sensores que le permiten el reconocimiento del entrono, estos sensores son asignados para determinar cuando este sale de las vías, y la distancias entre puntos \cite{sensores}. En este articulo implementamos el uso de 5 sensores, asignados a una lista; -90°, -45,° 0°, 45° y 90°. Estas son las principales entradas para nuestro algoritmo NEAT aplicado al agente (Figura \ref{fig:agente}), ver Figura \ref{fig:agente_sensores}.
 
-NEAT le otorga al agente sensores que le permiten el reconocimiento del entrono, estos sensores son asignados para determinar cuando este sale de las vías, y la distancias entre puntos \cite{sensores}. En este articulo implementamos el uso de 5 sensores, asignados a una lista; -90°, -45,° 0°, 45° y 90°. Estas son las principales entradas para nuestro algoritmo NEAT aplicado al agente Figura \ref{fig:agente}, ver Figura \ref{fig:agente_sensores}.
-
-\begin{figure}[H]
+\begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{images/sensores.png}
+    \includegraphics[width=0.5\linewidth]{images/sensores.png}
     \caption{Asignación de sensores al agente}
     \label{fig:agente_sensores}
 \end{figure}
 
-En la Figura \ref{fig:Red-neuronal},  Hidden o capas ocultas, que son nodos que aplican un procesado a la entrada, con cada generación las capas aumentan dependiendo de la ganancia, esta ganancia está dada por las acciones previas del agente. Si el agente se desplaza en el mapa sin exceder las limitaciones, se mantiene en la generación. Las generaciones en NEAT es el umbral con el que se desea finalizar la simulación, por ejemplo, si se establecen 50 generaciones cada valor del umbral se le asocian a los agentes creados por la red neural aplicando distintos valores de configuración, si en la primera generación todos los carros chocan, se pasa a la siguiente generación, en este caso la segunda, así sucesivamente hasta llegar a la ultima que sería la generación 50. En el entrono se crean distintos agentes, cada agente recorre el mapa, si un agente choca o se sale de la vía, esta configuración tendrá menos probabilidad de replicarse, de esta manera se garantiza una generación final donde el o los agentes aprenda a desplazarse por el entorno de forma autónoma.
+
+
+En la Figura \ref{fig:Red-neuronal},  Hidden o capas ocultas, son nodos que aplican un procesado a la entrada, con cada generación las capas aumentan dependiendo de la ganancia, esta ganancia está dada por las acciones previas del agente. Si el agente se desplaza en el mapa sin exceder las limitaciones, se mantiene en la generación. Las generaciones en NEAT es el umbral con el que se desea finalizar la simulación, por ejemplo, si se establecen 50 generaciones cada valor del umbral se le asocian a los agentes creados por la red neural aplicando distintos valores de configuración, si en la primera generación todos los carros chocan, se pasa a la siguiente generación, en este caso la segunda, así sucesivamente hasta llegar a la ultima que sería la generación 50. En el entrono se crean distintos agentes, cada agente recorre el mapa, si un agente choca o se sale de la vía, esta configuración tendrá menos probabilidad de replicarse, de esta manera se garantiza una generación final donde el o los agentes aprenda a desplazarse por el entorno de forma autónoma.
 
 En la configuración inicial, Hidden es igual a 0, puesto que se inicia con una configuración sencilla, con cada generación Hidden aumenta para que la salida dada la entrada sea la mas óptima.
 
+\begin{figure}
+    \centering    \includegraphics[width=0.5\linewidth]{images/neural_network.png}
+    \caption{Estructura general de una red neuronal multicapa \cite{red_neuronal}}
+    \label{fig:Red-neuronal}
+\end{figure}
+
 \subsection{Fitness function}
-Para evaluar que tan bien son los genomas (próximas generaciones) Neat implementa una función que evalúa que tan bien resuelve el problema en cuestión, esta función es llamada \textit{Fitness function}. Si un genoma A resuelve el problema de manera más exitosa que un genoma B, entonces el valor de aptitud de A debe ser mayor que el de B. La magnitud absoluta y los signos de estas aptitudes no son importantes, solo sus valores relativos, los pasos estarían dados por:
+Para evaluar que tan bien son los genomas (próximas generaciones) NEAT implementa una función que evalúa que tan bien resuelve el problema en cuestión, esta función es llamada \textit{Fitness function}. Si un genoma A resuelve el problema de manera más exitosa que un genoma B, entonces el valor de aptitud de A debe ser mayor que el de B. La magnitud absoluta y los signos de estas aptitudes no son importantes, solo sus valores relativos, los pasos estarían dados por:
 \begin{itemize}
     \item Crear una red neuronal: Basada en el genoma.
     \item Proveer entradas y calcular salidas: Por ejemplo, para cada caso en la tabla de verdad del XOR, se proporcionan las entradas a la red y se calcula la salida.
@@ -142,10 +143,9 @@ Para evaluar que tan bien son los genomas (próximas generaciones) Neat implemen
 
 La ecuación de actitud sería:
 \begin{align*}
-    Aptitud = 1 - \sum_{i} (e_i - a_i)^2
+    Aptitud = 1 - \sum_{i} (e_i - a_i)^2,
 \end{align*}
-
-Donde, $e_i$ (salidas esperadas): Son los valores que se esperan obtener de la red neuronal o agente autónomo. Las salidas esperadas son las posiciones ideales o los movimientos óptimos que el agente debería realizar para alcanzar el objetivo de la manera más eficiente posible. 
+donde, $e_i$ (salidas esperadas): Son los valores que se esperan obtener de la red neuronal o agente autónomo. Las salidas esperadas son las posiciones ideales o los movimientos óptimos que el agente debería realizar para alcanzar el objetivo de la manera más eficiente posible. 
 
 $a_i$ (salidas reales): Son los valores que realmente se obtienen de la red neuronal o agente autónomo. Estas son las posiciones o movimientos que el agente realiza durante su desplazamiento en el mapa.
 
