@@ -70,79 +70,67 @@ Universidad Nacional de Colombia - De La Paz}
             \begin{itemize}
                 \item Mapa 2D implementado en las simulaciones realizadas.
                 \item Aplicacion de radares al agente.
-                \item .
-            \end{itemize}
+                \item Angulos del los radares: -90°, -45°, 0°, 45°, 90°.
+                \item Los sensores proporcionan información sobre el entorno inmediato del vehículo, incluyendo obstáculos y límites de la vía.
+            \end{itemize}            
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Metodología}
-
-\textbf{Cálculo del Fitness}
-
-Utilizamos diferentes métricas de distancia para calcular el fitness del vehículo autónomo. La función de fitness se define como:
-
-\[
-\text{Fitness} = \max\left(0,\  10000 - d \right)
-\]
-
-Donde \( d \) es la distancia calculada según la métrica utilizada.
-
-\textbf{Métricas de Distancia}
-\begin{itemize}
-  \item \textbf{Distancia Euclidiana}:
-  \[
-  d_{\text{E}} = \sqrt{(x_{\text{meta}} - x_{\text{veh}})^2 + (y_{\text{meta}} - y_{\text{veh}})^2}
-  \]
-  
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Metodología}
-  \begin{itemize}
-    \item \textbf{Distancia de Manhattan}:
-  \[
-  d_{\text{M}} = |x_{\text{meta}} - x_{\text{veh}}| + |y_{\text{meta}} - y_{\text{veh}}|
-  \]
-  
-    \item \textbf{Distancia de Chebyshev}:
-    \[
-    d_{\text{C}} = \max\left( |x_{\text{meta}} - x_{\text{veh}}|,\  |y_{\text{meta}} - y_{\text{veh}}| \right)
-    \]
-  \end{itemize}
- 
-
-\textbf{Sensores Virtuales}
-
-Los sensores proporcionan información sobre el entorno inmediato del vehículo, incluyendo obstáculos y límites de la vía.
-
-\end{frame}
-
-\begin{frame}{Metodología}
-
-  \textbf{Algoritmo NEAT}
-
-Se utiliza NEAT para evolucionar la arquitectura de la red neuronal que controla el vehículo. NEAT permite:
-
+\begin{frame}{Metodología - Cálculo del Fitness}
+\textbf{Algoritmo NEAT}
+    Se utiliza NEAT para evolucionar la arquitectura de la red neuronal que controla el vehículo. NEAT permite:
 \begin{itemize}
     \item Incrementar complejidad de la red gradualmente.
     \item Preservar estructuras efectivas a través de la especiación.
+    \item Entre mayor sea el fitnes de un agente, aumenta la probabilidad de ser preservado para la siguiente generación.
 \end{itemize}
+Implementación de diferentes métricas de distancia para calcular el fitness del vehículo autónomo. La función de fitness se define como:
+\begin{align*}
+    \text{Fitness} = \max\left(0,\  10000 - d \right)
+\end{align*}
 
-
-  \textbf{Refuerzo Forzado}
-
-Para evitar que el vehículo se estanque, se implementa una mecánica donde, si la velocidad es inferior a un umbral, se aplica un impulso para mantener el movimiento.
+Donde \( d \) es la distancia calculada según la métrica utilizada.
 
 \end{frame}
 
-\begin{frame}{NEAT (NeuroEvolution of Augmenting Topologies)}
-    \begin{itemize}
-        \item Algoritmo evolutivo para el desarrollo de redes neuronales.
-        \item Evoluciona tanto los pesos como la topología de las redes.
-        \item Permite la adaptación y optimización continua del vehículo autónomo.
-    \end{itemize}
+\begin{frame}{Metodología - Métricas de Distancia}
+  \begin{itemize}
+    \item \textbf{Distancia de Manhattan}:
+  \begin{align*}
+    d_{\text{M}} = |x_{\text{meta}} - x_{\text{veh}}| + |y_{\text{meta}} - y_{\text{veh}}|
+  \end{align*}
+  
+    \item \textbf{Distancia de Chebyshev}:
+    \begin{align*}
+        d_{\text{C}} = \max\left( |x_{\text{meta}} - x_{\text{veh}}|,\  |y_{\text{meta}} - y_{\text{veh}}| \right)
+    \end{align*}
+
+    \item \textbf{Distancia Euclidiana}:
+    \begin{align*}
+        d_{\text{E}} = \sqrt{(x_{\text{meta}} - x_{\text{veh}})^2 + (y_{\text{meta}} - y_{\text{veh}})^2}    
+    \end{align*}
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodología - Método Refuerzo Forzado o de Aceleración}
+    \begin{columns}[T] % La opción [T] alinea el contenido en la parte superior
+        \begin{column}{0.4\textwidth} % Ajusta el ancho según tus necesidades
+            \begin{figure}
+                \centering
+                \includegraphics[width=1.1\linewidth]{images/reforce.png} % Reemplaza con la ruta correcta de tu imagen
+                \caption{Esquema del Método de Refuerzo Forzado}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \textbf{Refuerzo Forzado}:
+            \begin{itemize}
+                \item Si la velocidad del vehículo es inferior a un umbral, se aplica un impulso para mantener el movimiento.
+                \item Evita que el vehículo se estanque en el mapa.
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Resultados}
