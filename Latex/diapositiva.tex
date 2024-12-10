@@ -133,13 +133,47 @@ Donde \( d \) es la distancia calculada según la métrica utilizada.
     \end{columns}
 \end{frame}
 
-\begin{frame}{Resultados}
-    \begin{itemize}
-        \item El vehículo autónomo es capaz de desplazarse en el mapa de forma autónoma.
-        \item Incremento del fitness en cada generación según la métrica de distancia utilizada.
-        \item Mejora en la adaptabilidad y eficiencia del sistema de navegación.
-    \end{itemize}
+% Diapositiva 1: Desplazamiento Autónomo
+\begin{frame}{Resultados - Desplazamiento Autónomo}
+    \begin{columns}[T] % Alinea el contenido en la parte superior
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item El vehículo autónomo logró desplazarse de manera efectiva en el mapa 2D.
+                \item Capacidad de identificar y girar en las esquinas.
+                \item Incremento del fitnes a lo largo de las generaciones.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{images/desplazamiento.png} % Reemplaza con la ruta correcta de tu imagen
+                \caption{Vehículo autónomo en desplazamiento.}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
+
+% Diapositiva 2: Incremento del Fitness
+\begin{frame}{Resultados - Incremento del Fitness}
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item Incremento constante del fitness en cada generación.
+                \item Las métricas de distancia Euclidiana, Manhattan y Chebyshev mostraron diferentes tasas de mejora.
+            \end{itemize}
+            
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
+                \caption{Evolución del Fitness a lo largo de las generaciones, utilizando la métrica Euclidiana.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
 
 \begin{frame}{Conclusiones}
     \begin{itemize}
@@ -147,11 +181,6 @@ Donde \( d \) es la distancia calculada según la métrica utilizada.
         \item Las métricas de distancia y el refuerzo forzado contribuyen al aprendizaje del vehículo.
         \item Potencial para reducir accidentes y mejorar la eficiencia en sistemas de transporte autónomo.
     \end{itemize}
-\end{frame}
-
-\begin{frame}{Preguntas}
-    \centering
-    {\Huge ¿Preguntas?}
 \end{frame}
 
 \end{document}
