@@ -9,7 +9,7 @@ Latex/*
 !Latex/suplemento.pdf
 !Latex/suplemento.tex
 !Latex/Referencias.bib
-!Latex/diapostivas.tex
-!Latex/diapostivas.pdf
+!Latex/diapostiva.tex
+!Latex/diapostiva.pdf
 # No ignorar los subdirectorios dentro de Latex
 !Latex/**/
