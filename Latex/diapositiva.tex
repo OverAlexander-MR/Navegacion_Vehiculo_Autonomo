@@ -1,0 +1,76 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+
+\title{Sistema de Navegación Adaptativa para un Vehículo Autónomo}
+\author{
+    Over Alexander Mejía Rosado \\
+    Ronald Mateo Ceballos Lozano \\
+    Rhonald José Torres Díaz
+}
+\institute{\textit{Inteligencia Artificial} \\
+Universidad Nacional de Colombia - De La Paz}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Introducción}
+    \begin{itemize}
+        \item Alto índice de accidentes en el tránsito terrestre debido a errores humanos.
+        \item Crecimiento del número de vehículos a nivel mundial.
+        \item Necesidad de sistemas de automatización y tráfico inteligente.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivo del Proyecto}
+    \begin{itemize}
+        \item Diseñar e implementar un vehículo autónomo capaz de desplazarse en un mapa 2D.
+        \item Utilizar NEAT (NeuroEvolution of Augmenting Topologies) para desarrollar el sistema de navegación.
+        \item Mejorar la capacidad del vehículo de adaptarse a condiciones variables.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodología}
+    \begin{itemize}
+        \item Implementación de sensores virtuales para la percepción del entorno.
+        \item Uso de métricas de distancia (Euclidiana, Manhattan, Chebyshev) como sistema de recompensas.
+        \item Creación de un sistema de refuerzo forzado para evitar que el vehículo se estanque.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{NEAT (NeuroEvolution of Augmenting Topologies)}
+    \begin{itemize}
+        \item Algoritmo evolutivo para el desarrollo de redes neuronales.
+        \item Evoluciona tanto los pesos como la topología de las redes.
+        \item Permite la adaptación y optimización continua del vehículo autónomo.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Resultados}
+    \begin{itemize}
+        \item El vehículo autónomo es capaz de desplazarse en el mapa de forma autónoma.
+        \item Incremento del fitness en cada generación según la métrica de distancia utilizada.
+        \item Mejora en la adaptabilidad y eficiencia del sistema de navegación.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusiones}
+    \begin{itemize}
+        \item El uso de NEAT es efectivo para desarrollar sistemas de navegación adaptativos.
+        \item Las métricas de distancia y el refuerzo forzado contribuyen al aprendizaje del vehículo.
+        \item Potencial para reducir accidentes y mejorar la eficiencia en sistemas de transporte autónomo.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Preguntas}
+    \centering
+    {\Huge ¿Preguntas?}
+\end{frame}
+
+\end{document}
