@@ -10,6 +10,6 @@ Latex/*
 !Latex/suplemento.tex
 !Latex/Referencias.bib
 !Latex/diapositiva.tex
-!Latex/diapostiiva.pdf
+!Latex/diapositiva.pdf
 # No ignorar los subdirectorios dentro de Latex
 !Latex/**/
