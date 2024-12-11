@@ -157,27 +157,16 @@ Los pasos para calcular la aptitud de cada genoma son los siguientes:
 
 \begin{itemize} 
 \item \textbf{Crear una red neuronal}: Se genera una red neuronal basada en el genoma actual. 
-\item \textbf{Simular el agente}: La red neuronal controla al agente autónomo en el entorno simulado, recibiendo entradas del entorno (como las distancias detectadas por los sensores del agente) y produciendo acciones (como cambios en la dirección y velocidad del agente). 
+\item \textbf{Simular el agente}: La red neuronal controla al agente autónomo en el entorno simulado (ver Figura \ref{fig:Mapa}), recibiendo entradas del entorno (como las distancias detectadas por los sensores del agente) y produciendo acciones (como cambios en la dirección y velocidad del agente). 
 \item \textbf{Recopilar métricas}: Durante la simulación, se registran métricas relevantes, como la distancia mínima al objetivo, el tiempo de supervivencia y si el agente ha colisionado. 
 \item \textbf{Calcular la aptitud}: Se utiliza una función de aptitud definida para calcular el valor de aptitud del genoma, basándose en las métricas recopiladas. 
-
-\end{itemize}
-
 La función de aptitud implementada es:
-
 \begin{align*} 
     \text{Aptitud} = R_d
 \end{align*}
+donde $R_d$ es la recompensa por distancia al objetivo. 
 
-Donde:
-\begin{itemize} 
-\item $R_d$ es la recompensa por distancia al objetivo. 
- \end{itemize}
-
-Cada componente se calcula de la siguiente manera:
-
- \begin{itemize}
-     \item \textbf{Recompensa por distancia al objetivo ($R_d$)}:
+\item \textbf{Recompensa por distancia al objetivo ($R_d$)}:
 
 La recompensa por distancia es inversamente proporcional a la distancia $d_{agent}$ entre el agente y el objetivo:
 
@@ -205,15 +194,13 @@ El tercer y último método es la distancia de Chebyshev, esta es calculada de l
 
 
 
-Aquí, $(x_{\text{agent}}, y_{\text{agent}})$ son las coordenadas actuales del agente, y $(x_{\text{goal}}, y_{\text{goal}})$ son las coordenadas de cada punto objetivo en la lista de objetivos. Esta recompensa incentiva al agente a acercarse lo más posible al objetivo.
+Aquí, $(x_{\text{agent}}, y_{\text{agent}})$ son las coordenadas actuales del agente, y $(x_{\text{goal}}, y_{\text{goal}})$ son las coordenadas de cada punto objetivo en la lista de objetivos. Esta recompensa incentiva al agente a acercarse lo más posible al objetivo.\\
 \end{itemize}
 
 Combinando los términos anteriores, la función de aptitud se expresa como:
-
 \begin{align*} 
 Aptitud = 10000 - d_{agent} 
 \end{align*}
-
 Además, para asegurar que el valor de aptitud no sea negativo, se aplica:
 \begin{align*} 
 Aptitud = \max(0, Aptitud) 
@@ -221,16 +208,16 @@ Aptitud = \max(0, Aptitud)
 
 Entre mayor sea la aptitud, los genomas con sus características aumentan las probabilidades de ser seleccionados para la próxima generación.
 %%%
-
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[scale=0.14]{images/gta2.png}
-    \caption{Mapa del entorno donde se realizaran las simulaciones}
+    \caption{Mapa del entorno donde el agente autónomo realizará su aprendizaje}
     \label{fig:Mapa}
 \end{figure} 
+
 \subsection{Implementación de asignación entrada  salida}
 Dadas las entradas de los sensores, se le asigna un angulo de rotación y una velocidad al agente autónomo, es un esquema básico, pero funcional ver Figura \ref{fig:Bucle_basico}. Sin embargo, que pasa si las variaciones de los ángulos son muy altas, o tal vez muy bajas, o quizá la velocidad es muy lenta?
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[scale=0.25]{images/bucle_inicial.png}
     \caption{Bucle básico de como el agente autónomo es retroalimentado con las entradas}
@@ -238,21 +225,20 @@ Dadas las entradas de los sensores, se le asigna un angulo de rotación y una ve
 \end{figure} 
 Las altas variaciones de los ángulos genera inconvenientes, uno de ellos es causar que el agente gire sin parar. Si el agente recibe una entrada constante de ángulos en una misma dirección, ocasiona que la suma constante de esos ángulos lo haga girar, más si dichas entradas se presentan en las primeras generaciones. Por contraparte, su desplazamiento se ve disminuido, lo que implica un estancamiento del agente. En el caso de que la entrada sea demasiada alterada pero iterando la dirección de los ángulos, su velocidad también es reducida, ya que si no lo hace, el carro será eliminado debido al inminente hecho de chocar con los bordes fuera de la zona establecida como carretera.
 
+Para evitar alguna de las singularidades (asúmase singularidad como estancamiento, rotación sin parar) se asigna un \textbf{Set\_Valor} a la velocidad si la velocidad previa del agente es menor a 0.1, esto evita que el agente avance demasiado lento, optimizando en medida el tiempo de cada simulación, en este articulo, \textbf{Set\_Valor} es igual a 5. A esta asignación la denominamos \textit{Refuerzo forzado} o \textit{Método de aceleración}, y su diagrama es presentado en la Figura \ref{fig:reforce}.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{images/reforce.png}
-    \caption{Sistema implementado para optimizar y reducir el estancamiento de algunos agentes en primeras generaciones, \textbf{Refuerzo forzado}}
+    \caption{Diagrama de flujo de la función de aceleración o refuerzo forzado, diseñada para optimizar y reducir el estancamiento de algunos agentes en primeras generaciones.}
     \label{fig:reforce}
 \end{figure}
 
-Para evitar alguna de las singularidades (tómese singularidad como estancamiento, rotación sin parar) se asigna un \textbf{Set\_Valor} a la velocidad si la velocidad previa del agente es menor a 0.1, esto evita que el agente avance demasiado lento, optimizando en medida el tiempo de cada simulación, en este articulo, \textbf{Set\_Valor} es igual a 5. A esta asignación la denominamos \textit{Refuerzo forzado} o \textit{Método de aceleración}.
+Una vez establecidos los parámetros iniciales, se realizan distintas simulaciones con el fin de recopilar datos para analizar el comportamiento de los agentes. Se realizaron un total de 48 simulaciones para el primer mapa (Figura \ref{fig:Mapa}), distribuidas en grupos de tres, 20 simulaciones para la distancia Manhattan, 20 para la Euclidiana y 20 para la distancia Chebyshev. Se distribuyen de como se muestra en la Tabla \ref{tab:fds}. A cada número de generación le corresponden 5 simulaciones, es decir en la distancia Euclidiada según la tabla fue un total de $3*5 = 15$ simulaciones realizadas, donde 5 fueron las simulaciones realizadas con una generación de 20, otras 5 para la generación de 30 y por último otras 5 para la generación de 50; así para la distancia Manhattan y Chebyshev. Estas fueron realizadas con la aplicación del método \textbf{Refuerzo forzado} (ver Figura \ref{fig:reforce}), además se realizaron tres simulaciones adicionales sin este método. Corresponden a una simulación de 50 generaciones para las tres distancias aplicadas, por ende el total de simulaciones son las 45 contadas anteriormente, más 3 simulaciones sin la aplicación de este método, como se observa en la Tabla \ref{tab:fds_1}.
 
-
-Una vez establecidos los parámetros iniciales, se realizan distintas simulaciones con el fin de recopilar datos para analizar el comportamiento de los agentes. Se realizaron un total de 48 simulaciones para el primer mapa ver Figura \ref{fig:Mapa}, distribuidas en grupos de tres, 20 simulaciones para la distancia Manhattan, 20 para la Euclidiana y 20 para la distancia Chebyshev. Se distribuyen de la siguiente manera
-
-\begin{table}[H]
+\begin{table}
 \centering
-\caption{Orden de simulaciones}
+\caption{Configuración de simulaciones del agente en el entorno por cada métrica}
 \label{tab:fds}
 \begin{tabular}{ll}
 \toprule
@@ -265,8 +251,8 @@ Chebyshev (5)    & 20, 30, 50 \\
 \end{tabular}
 \end{table}
 
-a cada número de generación le corresponden 5 simulaciones, es decir en la distancia Euclidiada según la tabla fue un total de $3*5 = 15$ simulaciones realizadas, donde 5 fueron las simulaciones realizadas con una generación de 20, otras 5 para la generación de 30 y por último otras 5 para la generación de 50; así para la distancia Manhattan y Chebyshev. Estas fueron realizadas con la aplicación del método \textbf{Refuerzo forzado} ver Figura \ref{fig:reforce}, sin embargo se realizaron tres simulaciones adicionales sin este método. Corresponden a una simulación de 50 generaciones para las tres distancias aplicadas, por ende el total de simulaciones son las 45 contadas anteriormente, más 3 simulaciones sin la aplicación de este método.
-\begin{table}[H]
+
+\begin{table}
 \centering
 \caption{Orden de simulaciones}
 \label{tab:fds_1}
@@ -287,8 +273,9 @@ Chebyshev  (1)    & 50 & NO\\
 \end{tabular}
 \end{table}
 
-También se realizaron 15 simulaciones adicionales para un segundo mapa ver Figura \ref{fig:mapa2}, en estas simulaciones solo se realizaron para una generación de 50, la tabla sería de la siguiente manera:
-\begin{table}[H]
+También se realizaron 15 simulaciones adicionales para un segundo mapa ver Figura \ref{fig:mapa2}, en estas simulaciones solo se realizaron para una generación de 50, como se indica en la Tabla \ref{tab:fds_2},donde (5) representan las simulaciones realizadas, siguiendo el orden planteado anteriormente, 5 simulaciones realizadas para la distancia Euclidiana con una generación de 50, y así para la distancia Manhattan y Chebyshev, para un total de $5*3=15$ simulaciones.
+
+\begin{table}
 \centering
 \caption{Orden de simulaciones}
 \label{tab:fds_2}
@@ -304,9 +291,9 @@ Chebyshev (5)     &50 & SI\\
 \bottomrule
 \end{tabular}
 \end{table}
-donde (5) representan las simulaciones realizadas, siguiendo el orden planteado anteriormente, 5 simulaciones realizadas para la distancia Euclidiana con una generación de 50, y así para la distancia Manhattan y Chebyshev, para un total de $5*3=15$ simulaciones.
 
-\begin{figure}[H]
+
+\begin{figure}
     \centering    \includegraphics[width=0.8\linewidth]{Simulacion/gta.png}
     \caption{Mapa con bloqueo de vía inferior}
     \label{fig:mapa2}
