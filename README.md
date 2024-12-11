@@ -78,3 +78,4 @@ En el directorio de ejecución, se generan dos archivos csv que continen los fit
 - Over Alexander Mejia Rosado
 - Ronald Mateo Ceballos Lozano
 - Rhonald Jose Torres Diaz
+- Juan Pablo Hoyos Sanchez (Docente)
