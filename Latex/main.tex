@@ -18,8 +18,11 @@
 \usepackage{xr}
 \usepackage{cuted}
 \usepackage{caption}
+\usepackage{enumitem}
 \externaldocument{suplemento}
 
+%\renewcommand{\tablename}{Tabla}
+\captionsetup[table]{name=Tabla} 
 \newcommand{\jph}[1]{{\color{blue}{#1}}}
 
 \bibliography{Referencias}
@@ -299,21 +302,21 @@ Chebyshev (5)     &50 & SI\\
     \label{fig:mapa2}
 \end{figure}
 
-\section{Resultados y análisis de resultados}
-Durante la ejecución de las simulaciones se recopilaron datos para el análisis. Los registros obtenidos de las simulaciones contienen el fitness promedio de los genomas, el mejor fitness de la simulación, por últimos las máximas y mínimas recompensas. Con estos datos, como observara a continuación se gráfica el fitness promedio con las desviaciones.
+\section{Resultados}
+Los registros obtenidos de las simulaciones contienen el fitness promedio de los genomas, el mejor fitness de la simulación, por últimos las máximas y mínimas recompensas. Con estos datos, se obtiene la gráfica el fitness promedio con las desviaciones presentadas.
 
-\subsection{Mapa implementado en la simulación}
-Durante la preparación del mapa para la simulación, a los bordes principales de la carretera se les asigno un color RGB(20, 23.5, 21.6)
+\subsection{Configuración del mapa implementado en la simulación}
+Durante la preparación del mapa para la simulación, a los bordes principales de la carretera se les asigno un color RGB(20, 23.5, 21.6) (ver Figura \ref{fig:Bordes}.) Sin embargo, en la configuración para determinar los limites de la vía se opta por establecer que los limites son todos los colores distintos del negro.
 \begin{figure}[ht]
-    \centering    \includegraphics[width=0.6\linewidth]{Simulacion/Bordes.png}
+    \centering    \includegraphics[width=0.4\linewidth]{Simulacion/Bordes.png}
     \caption{Bordes laterales de la vía usada en el mapa}
     \label{fig:Bordes}
 \end{figure}
-Sin embargo, en la configuración para determinar los limites de la vía se opta por establecer que los limites son todos los colores distintos del negro.
+
 
 \subsection{Configuraciones principales del algoritmo NEAT}
 El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate.
-\begin{table}[ht]
+\begin{table}
     \centering
     % Primera tabla
     \captionof{table}{\texttt{[NEAT]}}
@@ -407,33 +410,23 @@ El archivo de configuración para NEAT consta de distintas secciones, cada una d
 \end{table}
 
 \subsection{Resultados de las simulaciones aplicando la distancia Euclidiana}
-\subsection{50 Generaciones}
-Durante las simulaciones realizadas se almacenaban los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a la generación número 50, como resultado se obtiene la Figura \ref{fig:Euclidiana_50_refuerzo}.
+\textbf{50 Generaciones}\\
+Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a la generación número 50, como resultado se obtuvo la Figura \ref{fig:Euclidiana_50_refuerzo}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio, basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
 
-\begin{figure}[H]
+\begin{figure}
     \centering    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
     \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 50}
     \label{fig:Euclidiana_50_refuerzo}
 \end{figure}
 
-La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio, basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos. De manera individual, el entrenamiento (simulación) 4 tiene el siguiente comportamiento:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:Fitnes_ecu_4_50_inv}
-\end{figure}
-De todas las simulaciones realizadas para esta sección, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviación individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:Fitnes_ecu_4_50_inv_sombra}
-\end{figure}
-El segundo fitness más alto le corresponde al entrenamiento 1, con un valor de 9988, además otra característica para el primer entrenamiento corresponde a la desviación, esta sobrepasa los 9400, sin embargo respecto al cuarto entrenamiento su desviación son 200 puntos por debajo (Fig. \ref{fig:eucli_1_50} y \ref{fig:eucli_1_50_sombra}). Seguido de este entrenamiento, el tercer entrenamiento obtuvo un fitness de 9985, con una desviación de 9600, misma desviación que el cuarto entrenamiento (Fig. \ref{fig:eucli_3_50} y \ref{fig:eucli_3_50_sombra}). El quinto entrenamiento obtuvo un fitness de 9982, con una desviación de 9400, en el mismo rango de desviación que el primer entrenamiento (Fig. \ref{fig:eucli_5_50} y \ref{fig:eucli_5_50_sombra}). Para finalizar, el entrenamiento 2 obtuvo el fitnes más bajo con un puntaje de 9626, con la menor desviación de las 5 simulaciones (Fig. \ref{fig:eucli_2_50} y \ref{fig:eucli_2_50_sombra}).
+De manera individual, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990, como se aprecia en la Figura \ref{fig:Fitnes_ecu_4_50_inv}. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.\\
+
+%El segundo fitness más alto le corresponde al entrenamiento 1, con un valor de 9988, además otra característica para el primer entrenamiento corresponde a la desviación, esta sobrepasa los 9400, sin embargo respecto al cuarto entrenamiento su desviación son 200 puntos por debajo (Fig. \ref{fig:eucli_1_50} y \ref{fig:eucli_1_50_sombra}). Seguido de este entrenamiento, el tercer entrenamiento obtuvo un fitness de 9985, con una desviación de 9600, misma desviación que el cuarto entrenamiento (Fig. \ref{fig:eucli_3_50} y \ref{fig:eucli_3_50_sombra}). El quinto entrenamiento obtuvo un fitness de 9982, con una desviación de 9400, en el mismo rango de desviación que el primer entrenamiento (Fig. \ref{fig:eucli_5_50} y \ref{fig:eucli_5_50_sombra}). Para finalizar, el entrenamiento 2 obtuvo el fitnes más bajo con un puntaje de 9626, con la menor desviación de las 5 simulaciones (Fig. \ref{fig:eucli_2_50} y \ref{fig:eucli_2_50_sombra}).
 
 %%%%%%%%%%%%%%%%
-\subsubsection{30 Generaciones} Con los datos recopilados en estas 5 simulaciones para esta generación, la gráfica obtenida es:
+
+\textbf{30 Generaciones}\\
+Con los datos recopilados en estas 5 simulaciones para esta generación, la gráfica obtenida se observa en la Figura \ref{fig:Euclidiana_30_refuerzo}:
 \begin{figure}[H]
     \centering    \includegraphics[width=0.99 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_30Gen.png}
     \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 30}
@@ -477,6 +470,7 @@ La gráfica de desviación es:
     \label{fig:Fitnes_ecu_2_20_inv_sombra}
 \end{figure}
 Con un fitness maximo de 9632, el primer entrenamiento obtuvo el segundo mejor puntaje, con una desviación por encima de los 8800; para el cuarto entrenamiento el puntaje máximo fue de 9237,también sobrepasando los 8800, sin emabrgo el fitness promedio durante la genración 17 y 20 fue en un rango de 8600 y 8650 puntos (Fig. \ref{fig:eucli_1_20}, \ref{fig:eucli_1_20_sombra}, \ref{fig:eucli_4_20} y \ref{fig:eucli_4_20_sombra}). Por último, el quinto y tercer entrenamiento obtuvieron los fitness mas bajos con 8782 y 8773, con una desviación que no supera los 8750 (Fig. \ref{fig:eucli_5_20}, \ref{fig:eucli_5_20_sombra}, \ref{fig:eucli_3_20} y \ref{fig:eucli_3_20_sombra}).
+
 
 
 \subsection{Resultados de las simulaciones aplicando la distancia Manhattan}
