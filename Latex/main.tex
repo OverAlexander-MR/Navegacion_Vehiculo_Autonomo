@@ -413,7 +413,7 @@ El archivo de configuración para NEAT consta de distintas secciones, cada una d
 \textbf{50 Generaciones}\\
 Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a la generación número 50, como resultado se obtuvo la Figura \ref{fig:Euclidiana_50_refuerzo}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio, basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
 
-\begin{figure}
+\begin{figure}[H]
     \centering    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
     \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 50}
     \label{fig:Euclidiana_50_refuerzo}
@@ -426,26 +426,14 @@ De manera individual, el entrenamiento 4 obtuvo el fitness máximo, con un valor
 %%%%%%%%%%%%%%%%
 
 \textbf{30 Generaciones}\\
-Con los datos recopilados en estas 5 simulaciones para esta generación, la gráfica obtenida se observa en la Figura \ref{fig:Euclidiana_30_refuerzo}:
+Con los datos recopilados en estas 5 simulaciones para esta generación, la gráfica obtenida se observa en la Figura \ref{fig:Euclidiana_30_refuerzo}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
 \begin{figure}[H]
     \centering    \includegraphics[width=0.99 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_30Gen.png}
     \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 30}
     \label{fig:Euclidiana_30_refuerzo}
 \end{figure}
-En el caso de la Figura \ref{fig:Euclidiana_30_refuerzo}, los entrenamientos que presentan las mayores desviaciones son el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitness_individual_30/Fitness_3_Eucli_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 3 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:Fitnes_ecu_3_30_inv}
-\end{figure}
-Tambien el tercer entrenamiento presentó la mayor desviación de todas para esta sección, con un valor de 9400:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitness_individual_30/Fitness_3_Eucli_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviación individual para el entrenamiento 3 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:Fitnes_ecu_3_30_inv_sombra}
-\end{figure}
+
+
 El segundo fitness mas alto le corresponde al entrenamiento 5, con un valor de 9984, seguido de este entrenamiento, el primer entrenamiento obtuvo un fitness de 9981, con una desviación que se aproxima a los 9100, 100 puntos menos que la desviación correspondiente al quinto entrenamiento (Fig. \ref{fig:eucli_5_30}, \ref{fig:eucli_5_30_sombra}, \ref{fig:eucli_1_30} y  \ref{fig:eucli_1_30_sombra}). Para el segundo entrenamiento la diferencia con respecto al primero es de 98 puntos por debajo, con un fitness máximo de 9883, y una desviación de 9000 (Fig. \ref{fig:eucli_2_30} y \ref{fig:eucli_2_30_sombra}). Por último, el cuarto entrenamiento obtuvo el fitness mas bajo con 8544, con una desviación que no supera los 8600 (Fig. \ref{fig:eucli_4_30} y \ref{fig:eucli_4_30_sombra}).
 
 \subsubsection{20 Generaciones}
