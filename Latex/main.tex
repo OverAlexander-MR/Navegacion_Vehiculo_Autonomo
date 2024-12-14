@@ -20,6 +20,7 @@
 \usepackage{caption}
 \usepackage{enumitem}
 \externaldocument{suplemento}
+\usepackage{xcolor}
 
 %\renewcommand{\tablename}{Tabla}
 \captionsetup[table]{name=Tabla} 
@@ -31,13 +32,15 @@
 
 \title{Sistema de navegación adaptativa para un vehículo autónomo en un entorno con establecimiento objetivo}
 
-\author{Over Alexander Mejia Rosado \textsuperscript{\href{https://orcid.org/0009-0008-8152-2754}{\faOrcid}}, 
+\definecolor{orcidcolor}{HTML}{A6CE39}
 
-Ronald Mateo Ceballos Lozano \textsuperscript{\href{mailto:rceballosl@unal.edu.co}{\faIcon{envelope}}}, 
+\author{Over Alexander Mejia-Rosado \textsuperscript{\href{https://orcid.org/0009-0008-8152-2754}{\textcolor{orcidcolor}{\faOrcid}}}, 
 
-Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\faIcon{envelope}}}, y\\
+Ronald Mateo Ceballos Lozano \textsuperscript{\href{mailto:rceballosl@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}, 
 
-Juan Pablo Hoyos Sanchez \textsuperscript{\href{mailto:jhoyoss@unal.edu.co}{\faIcon{envelope}}}
+Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}, y\\
+
+Juan Pablo Hoyos Sanchez \textsuperscript{\href{mailto:jhoyoss@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}
 }
 
 \maketitle
@@ -302,8 +305,8 @@ Durante la preparación del mapa para la simulación, a los bordes principales d
 
 
 \subsection{Configuraciones principales del algoritmo NEAT}
-El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate.
-\begin{table}
+El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome_1}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate vea la tabla completa en Tabla \ref{tab:DefaultGenome}.
+\begin{table}[H]
     \centering
     % Primera tabla
     \captionof{table}{\texttt{[NEAT]}}
@@ -336,65 +339,78 @@ El archivo de configuración para NEAT consta de distintas secciones, cada una d
     \bottomrule
     \end{tabular}
     \vspace{0.5cm}
-\end{table}
 
-\begin{table}
-    % Tercera tabla
-    \centering
     \captionof{table}{\texttt{[DefaultGenome]}}
-    \label{tab:DefaultGenome}
+    \label{tab:DefaultGenome_1}
     \begin{tabular}{ll}
     \toprule
-    \textbf{Variable} & \textbf{Valor} \\
+    \textbf{Opciones de Activación de Nodos} & \textbf{Valor} \\
     \midrule
-    \multicolumn{2}{l}{\textbf{Opciones de Activación de Nodos}} \\
     activation\_default       & tanh \\
     activation\_mutate\_rate  & 0.01 \\
     activation\_options       & tanh, relu, sigmoid \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Opciones de Agregación de Nodos}} \\
-    aggregation\_default      & sum \\
-    aggregation\_mutate\_rate & 0.01 \\
-    aggregation\_options      & sum \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Opciones de Sesgo de Nodos}} \\
-    bias\_init\_mean         & 0.0 \\
-    bias\_init\_stdev        & 1.0 \\
-    bias\_max\_value         & 30.0 \\
-    bias\_min\_value         & -30.0 \\
-    bias\_mutate\_power      & 0.5 \\
-    bias\_mutate\_rate       & 0.7 \\
-    bias\_replace\_rate      & 0.1 \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Opciones de Compatibilidad del Genoma}} \\
-    compatibility\_disjoint\_coefficient & 1.0 \\
-    compatibility\_weight\_coefficient   & 0.5 \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Conexiones}} \\
-    conn\_add\_prob        & 0.5 \\
-    conn\_delete\_prob     & 0.5 \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Opciones de Habilitación de Conexiones}} \\
-    enabled\_default       & True \\
-    enabled\_mutate\_rate  & 0.1 \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Configuraciones de Topología}} \\
-    feed\_forward          & False \\
-    initial\_connection    & full \\
-    \addlinespace
-    
-    \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Nodos}} \\
-    node\_add\_prob        & 0.2 \\
-    node\_delete\_prob     & 0.2 \\
     \bottomrule
     \end{tabular}
+
 \end{table}
+
+% \begin{table}[ht]
+%     % Tercera tabla
+%     \centering
+%     \captionof{table}{\texttt{[DefaultGenome]}}
+%     \label{tab:DefaultGenome}
+%     \begin{tabular}{ll}
+%     \toprule
+%     \textbf{Variable} & \textbf{Valor} \\
+%     \midrule
+%     \multicolumn{2}{l}{\textbf{Opciones de Activación de Nodos}} \\
+%     activation\_default       & tanh \\
+%     activation\_mutate\_rate  & 0.01 \\
+%     activation\_options       & tanh, relu, sigmoid \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Opciones de Agregación de Nodos}} \\
+%     aggregation\_default      & sum \\
+%     aggregation\_mutate\_rate & 0.01 \\
+%     aggregation\_options      & sum \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Opciones de Sesgo de Nodos}} \\
+%     bias\_init\_mean         & 0.0 \\
+%     bias\_init\_stdev        & 1.0 \\
+%     bias\_max\_value         & 30.0 \\
+%     bias\_min\_value         & -30.0 \\
+%     bias\_mutate\_power      & 0.5 \\
+%     bias\_mutate\_rate       & 0.7 \\
+%     bias\_replace\_rate      & 0.1 \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Opciones de Compatibilidad del Genoma}} \\
+%     compatibility\_disjoint\_coefficient & 1.0 \\
+%     compatibility\_weight\_coefficient   & 0.5 \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Conexiones}} \\
+%     conn\_add\_prob        & 0.5 \\
+%     conn\_delete\_prob     & 0.5 \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Opciones de Habilitación de Conexiones}} \\
+%     enabled\_default       & True \\
+%     enabled\_mutate\_rate  & 0.1 \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Configuraciones de Topología}} \\
+%     feed\_forward          & False \\
+%     initial\_connection    & full \\
+%     \addlinespace
+    
+%     \multicolumn{2}{l}{\textbf{Tasas de Adición/Eliminación de Nodos}} \\
+%     node\_add\_prob        & 0.2 \\
+%     node\_delete\_prob     & 0.2 \\
+%     \bottomrule
+%     \end{tabular}
+% \end{table}
 
 \subsection{Resultados de las simulaciones aplicando la distancia Euclidiana}
 Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a un número de 50 generaciones, luego 5 para 30 generaciones y por ultimo 5 para 20 generaciones, un total de 15 simulaciones realizadas. Como resultados se obtienen las figura presentadas en la Tabla \ref{tab:graficas_generales_Euclidiada}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio. Basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
