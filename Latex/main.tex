@@ -31,31 +31,20 @@
 
 \title{Sistema de navegación adaptativa para un vehículo autónomo en un entorno con establecimiento objetivo}
 
-\author{\IEEEauthorblockN{1\textsuperscript{er} Over Alexander Mejia Rosado \textsuperscript{\href{https://orcid.org/0009-0008-8152-2754}{\faOrcid}}}
-\IEEEauthorblockA{\textit{Inteligencia Artificial} \\
-\textit{Universidad Nacional de Colombia - De La Paz}\\
-San Diego
+\author{Over Alexander Mejia Rosado \textsuperscript{\href{https://orcid.org/0009-0008-8152-2754}{\faOrcid}}, 
+
+Ronald Mateo Ceballos Lozano \textsuperscript{\href{mailto:rceballosl@unal.edu.co}{\faIcon{envelope}}}, 
+
+Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\faIcon{envelope}}}, y\\
+
+Juan Pablo Hoyos Sanchez \textsuperscript{\href{mailto:jhoyoss@unal.edu.co}{\faIcon{envelope}}}
 }
-\and
-\IEEEauthorblockN{2\textsuperscript{do} Ronald Mateo Ceballos Lozano \textsuperscript{\href{mailto:rceballosl@unal.edu.co}{\faIcon{envelope}}}}
-\IEEEauthorblockA{\textit{Inteligencia Artificial} \\
-\textit{Universidad Nacional de Colombia - De La Paz}\\
-Valledupar
-}
-\and
-\IEEEauthorblockN{3\textsuperscript{er} Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\faIcon{envelope}}}}
-\IEEEauthorblockA{\textit{Inteligencia Artificial} \\
-\textit{Universidad Nacional de Colombia - De La Paz}\\
-Valledupar
-}}
 
 \maketitle
 
-\begin{strip}
-\section*{Resumen}
+\begin{abstract}
 Este proyecto se centra en el desarrollo de un sistema de navegación para vehículos autónomos utilizando NEAT (NeuroEvolution of Augmenting Topologies). El objetivo principal es diseñar e implementar un vehículo capaz de desplazarse en un mapa en 2D, el cual consta de un punto inical y un objetivo para el vehiculo autonomo. A través de sensores virtuales, el vehículo es capaz de identificar la vía por la cual puede avanzar y cuales los los limites de esta. Se utilizan métricas de distancia como la Euclidiana, Manhattan y Chebyshev cómo sistema de recompensas, que constantemente calculan las posiciones de los agentes, entre más cercano esté el vehiculo del objetivo, su fitness incrementa, de esa manera se esttablece la función aptitud. Se crea y se implementa un sistema de refuerzo forzado, que permite al vehículo avanzar en caso de que su velocidad sea menor a 0.1, evitando así que el vehículo se estanque. Los resultados obtenidos muestran que el vehículo autónomo es capaz de desplazarse de manera autónoma en el mapa, aumentando su aptitud en cada generación dependiendo de la metrica de distancia utilizada.
-\end{strip}
-
+\end{abstract}
 \section{Introducción}
 Uno de los mayores problemas del transporte moderno es el alto indice de accidentes en el tránsito terrestre, la gran cantidad de trafico atribuida a factores como errores humanos, falla mecánicas y fenómenos naturales. 
 
@@ -116,14 +105,12 @@ Se establecen los estados, un estado inicial donde se ubica el vehículo autóno
 \subsection{NEAT-Python}
 El agente debe aprender a moverse en el entorno, NEAT permite que el agente recorra el espacio asignándoles valores de salida dependiendo de los valores de entrada. Los valores de entrada son valores que se toman del entorno, para este caso en particular, las entradas estarían dadas por el color de cada pixel, dependiendo del color del pixel, el agente cambia o no de dirección,  a esto se le conoce como acción o salida. NEAT le otorga al agente sensores que le permiten el reconocimiento del entrono, estos sensores son asignados para determinar cuando este sale de las vías, y la distancias entre puntos \cite{sensores}. En este articulo implementamos el uso de 5 sensores, asignados a una lista; -90°, -45,° 0°, 45° y 90°. Estas son las principales entradas para nuestro algoritmo NEAT aplicado al agente (Figura \ref{fig:agente}), ver Figura \ref{fig:agente_sensores}.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{images/sensores.png}
     \caption{Asignación de sensores al agente}
     \label{fig:agente_sensores}
 \end{figure}
-
-
 
 En la Figura \ref{fig:Red-neuronal},  Hidden o capas ocultas, son nodos que aplican un procesado a la entrada, con cada generación las capas aumentan dependiendo de la ganancia, esta ganancia está dada por las acciones previas del agente. Si el agente se desplaza en el mapa sin exceder las limitaciones, se mantiene en la generación. Las generaciones en NEAT es el umbral con el que se desea finalizar la simulación, por ejemplo, si se establecen 50 generaciones cada valor del umbral se le asocian a los agentes creados por la red neural aplicando distintos valores de configuración, si en la primera generación todos los carros chocan, se pasa a la siguiente generación, en este caso la segunda, así sucesivamente hasta llegar a la ultima que sería la generación 50. En el entrono se crean distintos agentes, cada agente recorre el mapa, si un agente choca o se sale de la vía, esta configuración tendrá menos probabilidad de replicarse, de esta manera se garantiza una generación final donde el o los agentes aprenda a desplazarse por el entorno de forma autónoma.
 
@@ -410,35 +397,38 @@ El archivo de configuración para NEAT consta de distintas secciones, cada una d
 \end{table}
 
 \subsection{Resultados de las simulaciones aplicando la distancia Euclidiana}
-Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a un número de 50 generaciones, como resultado se obtuvo la Figura \ref{fig:Euclidiana_50_refuerzo}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio. Basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
-\begin{figure}[H]
-    \centering    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
-    \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 50}
-    \label{fig:Euclidiana_50_refuerzo}
-\end{figure}
-De manera individual, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990, como se aprecia en la Figura \ref{fig:Fitnes_ecu_4_50_inv}. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.
+Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a un número de 50 generaciones, luego 5 para 30 generaciones y por ultimo 5 para 20 generaciones, un total de 15 simulaciones realizadas. Como resultados se obtienen las figura presentadas en la Tabla \ref{tab:graficas_generales_Euclidiada}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio. Basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
+
+Para los entrenamientos realizados con 50 genraciones, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990, como se aprecia en la Figura \ref{fig:Fitnes_ecu_4_50_inv}. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.
 
 %El segundo fitness más alto le corresponde al entrenamiento 1, con un valor de 9988, además otra característica para el primer entrenamiento corresponde a la desviación, esta sobrepasa los 9400, sin embargo respecto al cuarto entrenamiento su desviación son 200 puntos por debajo (Fig. \ref{fig:eucli_1_50} y \ref{fig:eucli_1_50_sombra}). Seguido de este entrenamiento, el tercer entrenamiento obtuvo un fitness de 9985, con una desviación de 9600, misma desviación que el cuarto entrenamiento (Fig. \ref{fig:eucli_3_50} y \ref{fig:eucli_3_50_sombra}). El quinto entrenamiento obtuvo un fitness de 9982, con una desviación de 9400, en el mismo rango de desviación que el primer entrenamiento (Fig. \ref{fig:eucli_5_50} y \ref{fig:eucli_5_50_sombra}). Para finalizar, el entrenamiento 2 obtuvo el fitnes más bajo con un puntaje de 9626, con la menor desviación de las 5 simulaciones (Fig. \ref{fig:eucli_2_50} y \ref{fig:eucli_2_50_sombra}).
 
 %%%%%%%%%%%%%%%%
 
-Para los datos recopilados con un número de generaciones igual a 30, la gráfica obtenida se observa en la Figura \ref{fig:Euclidiana_30_refuerzo}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
-\begin{figure}[H]
-    \centering    \includegraphics[width=0.99 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_30Gen.png}
-    \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 30}
-    \label{fig:Euclidiana_30_refuerzo}
-\end{figure}
+Para los datos recopilados con un número de generaciones igual a 30, la gráfica obtenida se observa en la Tabla \ref{tab:graficas_generales_Euclidiada} sección \textit{(B) 30 Genraciones}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
 El segundo fitness mas alto le corresponde al entrenamiento 5, con un valor de 9984, seguido de este entrenamiento, el primer entrenamiento obtuvo un fitness de 9981, con una desviación que se aproxima a los 9100, 100 puntos menos que la desviación correspondiente al quinto entrenamiento (Fig. \ref{fig:eucli_5_30}, \ref{fig:eucli_5_30_sombra}, \ref{fig:eucli_1_30} y  \ref{fig:eucli_1_30_sombra}).
 
-La gráfica general de las desviaciones y promedios obtenidos para 20 genraciónes establecidas es:
-\begin{figure}[H]
-    \centering    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_Acumulado_Eucli_20Gen.png}
-    \caption{Gráfica de promedios y desviaciones fitness correspondiente a 5 simulaciones realizadas con una generación de 20}
-    \label{fig:Euclidiana_20_refuerzo}
-\end{figure}
+La gráfica general de las desviaciones y promedios obtenidos para 20 genraciónes establecidas puede observarla en la sección \textit{(C) 20 Genraciones} en la Tabla \ref{tab:graficas_generales_Euclidiada}.
+
 Como se puede observar, la desviación con mayor valor se obtuvo en el segundo entrenamiento, además su puntaje fitness fue el mas alto de todos los demás con un valor de 9881, con una desviación que no sobrepasa los 9100 puntos (Fig. \ref{fig:eucli_2_20} y \ref{fig:eucli_2_20_sombra}).
 
 Con un fitness maximo de 9632, el primer entrenamiento obtuvo el segundo mejor puntaje, con una desviación por encima de los 8800 (Fig. \ref{fig:eucli_1_20}, \ref{fig:eucli_1_20_sombra}). Por otra parte, el quinto y tercer entrenamiento obtuvieron los fitness mas bajos con 8782 y 8773, con una desviación que no supera los 8750 (Fig. \ref{fig:eucli_5_20}, \ref{fig:eucli_5_20_sombra}, \ref{fig:eucli_3_20} y \ref{fig:eucli_3_20_sombra}).
+
+\begin{table*}[ht]
+    \centering
+    \caption{Gráficas por genraciones para la distancia Euclidiana}
+    \label{tab:graficas_generales_Euclidiada}
+    \begin{tabular}{ccc}
+    \includegraphics[width=0.3\textwidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png} &
+
+    \includegraphics[width=0.3\textwidth]{Euclidiana/Fitness_Acumulado_Eucli_30Gen.png} &
+
+    \includegraphics[width=0.3\textwidth, height=3.6cm]{Euclidiana/Fitness_Acumulado_Eucli_20Gen.png} \\
+
+    (A) 50 Generaciones & (B) 30 Generaciones & (C) 20 Genraciones \\
+    \end{tabular}
+\end{table*}
+
 
 \subsection{Resultados de las simulaciones aplicando la distancia Manhattan}
 \subsubsection{50 Generaciones}
