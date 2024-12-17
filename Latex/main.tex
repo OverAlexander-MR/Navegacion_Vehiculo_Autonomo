@@ -22,6 +22,7 @@
 \externaldocument{suplemento}
 \usepackage{xcolor}
 \usepackage{subcaption}  % Para subfiguras
+\usepackage{booktabs}
 
 %\renewcommand{\tablename}{Tabla}
 \captionsetup[table]{name=Tabla} 
@@ -413,18 +414,18 @@ Para los entrenamientos realizados con 50 generaciones, el entrenamiento 4 obtuv
 
 %%%%%%%%%%%%%%%%
 
-Para los datos recopilados con un número de generaciones igual a 30, la gráfica obtenida se observa en la Tabla \ref{tab:graficas_generales_Euclidiada} sección \textit{(B) 30 Genraciones}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
+Para los datos recopilados con un número de generaciones igual a 30, la gráfica obtenida se observa en la Figura \ref{fig:graficas_generales_euclidiana} sección \textit{(B) 30 Genraciones}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
 % El segundo fitness mas alto le corresponde al entrenamiento 5, con un valor de 9984, seguido de este entrenamiento, el primer entrenamiento obtuvo un fitness de 9981, con una desviación que se aproxima a los 9100, 100 puntos menos que la desviación correspondiente al quinto entrenamiento (Fig. \ref{fig:eucli_5_30}, \ref{fig:eucli_5_30_sombra}, \ref{fig:eucli_1_30} y  \ref{fig:eucli_1_30_sombra}).
 
-La gráfica general de las desviaciones y promedios obtenidos para 20 genraciónes establecidas puede observarla en la sección \textit{(C) 20 Genraciones} en la Tabla \ref{fig:graficas_generales_Euclidiada}.
+La gráfica general de las desviaciones y promedios obtenidos para 20 genraciónes establecidas puede observarla en la sección \textit{(C) 20 Genraciones} en la Figura \ref{fig:graficas_generales_euclidiana}.
 Como se puede observar, la desviación con mayor valor se obtuvo en el segundo entrenamiento, además su puntaje fitness fue el mas alto de todos los demás con un valor de 9881, con una desviación que no sobrepasa los 9100 puntos (Fig. \ref{fig:eucli_2_20} y \ref{fig:eucli_2_20_sombra}).
 
 Con un fitness maximo total obtenido para la distancia Euclidiana de 9990, se obtuvo en el entrenamiento 4 con 50 generaciones, seguido de este entrenamiento, el entrenamiento 3 obtuvo el segundo fitness mas alto con 9986 para 30 generaciones, y por último el entrenamiento 2 obtuvo el tercer fitness mas alto con 9881, con 20 generaciones. La diferencia en 50 genraciones y 30 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 50 generaciones y 20 generaciones es de 109 puntos. 
 
+La tabla \ref{tab:fitness_generaciones} contine los resultados obtenidos para las simulaciones realizadas con la distancia Euclidiana, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
+
 \begin{figure*}[ht]
     \centering
-
-
     \begin{subfigure}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
@@ -449,84 +450,66 @@ Con un fitness maximo total obtenido para la distancia Euclidiana de 9990, se ob
     \label{fig:graficas_generales_euclidiana}
 \end{figure*}
 
-
-\subsection{Resultados de las simulaciones aplicando la distancia Manhattan}
-Principalmente se iniciaron las simulaciones para las 50 generaciones, de estas simulaciones se graficaron los mejores promedios y las desviaciones de cada entrenamiento, de esta manera la grafica que reúne cada uno de los entrenamientos es la Tabla \ref{tab:graficas_generales_Manhattan} \textit{(A) 50 Generaciones}.
-En el entrenamiento número 4 se presentó el fitness mas alto con 9978 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9100 puntos, con una desviación cercana a los 9200 (Fig \ref{fig:manhattan_4_50} y \ref{fig:manhattan_4_50_sombra}).
-
-Los sigueientes dos entrenamientos con los puntajes mas altos fueron el 2 y 3, con 9688 y 9621 respectivamente, con una desviación que no supera los 8900 para el entrenamiento numero 3, y 9000 para el entrenamiento numero 2 (Fig. \ref{fig:manhattan_2_50}, \ref{fig:manhattan_2_50_sombra}, \ref{fig:manhattan_3_50} y \ref{fig:manhattan_3_50_sombra}). Por último, el primer y quinto entrenamiento obtuvieron los puntajes mas bajos, con 8767 y 8771, con una desviación que no supera los 8600 (Fig. \ref{fig:manhattan_1_50}, \ref{fig:manhattan_1_50_sombra}, \ref{fig:manhattan_5_50}, \ref{fig:manhattan_5_50_sombra}).
-
-
-\subsubsection{30 Generaciones}
-En la gráfica general para las simulaciones con 30 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Manhattan/Fitness_Acumulado_Manh30Gen.png}
-    \caption{Gráfica de promedios y desviaciones para correspondiente a las generaciones de 30 para la distancia Manhattan}
-    \label{fig:Manhattan_30_genral}
-\end{figure}
-%9992
-%9989
-Los entrenamientos que más fitness obtuvieron durante estas simulaciones, fue el primer y segundo entrenamiento. El puntaje máximo para el primer entrenamiento es de 9990
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Manhattan/Fitness_Individual_30Gen/Fitness_1_Mahn_30Gen.png}
-    \caption{Fitness promedio y más alto para el entrenamiento 1 de 30 generaciones con la distancia Manhattan}
-    \label{fig:manhattan_30_fitness}
-\end{figure}
-La desviación para el primer entrenamiento ronda los 9100
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Manhattan/Fitness_Individual_30Gen/Fitness_1_Mahn_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviación individual para el entrenamiento 1 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:Fitnes_ecu_1_30_inv_sombra_1-1}
-\end{figure}
-Para el segundo entrenamento el puntaje máximo es de 9987, superando tambien los 9000 puntos en la desviación, sin embargo en la generación 28 hubo un decremento en el promedio de fitness obtenidos, todo lo contrario al primer entrenamiento (Fig. \ref{fig:manhattan_2_30} y \ref{fig:manhattan_2_30_sombra}). El siguiente mayor puntaje le corresponde al entrenamiento numero 5, este obtuvo un puntaje de 9630, con una desviación que supera los 8700 puntos a partir de la generación 29. Por último, el cuarto y tercer entrenamiento se obtuvieron los puntajes mas bajos, con 9623 y 9618, con una desviación que no supera los 8900 puntos  (Fig. \ref{fig:manhattan_3_30}, \ref{fig:manhattan_3_30_sombra}, \ref{fig:manhattan_4_30} y \ref{fig:manhattan_4_30_sombra}).
-
-
 \begin{table*}[ht]
     \centering
-    \caption{Gráficas por genraciones para la distancia Manhattan}
-    \label{tab:graficas_generales_Manhattan}
-    \begin{tabular}{ccc}
-    \includegraphics[width=0.3\textwidth]{Manhattan/Fitness_Acumulado_Manh_50Gen.png} &
-
-    \includegraphics[width=0.3\textwidth]{Manhattan/Fitness_Acumulado_Manh30Gen.png} &
-
-    \includegraphics[width=0.3\textwidth, height=2.74cm]{Manhattan/Fitness_Acumulado_Manh_20Gen.png} \\
-
-    (A) 50 Generaciones & (B) 30 Generaciones & (C) 20 Genraciones \\
+    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Euclidiana}
+    \label{tab:fitness_generaciones}
+    \begin{tabular}{cccccc}
+        \toprule
+        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
+        \midrule
+        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
+        \midrule
+        1 & 9990 & 1 & 9981 & 1 & 9632 \\
+        2 & 9626 & 2 & 9883 & 2 & 9881 \\
+        3 & 9985 & 3 & 9986 & 3 & 8773 \\
+        4 & 9990 & 4 & 8544 & 4 & 9237 \\
+        5 & 9982 & 5 & 9984 & 5 & 8782 \\
+        \bottomrule
     \end{tabular}
 \end{table*}
 
 
+\subsection{Resultados de las simulaciones aplicando la distancia Manhattan}
+Principalmente se iniciaron las simulaciones para las 50 generaciones, de estas simulaciones se graficaron los mejores promedios y las desviaciones de cada entrenamiento, de esta manera la grafica que reúne cada uno de los entrenamientos es la Figura \ref{fig:graficas_generales_manhattan} \textit{(A) 50 Generaciones}.
+En el entrenamiento número 4 se presentó el fitness mas alto con 9978 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9100 puntos, con una desviación cercana a los 9200 (Fig \ref{fig:manhattan_4_50} y \ref{fig:manhattan_4_50_sombra}).
+
+En la gráfica general para las simulaciones con 30 generaciones se observa los fitness promedio de cada entrenamiento y las desviaciones ver la Figura \ref{fig:graficas_generales_manhattan} \textit{(B) 30 Generaciones}.
+El primer entrenamiento presento el fitness mas alto de todos los entrenamientos, con un puntaje de 9990, con una desviación que supera los 9200 puntos (Fig. \ref{fig:manhattan_1_30} y \ref{fig:manhattan_1_30_sombra}).
 
 
-\subsubsection{20 Generaciones}
-En la gráfica general para las
-simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Euclidiana/Fitness_Acumulado_Eucli_20Gen.png}
-    \caption{Fitness promedio y desviaciones para las simulaciones realizadas con 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhatan_20_general}
-\end{figure}
-El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9980, su gráfica es:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Manhattan/Fitness_Individual_20Gen/Fitness_2_Manh_20Gen.png}
-    \caption{Fitness máximo y promedio para los entrenamientos realizados de 20 generaciones en la distancia Manhattan}
-    \label{fig:manhattan20_2}
-\end{figure}
-Este entrenamiento también posee la mayor desviación de todas
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Manhattan/Fitness_Individual_20Gen/Fitness_2_Manh_20Gen_Sombra.png}
-    \caption{Fitnes promedio y desviaciones para el segundo entrenamiento de 20 generaciones  en la distancia Manhattan}
-    \label{fig:des_man_2}
-\end{figure}
+En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_manhattan} \textit{(C) 20 Generaciones}.
+El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9980, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no suoera los 8900 puntos (Fig. \ref{fig:manhattan_2_20} y \ref{fig:manhattan_2_20_sombra}). El entrenamiento número 4 obtuvo un fitness maximo de 8879, sin embargo su fitness promedio y desviación empezó a disminuir a partir de la genreación numero 15 ver (Fig. \ref{fig:manhattan_4_20_sombra})
 
-El entrenamiento número 5 obtuvo el segundo mejor fitness, con un puntaje de 9360, con el pasar de cada genración el promedio aumenta, junto con la desviación. En la genración 29 a 30 el puntaje sobrepasó los 8800 (Fig. \ref{fig:manhattan_5_20} y \ref{fig:manhattan_5_20_sombra}). El cuarto entrenamiento obtuvo un puntaje de 8799, con una desviación maxima de 8600, en la generación 19 y 20 el promedio de fitness fue de 8600 puntos (Fig. \ref{fig:manhattan_4_20} y \ref{fig:manhattan_4_20_sombra}). Por último, el primer y tercer entrenamiento obtuvieron los puntajes mas bajos, con 8782 y 8771, con una desviación que sobrepasa los 8600 puntos en la genración numero 15. Por último los peores puntajes fueron obtenidos por el tercer y primer entrenamiento, con un puntaje de 8771, y 8766 respectivamente, ambas superan una desviación de 8600 puntos, de igualmanera comparten una disminución del fitness promedio en la generación 19 y 20 (Fig. \ref{fig:manhattan_3_20}, \ref{fig:manhattan_3_20_sombra},  \ref{fig:manhattan_1_20} y \ref{fig:manhattan_1_20_sombra}).
+\begin{figure*}[ht]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Manhattan/Fitness_Acumulado_Manh_50Gen.png}
+        \caption{50 Generaciones}
+        \label{fig:manh_50gen}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Manhattan/Fitness_Acumulado_Manh30Gen.png}
+        \caption{30 Generaciones}
+        \label{fig:manh_30gen}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, height=2.74cm]{Manhattan/Fitness_Acumulado_Manh_20Gen.png}
+        \caption{20 Generaciones}
+        \label{fig:manh_20gen}
+    \end{subfigure}
+    \caption{Gráficas por generaciones para la distancia Manhattan}
+    \label{fig:graficas_generales_manhattan}
+\end{figure*}
+
+
 
 \subsection{Resultados de las simulaciones aplicando la distancia de Chebyshev}
 \subsubsection{50 Generaciones}
