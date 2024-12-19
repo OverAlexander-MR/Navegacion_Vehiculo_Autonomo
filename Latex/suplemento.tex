@@ -624,7 +624,6 @@ Valledupar
 \end{figure}
 
 
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_3_Cheby_30Gen.png}
@@ -684,6 +683,20 @@ Valledupar
 
 \begin{figure}[H]
     \centering
+    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_2_Cheby_20Gen.png}
+    \caption{Fitness individual para el entrenamiento 2 de 20 generaciones aplicando la distancia Chebyshev}
+    \label{fig:cheb_2_20}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_2_Cheby_20Gen_Sombra.png}
+    \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 20 generaciones aplicando la distancia Chebyshev}
+    \label{fig:cheb_2_20_sombra}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_3_Cheby_20Gen.png}
     \caption{Fitness individual para el entrenamiento 3 de 20 generaciones aplicando la distancia Chebyshev}
     \label{fig:cheb_3_20}
@@ -720,6 +733,56 @@ Valledupar
     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Chebyshev}
     \label{fig:cheb_5_20_sombra}
 \end{figure}
+
+\section{Resultados de las simulaciones con el primer mapa sin el Refuerzo Forzado}
+\subsection{Distancia Euclidiana}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}-EN}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Sin_Refuerzo_50Gen/Eucli_NoRef_50Gen.png}
+    \caption{Mejor promedio fitness para la distancia Euclidiana sin la aplicación del Refuerzo forzado}
+    \label{fig:eucli_no_ref_50}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Sin_Refuerzo_50Gen/Eucli_NoRef_50Gen_Sombra.png}
+    \caption{Promedio y desviaciones para la distancia Euclidiana sin la aplicación del Refuerzo forzado}
+    \label{fig:eucli_no_ref_50_sombra}    
+\end{figure}
+
+\subsection{Distancia Manhattan}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}-MN}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Sin_Refuerzo_50Gen/Manh_NoRef_50Gen.png}
+    \caption{Mejor promedio fitness para la distancia Manhattan sin la aplicación del Refuerzo forzado}
+    \label{fig:manh_no_ref_50}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Sin_Refuerzo_50Gen/Manh_NoRef_50Gen_Sombra.png}
+    \caption{Promedio y desviaciones para la distancia Manhattan sin la aplicación del Refuerzo forzado}
+    \label{fig:manh_no_ref_50_sombra}
+\end{figure}
+
+\subsection{Distancia Chebyshev}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}-CN}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen.png}
+    \caption{Mejor promedio fitness para la distancia Chebyshev sin la aplicación del Refuerzo forzado}
+    \label{fig:cheby_no_ref_50}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9 \linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen_Sombra.png}
+    \caption{Promedio y desviaciones para la distancia Chebyshev sin la aplicación del Refuerzo forzado}
+    \label{fig:cheby_no_ref_50_sombra}
+\end{figure}
+
 
 
 \section{Resultados de las simulaciones con el segundo mapa y Refuerzo Forzado}

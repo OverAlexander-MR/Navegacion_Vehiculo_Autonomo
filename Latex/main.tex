@@ -471,7 +471,6 @@ La tabla \ref{tab:fitness_generaciones} contine los resultados obtenidos para la
     \end{tabular}
 \end{table*}
 
-
 \subsection{Resultados de las simulaciones aplicando la distancia Manhattan}
 Principalmente se iniciaron las simulaciones para las 50 generaciones, de estas simulaciones se graficaron los mejores promedios y las desviaciones de cada entrenamiento, de esta manera la grafica que reúne cada uno de los entrenamientos es la Figura \ref{fig:graficas_generales_manhattan} \textit{(A) 50 Generaciones}.
 En el entrenamiento número 4 se presentó el fitness mas alto con 9978 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9100 puntos, con una desviación cercana a los 9200 (Fig \ref{fig:manhattan_4_50} y \ref{fig:manhattan_4_50_sombra}).
@@ -483,6 +482,10 @@ El primer entrenamiento presento el fitness mas alto de todos los entrenamientos
 En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_manhattan} \textit{(C) 20 Generaciones}.
 El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9980, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no suoera los 8900 puntos (Fig. \ref{fig:manhattan_2_20} y \ref{fig:manhattan_2_20_sombra}). El entrenamiento número 4 obtuvo un fitness maximo de 8879, sin embargo su fitness promedio y desviación empezó a disminuir a partir de la genreación numero 15 ver (Fig. \ref{fig:manhattan_4_20_sombra})
 
+El valor de fitness maximo obetnido en la distancia Manhattan corresponde al entrenamiento numero 1 con 9990 para 30 generaciones, seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9980 para 20 generaciones, y por último el entrenamiento 4 obtuvo el tercer fitness mas alto con 9978, con 20 generaciones. La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 10 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 12 puntos.
+
+
+La tabla \ref{tab:fitness_generaciones_manhattan} contine los resultados obtenidos para las simulaciones realizadas con la distancia Manhattan, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
 \begin{figure*}[ht]
     \centering
     \begin{subfigure}{0.3\textwidth}
@@ -509,104 +512,92 @@ El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9980, es
     \label{fig:graficas_generales_manhattan}
 \end{figure*}
 
+\begin{table*}[ht]
+    \centering
+    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Manhattan}
+    \label{tab:fitness_generaciones_manhattan}
+    \begin{tabular}{cccccc}
+        \toprule
+        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
+        \midrule
+        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
+        \midrule
+        1 & 8531 & 1 & 9990 & 1 & 8766 \\
+        2 & 9688 & 2 & 9987 & 2 & 9980 \\
+        3 & 9621 & 3 & 9618 & 3 & 8771 \\
+        4 & 9978 & 4 & 9623 & 4 & 8799 \\
+        5 & 8677 & 5 & 9630 & 5 & 9360 \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
 
 
 \subsection{Resultados de las simulaciones aplicando la distancia de Chebyshev}
-\subsubsection{50 Generaciones}
-De las simulaciones realizadas aplicando la distancia Chebyshev, se obtienen los mejores fitness y promedios, además de todas las desviaciones realizadas en estas
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Chebyshev/Fitness_Acumulado_Cheby_50Gen.png}
-    \caption{Fitness promedio y desviaciones para las simulaciones realizadas con 50 generaciones aplicando la distancia de Chebyshev}
-    \label{fig:chy_genral}
-\end{figure}
-Analizando la gráfica, los valores fitness más altos corresponden al entrenamiento 1 y 5. Por un lado el entrenamiento número 1 presenta el mayor puntaje con 9988:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_1_Cheby_50Gen.png}
-    \caption{Mejor fitness para una generación de 50 aplicando la distancia de Chebyshev}
-    \label{fig:chy_1_best}
-\end{figure}
-Mientras que el puntaje para el entrenamiento 5 es de 9986
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_5_Cheby_50Gen.png}
-    \caption{Mejor fitness para el entrenamiento 5 de una generación de 50 aplicando la distancia de Chebyshev}
-    \label{fig:chy_5_best}
-\end{figure}
-Sin embargo en este caso particular la mayor desviación la posee el entrenamiento número 5
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Chebyshev/Fitness_Individual_50Gen/Fitness_5_Cheby_50Gen_Sombra.png}
-    \caption{Mayor desviación en el entrenamiento numero 5, para una generación de 50 con la distancia de Chebyshev}
-    \label{fig:che_5_desv}
-\end{figure}
-Mientras que el entrenamiento número 1 obtuvo una desviación de 9400 puntos en la generación 50, el entrenamiento numero 5 sobrepasa esa desviación a partir de la generación 30. Por otro lado, el entrenamiento número 4, obtuvo el tercer mejor fitness con 9984, acercandose a 9200 puntos en la desviación maxima para la generación 48. Los menores fitness obtenidos fueron para el segundo y tercer entrenamiento, con 9973 y 8777 respectivamente, ambos con una desviación que no supera los 9200 puntos (Fig. \ref{fig:cheb_1_50_sombra}, \ref{fig:cheb_4_50}, \ref{fig:cheb_4_50_sombra}, \ref{fig:cheb_2_50}, \ref{fig:cheb_2_50_sombra}, \ref{fig:cheb_3_50} y \ref{fig:cheb_3_50_sombra}).
+Para las simulaciones realizadas con la distancia de Chebyshev, se obtuvieron los resultados de las gráficas generales para las 50 generaciones, 30 generaciones y 20 generaciones, como se observa en la Figura \ref{fig:graficas_generales_chebyshev}.
+La grafica que reúne cada uno de los entrenamientos realizados para las 50 Generaciones es la Figura \ref{fig:graficas_generales_chebyshev} \textit{(A) 50 Generaciones}.
+En el entrenamiento número 1 se presentó el fitness mas alto con 9988 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9400 puntos (Fig \ref{fig:cheb_1_50} y \ref{fig:cheb_1_50_sombra}).
 
-\subsubsection{30 Generaciones}
-La gráfica general que representa a todos los entrenamientos realizados para la generación de 30 es:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Chebyshev/Fitness_Acumulado_Cheby30Gen.png}
-    \caption{Fitness promedios y desviaciones de cada entrenamiento realizado para las generaciones de 30 con la distancia de Chebyshev}
-    \label{fig:genral_che_30}
-\end{figure}
-Tanto el entrenamiento numero 2 y 3 presenta el fitness más alto, el segundo entrenamiento posee un valor fitness máximo de 9994, mientras que el tercer entrenamiento uno de 9974
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_30Gen/Fitness_2_Cheby_30Gen.png}
-    \caption{Fitness máximo y promedio del segundo entrenamiento para 30 generaciones de la distancia Shebyshev}
-    \label{fig:en:she_2}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_30Gen/Fitness_3_Cheby_30Gen.png}
-    \caption{Fitness máximo y promedio del tercer entrenamiento para 30 generaciones de la distancia Shebyshev}
-    \label{fig:en:she_3}
-\end{figure}
-La mayor desviación le corresponde al entrenamiento número dos, su gráfica es:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_30Gen/Fitness_2_Cheby_30Gen_Sombra.png}
-    \caption{Mayor desviación para las simulaciones realizadas con las distancia de Chebyshev y 30 generaciones}
-    \label{fig:enter-label}
-\end{figure}
-
-El entrenamiento numero 3 apenas supera el puntaje de desvición 9100 en su última generación, pero tambien en esta última aumenta ligeramente su promedion em comparación con el segudo entrenamiento. Por otro lado, el cuarto entrenamiento obtuvo el tercer mejor fitness con 9884, con una desviación que no supera los 9000 puntos en la generación 30. Los fitness mas bajos se los llevan el primer y quinto entrenamiento, con 9665 puntos y 8787 respectivamente, ambbos con aumento en el fitnes promedios en la ultima generación (Fig. \ref{fig:cheb_2_30_sombra}, \ref{fig:cheb_3_30},  \ref{fig:cheb_3_30_sombra}, \ref{fig:cheb_4_30}, \ref{fig:cheb_4_30_sombra}, \ref{fig:cheb_5_30} y \ref{fig:cheb_5_30_sombra}).
+En la gráfica general para las simulaciones con 30 generaciones se observa los fitness promedio de cada entrenamiento y las desviaciones ver la Figura \ref{fig:graficas_generales_chebyshev} \textit{(B) 30 Generaciones}.
+El segundo entrenamiento presento el fitness mas alto de todos los entrenamientos, con un puntaje de 9994, con una desviación que supera los 9400 puntos (Fig. \ref{fig:cheb_2_30} y \ref{fig:cheb_2_30_sombra}).
 
 
-\subsubsection{20 Generaciones}
-En la gráfica general para las
-simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones:
-\begin{figure}[H]
+En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_chebyshev} \textit{(C) 20 Generaciones}.
+El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9990, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no supera los 9100 puntos (Fig. \ref{fig:cheb_2_20} y \ref{fig:cheb_2_20_sombra}).
+
+El valor de fitness maximo obetnido en la distancia Chebyshev corresponde al entrenamiento numero 2 con 9994 para 30 generaciones, seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9990 para 20 generaciones, y por último el entrenamiento 1 obtuvo el tercer fitness mas alto con 9988, con 50 generaciones. La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 6 puntos.
+
+La tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenidos para las simulaciones realizadas con la distancia Manhattan, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
+
+\begin{figure*}[ht]
     \centering
-    \includegraphics[width=1\linewidth]{Chebyshev/Fitness_Acumulado_Cheby_20Gen.png}
-    \caption{Fitness y desviaciones generales de los entrenamientos realizados para una generación de 20 con la distancia Chebyshev}
-    \label{fig:chy_20:genral}
-\end{figure}
-El entrenamiento con mayor fitness en este caso también posee la mayor desviación, el entrenamiento número dos obtuvo un fitness máximo de 9990
-\begin{figure}[H]
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Chebyshev/Fitness_Acumulado_Cheby_50Gen.png}
+        \caption{50 Generaciones}
+        \label{fig:cheb_50gen}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Chebyshev/Fitness_Acumulado_Cheby30Gen.png}
+        \caption{30 Generaciones}
+        \label{fig:cheb_30gen}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Chebyshev/Fitness_Acumulado_Cheby_20Gen.png}
+        \caption{20 Generaciones}
+        \label{fig:cheb_20gen}
+    \end{subfigure}
+    \caption{Gráficas por generaciones para la distancia Chebyshev}
+    \label{fig:graficas_generales_chebyshev}
+\end{figure*}
+
+\begin{table*}[ht]
     \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_20Gen/Fitness_2_Cheby_20Gen.png}
-    \caption{Fitnes máximo y promedio para una generación de 20 con la distancia de Chebyshev}
-    \label{fig:max_cheby_20g}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_20Gen/Fitness_2_Cheby_20Gen_Sombra.png}
-    \caption{Fitnes promedio y desviaciones del entrenamiento 2 correspondiente a la distancia Chebyshev para una generación de 20}
-    \label{fig:ind_20_chevy}
-\end{figure}
-El entrenamiento número 3 obtuvo el segundo mejor resultado con un puntaje fitness máximo de 9906
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.99\linewidth]{Chebyshev/Fitness_Individual_20Gen/Fitness_3_Cheby_20Gen.png}
-    \caption{Fitnes máximo y promedio para una generación de 20 con la distancia de Chebyshev en el tercer entrenamiento}
-    \label{fig:max_cheby3_20g}
-\end{figure}
-Además el quinto entrenamiento obtuvo 9882 como puntaje máximo fitness, los fitness mas bajos se los llevan el primer y cuarto entrenamiento, con 8543 y 9680 respectivamente. Sin embargo estos últmios tres entrenamientos en la ultima gneración incrementaron el fitness promedio (Fig. \ref{fig:cheb_1_20}, \ref{fig:cheb_1_20_sombra}, \ref{fig:cheb_4_20},
-\ref{fig:cheb_3_20_sombra},
-\ref{fig:cheb_4_20_sombra}, \ref{fig:cheb_5_20}, \ref{fig:cheb_5_20_sombra}).
+    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Manhattan}
+    \label{tab:fitness_generaciones_chebyshev}
+    \begin{tabular}{cccccc}
+        \toprule
+        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
+        \midrule
+        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
+        \midrule
+        1 & 9988 & 1 & 9665 & 1 & 8543 \\
+        2 & 9973 & 2 & 9994 & 2 & 9990 \\
+        3 & 8777 & 3 & 9974 & 3 & 9906 \\
+        4 & 9984 & 4 & 9884 & 4 & 9680 \\
+        5 & 9986 & 5 & 8787 & 5 & 9882 \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
+
+
 
 \subsection{50 generaciones sin el Refuerzo forzado o Método de aceleración}
 Para esta sección solo se realizó un entrenamiento con el fin de ver que tan optimo era realizar las simulaciones sin la aplicación del método descrito en la Figura \ref{fig:reforce}.
