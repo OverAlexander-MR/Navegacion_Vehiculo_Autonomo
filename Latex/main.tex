@@ -597,50 +597,21 @@ La tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
     \end{tabular}
 \end{table*}
 
-
-
-\subsection{50 generaciones sin el Refuerzo forzado o Método de aceleración}
-Para esta sección solo se realizó un entrenamiento con el fin de ver que tan optimo era realizar las simulaciones sin la aplicación del método descrito en la Figura \ref{fig:reforce}.
+\subsection{Entrenamiento sin el Refuerzo forzado}
+Para esta sección solo se realizó un entrenamiento de 50 generaciones con el fin de ver que tan optimo era realizar las simulaciones sin la aplicación del método descrito en la Figura \ref{fig:reforce}.
 % Ch 9885
 % mah 8535
-En la aplicación de la distancia Euclidiana el mayor fitness obtenido es de 8536
+En la aplicación de la distancia Euclidiana el mayor fitness obtenido es de 8536 \ref{fig:eucli_no_ref_50}, por otra parte la desviación obtenida describe el comportamiento de los agentes en cada generación, cómo podrá observarse en la Figura \ref{fig:no_refoice_eucli_desv}, la el mayor incremento de fitness solo se obtuvo en la genracion 10, luego de la generacion 12 no incrementaba el aprendizaje en los agentes.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Sin_Refuerzo_50Gen/Eucli_NoRef_50Gen.png}
-    \caption{Mejor promedio fitness para la distancia Euclidiana sin la aplicación del Refuerzo forzado}
-    \label{fig:no_refoice_eucli}
-\end{figure}
-por otra parte la desviación obtenida se puede observar en:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Sin_Refuerzo_50Gen/Eucli_NoRef_50Gen_Sombra.png}
+    \includegraphics[width=0.8\linewidth]{Sin_Refuerzo_50Gen/Eucli_NoRef_50Gen_Sombra.png}
     \caption{Desviación y promedio fitness para la distancia Euclidiana sin la aplicación del Refuerzo forzado}
     \label{fig:no_refoice_eucli_desv}
 \end{figure}
-Donde la mayor desviación ocurrió en la generación número 10. Sin embargo luego de la decima generación la desviación disminuye, y juto con el primedio. Tanto la desviación como el promedio fitness se mantienen en un rango de 8525 puntos.
 
-Implementando la distancia Manhattan el puntaje solo se diferencia en 1 de la distancia Euclidiana, con un puntaje de 8535
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Sin_Refuerzo_50Gen/Manh_NoRef_50Gen.png}
-    \caption{Mejor promedio fitness para la distancia Euclidiana sin la aplicación del Refuerzo forzado}
-    \label{fig:no_refoice_man}
-\end{figure}
-De igual manera, Manhattan también presenta la mayor desviación en la décima generación, sin embargo las desviacines superan levemente los 8500 puntos.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Sin_Refuerzo_50Gen/Manh_NoRef_50Gen_Sombra.png}
-    \caption{Desviación y promedio fitness para la distancia Manhattan sin la aplicación del Refuerzo forzado}
-    \label{fig:no_refoice_man_desv}
-\end{figure}
+Implementando la distancia Manhattan el puntaje solo se diferencia en 1 de la distancia Euclidiana, con un puntaje de 8535, la grafica de desviación mantuvo el mismo comportamiento que la distancia Euclidiana, sin embargo la desviación en la genración 10 superó los 8625 puntos ver (figura \ref{fig:manh_no_ref_50} y \ref{fig:manh_no_ref_50_sombra}).
 
-Por ultimo, en esta sección la distancia de Chebyshev presentó los mejores resultados, con un puntaje fitness máximo obtenido de 9885, y una desviación que ronda los 8800 puntos.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen.png}
-    \caption{Mejor promedio fitness para la distancia Chebyshev sin la aplicación del Refuerzo forzado}
-    \label{fig:no_refoice_chy}
-\end{figure}
+Por ultimo, en esta sección la distancia de Chebyshev presentó los mejores resultados, con un puntaje fitness máximo obtenido de 9885, y una desviación que ronda los 8800 puntos. La diferencia principal con respecto a las otras metricas de distancias radica en el aprendizaje constante de los agentes con cada genración, como se observa en la Figura \ref{fig:no_refoice_chy_desv}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen_Sombra.png}
