@@ -598,10 +598,10 @@ La tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
 \end{table*}
 
 \subsection{Entrenamiento sin el Refuerzo forzado}
-Para esta sección solo se realizó un entrenamiento de 50 generaciones con el fin de ver que tan optimo era realizar las simulaciones sin la aplicación del método descrito en la Figura \ref{fig:reforce}.
+Para esta sección solo se realizó un entrenamiento de 50 generaciones para cada metrica de distancia con el fin de analizar que tan optimo era realizar las simulaciones sin la aplicación del método descrito en la Figura \ref{fig:reforce}.
 % Ch 9885
 % mah 8535
-En la aplicación de la distancia Euclidiana el mayor fitness obtenido es de 8536 \ref{fig:eucli_no_ref_50}, por otra parte la desviación obtenida describe el comportamiento de los agentes en cada generación, cómo podrá observarse en la Figura \ref{fig:no_refoice_eucli_desv}, la el mayor incremento de fitness solo se obtuvo en la genracion 10, luego de la generacion 12 no incrementaba el aprendizaje en los agentes.
+En la aplicación de la distancia Euclidiana el mayor fitness obtenido es de 8536 (Fig. \ref{fig:eucli_no_ref_50}), por otra parte la desviación obtenida describe el comportamiento de los agentes en cada generación, cómo podrá observarse en la Figura \ref{fig:no_refoice_eucli_desv}, el mayor incremento de fitness solo se obtuvo en la genracion 10, luego de la generacion 12 no incrementaba el aprendizaje en los agentes.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{Sin_Refuerzo_50Gen/Eucli_NoRef_50Gen_Sombra.png}
@@ -609,55 +609,68 @@ En la aplicación de la distancia Euclidiana el mayor fitness obtenido es de 853
     \label{fig:no_refoice_eucli_desv}
 \end{figure}
 
-Implementando la distancia Manhattan el puntaje solo se diferencia en 1 de la distancia Euclidiana, con un puntaje de 8535, la grafica de desviación mantuvo el mismo comportamiento que la distancia Euclidiana, sin embargo la desviación en la genración 10 superó los 8625 puntos ver (figura \ref{fig:manh_no_ref_50} y \ref{fig:manh_no_ref_50_sombra}).
+Implementando la distancia Manhattan el puntaje solo se diferencia en 1 de la distancia Euclidiana, con un puntaje de 8535, la grafica de desviación mantuvo el mismo comportamiento que la distancia Euclidiana, sin embargo la desviación en la genración 10 superó los 8625 puntos (Fig. \ref{fig:manh_no_ref_50} y \ref{fig:manh_no_ref_50_sombra}).
 
-Por ultimo, en esta sección la distancia de Chebyshev presentó los mejores resultados, con un puntaje fitness máximo obtenido de 9885, y una desviación que ronda los 8800 puntos. La diferencia principal con respecto a las otras metricas de distancias radica en el aprendizaje constante de los agentes con cada genración, como se observa en la Figura \ref{fig:no_refoice_chy_desv}.
+Por último, en esta sección la distancia de Chebyshev presentó los mejores resultados, con un puntaje fitness máximo obtenido de 9885 (Fig. \ref{fig:cheby_no_ref_50}), y una desviación que ronda los 8800 puntos. La diferencia principal con respecto a las otras metricas de distancias radica en el aprendizaje constante de los agentes con cada genración, como se observa en la Figura \ref{fig:no_refoice_chy_desv}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen_Sombra.png}
     \caption{Desviación y promedio fitness para la distancia Chebyshev sin la aplicación del Refuerzo forzado}
     \label{fig:no_refoice_chy_desv}
 \end{figure}
-Dentro de las características de esta simulación, apartir de la genreación 40, el fitness tuvo un incremento por encima de los 600 puntos, la desviación a partir de esta genración incrementó en un rango de 100 puttos. El promedio fitness empezó un incremento gradual desde la genración numero 15. 
 
 \subsection{Simulaciones de 50 generaciones realizadas en el segundo mapa con el Refuerzo Forzado}
 Se realizaron 5 simulaciones de 50 genraciónes para cada sistema de recompensas en el segundo mapa ver figura \ref{fig:mapa2}, Euclidiano, Manhattan y Chebyshev. Con los datos recopilados de estas simulaciones, se analizan las gráficas generales, y basándose en los resultados previos se hace una descripción
+
 \subsubsection{Distancia Euclidiana}
-La gráfica general obtenida después de cada entrenamiento para la distancia Euclidiana es:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Mapa2/Fitness_Prrm_Map2_Eucli_50Gen.png}
-    \caption{Gráfica de promedios fitness generales y desviaciones en cada entrenamiento para la distancia Euclidiana correspondiente a una generación de 50 y el segundo mapa}
-    \label{fig:eucli_mapa2}
-\end{figure}
+La gráfica general obtenida después de cada entrenamiento para la distancia Euclidiana es la Figura \ref{fig:graficas_generales_mapa2} \textit{(a) Distancia Ecuclidiana}.
+
 El mejor fitness obtenido es de 9684, por el tercer y quinto entrenamiento. El quito entrenamiento en comparación con el tercero presenta una desviación que supera los 9100 puntos, por otra parte el tercer entrenamento no supera los 9000 puntos en desviación, quedandose incluso por debajo del primer entrenamiento. El primer entrenamiento obtuvo un fitness de 9456 puntos, seguido del segundo con 9443, pot último el menor fitness fue obtenido por el cuarto entrenamiento con 8933 puntos (Fig. \ref{fig:eucli_1_50_m2} hasta \ref{fig:eucli_5_50_m2})
 
 
 
 \subsubsection{Distancia Manhattan}
-La gráfica general obtenida después de cada entrenamiento para la distancia Manhattan es:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Manhattan/Mapa2/Fitness_Prom_Map2_Manh_50Gen.png}
-    \caption{Gráfica de promedios fitness generales y desviaciones en cada entrenamiento para la distancia Manhattan correspondiente a una generación de 50 y el segundo mapa}
-    \label{fig:man_mapa_2}
-\end{figure}
+La gráfica general obtenida después de cada entrenamiento para la distancia Manhattan puede observarla en la Figura \ref{fig:graficas_generales_mapa2} \textit{(b) Distancia Manhattan}.
 
 Para la distancia Manhattan el fitness más alto obtenido en estas simulaciones realizadas para es para el entrenamiento numero 2, con un puntaje máximo de 9890 y una desviación que supera los 8900 puntos. Además obvtuvo un incremento en el fitness promedio a partir de la genración 47. Con un fitness maximo de 9679, los entenamientos 4 y 3 obtuvieron los siguiente puntajes más altos. El cuarto entrenamiento empezó a disminuir su fitness promedio a partir de la genración 30, mientras que el tercer entrenamiento mantuvo un fitness ascendente. El quinnto y primer entrenamiento obtuvieron los puntajes mas bajos, con 9507 y 8532 respectivamente. Las desviaciones presentadas por el quinto entrenamiento superan los 8800 puntos, mientras que el primer entrenamiento no pasa de los 8550 puntos (Fig. \ref{fig:manh_1_50_m2} hasta \ref{fig:manh_5_50_sombra_m2})
 
 \subsubsection{Distancia Chebyshev}
-La gráfica general obtenida después de cada entrenamiento para la distancia Chebyshev es:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Chebyshev/Mapa2/Fitness_Prom_Map2_Cheby_50Gen.png}
-    \caption{Gráfica de promedios fitness generales y desviaciones en cada entrenamiento para la distancia Chebyshev correspondiente a una generación de 50 y el segundo mapa}
-    \label{fig:chy_mapa_2}
-\end{figure}
+La gráfica general obtenida después de cada entrenamiento para la distancia Chebyshev es la Figura \ref{fig:graficas_generales_mapa2} \textit{(c) Distancia Chebyshev}.
+
 El entrenamiento que mayor fitness obtuvo en esta sección corresponde al cuarto entrenamiento con un puntaje de 9683, con una desviación que se acerca a los 9100 puttos. El segundo entrenamiento obtuvo el segundo mejor puntaje con 9671, con una desviación que no supera los 9000 puntos, sin embargo una característica particular de este entenamiento es que no posee desviaciones elevadas hasta la cuarta genración, sin embargo a partir de la generación numero 5, la desviacón se despira a los 8700 puntos hata llegar de forma gradual a los 8900. El entrenamiento numero 3 y 1 obtuvieron un puntaje fitness muy cercano entre ellos, solo con una diferencia de tres puntos. Para el tercer entrenamiento el fitness maximo obtenido es de 9764, mientras que para el primero fue de 9571 además de poseer una desvición mayor. Por último el peor fitness obtenido lo obtuvo el entrenamietno numero 5 con 8985 puntos y un decrecisimiento en la desviación a partir de la genración 30 (Fig. \ref{fig:cheb_1_50_m2} hasta \ref{fig:cheb_5_50_sombra_m2}).
 
-\section{Conclusiones}
-La implementación de la librería NEAT para un vehículo autónomo permitió analizar distintos aspectos del aprendizaje y desempeño del agente en diversos entornos. En este caso se realizaron dos pruebas, el entorno podría encontraba libre de obstáculos, mientras que en la otra se añadió un bloqueo de ruta. Se observó que el agente mostró un mejor rendimiento en el entorno libre de obstáculos, en comparación del entorno con la ruta bloqueada. Al agente le tomaba más generaciones aprender en comparación cuándo algunas de las vías era obstruida. En cuanto a las métricas de distancia, la distancia Chebyshev demostró ser más óptima que la Manhattan y Euclidiana en entornos libres de obstáculos. Sin embargo, en escenarios con obstáculos, la distancia Euclidiana ofreció un mejor desempeño que las demás obteniendo un alto valor fitness. La distancia Euclidiana aumentaba al igual que la de Chebyshev con el pasar de las generaciones, sin embargo la distancia Manhattan obtuvo su mayor fitness con una generación de 30. Con los datos obtenidos en la sección de resultados, se puede que puede concluir que para la distancia Manhattan y Chebyshev con 30 generaciones ya se obtienen unos excelentes puntajes, ya que para Chebyshev las simulaciones realizadas con 50 generaciones solo le aumentaron en dos puntos. 
 
-Por otro lado, la implementación del refuerzo forzado generó mejoras importantes, ya que disminuyó el tiempo requerido para que el agente alcanzara un fitness significativo. Además, permitiendo que el agente aprendiera a girar en pocas generaciones. Por otra parte sin la aplicación del refuerzo forzado, el agente no lograba obtener fitness altos, lo que se traduce en un aprendizaje más lento y menos eficiente. Sin embargo la distancia de Chebyshev demostró ser las más eficiente sin la aplicación del refuerzo forzado, obteniendo un fitness de 9885, superando a la Euclidiana y Manhattan. 
+\begin{figure*}[ht]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Euclidiana/Mapa2/Fitness_Prrm_Map2_Eucli_50Gen.png}
+        \caption{Distancia Euclidiana}
+        \label{fig:ecuclidiana_mapa2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Manhattan/Mapa2/Fitness_Prom_Map2_Manh_50Gen.png}
+        \caption{Distancia Manhattan}
+        \label{fig:manhattan_mapa2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Chebyshev/Mapa2/Fitness_Prom_Map2_Cheby_50Gen.png}
+        \caption{20 Generaciones}
+        \label{fig:chebyshev_mapa2}
+    \end{subfigure}
+    \caption{Gráficas generales de promedios fitness y desviaciones para el segundo mapa}
+    \label{fig:graficas_generales_mapa2}
+\end{figure*}
+
+
+
+\section{Conclusiones}
+La implementación de la librería NEAT para un vehículo autónomo permitió analizar distintos aspectos del aprendizaje y desempeño del agente en diversos entornos. En este caso se realizaron dos pruebas, el entorno libre de obstáculos, mientras que en la otra se añadió un bloqueo de ruta. Se observó que el agente mostró un mejor rendimiento en el entorno libre de obstáculos, en comparación del entorno con la ruta bloqueada. Al agente le tomaba más generaciones aprender en comparación cuándo alguna vías era obstruida. En cuanto a las métricas de distancia, la distancia Chebyshev demostró ser más óptima que la Manhattan y Euclidiana en entornos libres de obstáculos. Sin embargo, en escenarios con obstáculos, la distancia Euclidiana ofreció un mejor desempeño obteniendo un alto valor fitness. La distancia Euclidiana aumentaba al igual que la de Chebyshev con el pasar de las generaciones, sin embargo la distancia Manhattan obtuvo su mayor fitness con una generación de 30. Con los resultados obtenidos se puede concluir que para la distancia Manhattan y Chebyshev con 30 generaciones ya se obtiene un buen fitness.
+
+Por otro lado, la implementación del refuerzo forzado generó mejoras importantes, como disminuir el tiempo requerido para que el agente alcanzara un fitness significativo. Sin la aplicación del refuerzo forzado, el agente no lograba obtener fitness altos, lo que se traduce en un aprendizaje más lento y menos eficiente. Sin embargo la distancia de Chebyshev demostró ser las más eficiente sin la aplicación del refuerzo forzado, obteniendo un fitness de 9885, superando a la Euclidiana y Manhattan. La metrica con los mejores resultados generales fue la distancia Chebyshev, demostrando el incremeto del fitness en cada generación, con la aplicación o no del Refuerzo Forzado.
 \printbibliography
 \end{document}
