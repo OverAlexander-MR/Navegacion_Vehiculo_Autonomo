@@ -7,6 +7,11 @@
 \usepackage{caption}
 \usepackage[backend=biber]{biblatex}
 \usepackage{booktabs}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{subcaption}  % Para subfiguras
+
+
 \begin{document}
 \title{Graficas suplementarias de los entrenamientos realizados}
 
@@ -32,6 +37,42 @@ Valledupar
 \section{Configuración NEAT, y mejores resultados de cada entrenamiento por distancia implementada}
 \renewcommand{\thetable}{S\arabic{table}T}
 \begin{table}[H]
+    \centering
+    % Primera tabla
+    \captionof{table}{\texttt{[NEAT]}}
+    \label{tab:NEAT}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Variable} & \textbf{Valor} \\
+    \midrule
+    fitness\_criterion     & max \\
+    fitness\_threshold     & 10000 \\
+    pop\_size              & 50 \\
+    reset\_on\_extinction  & True  \\
+    \bottomrule
+    \end{tabular}
+    \vspace{0.5cm}
+    
+    \centering
+    % Segunda tabla
+    \captionof{table}{\texttt{[DefaultReproduction]}}
+    \label{tab:DefaultReproduction}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Variable} & \textbf{Valor} \\
+    \midrule
+    excess\_coeff            & 1.0 \\
+    disjoint\_coeff          & 1.0 \\
+    weight\_diff\_coeff      & 0.5 \\
+    compatibility\_threshold & 3.0 \\
+    elitism                  & 5 \\
+    survival\_threshold      & 0.2 \\
+    \bottomrule
+    \end{tabular}
+    \vspace{0.5cm}
+\end{table}
+
+\begin{table}
     % Tercera tabla
     \centering
     \captionof{table}{\texttt{[DefaultGenome]}}
@@ -159,34 +200,6 @@ Valledupar
 \setcounter{figure}{0}
 \renewcommand{\thefigure}{S\arabic{figure}A-E}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:Fitnes_ecu_4_50_inv}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviación individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:Fitnes_ecu_4_50_inv_sombra}
-\end{figure}
-
-%%%------------------
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_1_Eucli_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 1 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_1_50}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_1_Eucli_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_1_50_sombra}
-\end{figure}
-
 
 \begin{figure}[H]
     \centering
@@ -203,29 +216,57 @@ Valledupar
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_3_Eucli_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 3 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_3_50}
+    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen.png}
+    \caption{Fitness individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
+    \label{fig:Fitnes_ecu_4_50_inv}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_3_Eucli_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_3_50_sombra}
+    \includegraphics[width=0.9\linewidth]{Euclidiana/Fitnes_individual/Fitness_4_Eucli_50Gen_Sombra.png}
+    \caption{Fitness promedio y desviación individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Euclidiana}
+    \label{fig:Fitnes_ecu_4_50_inv_sombra}
 \end{figure}
+%%%------------------
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_5_Eucli_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_5_50}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_5_Eucli_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 50 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_5_50_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_1_Eucli_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 1 de 50 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_1_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_1_Eucli_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 50 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_1_50_sombra}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_3_Eucli_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 3 de 50 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_3_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_3_Eucli_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 50 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_3_50_sombra}
+% \end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_5_Eucli_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 50 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_5_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitnes_individual/Fitness_5_Eucli_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 50 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_5_50_sombra}
+% \end{figure}
 
 \subsection{Generación 30}
 \setcounter{figure}{0}
@@ -236,31 +277,31 @@ Valledupar
 % 3 9986
 % 4 8544
 % 5 9984
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_1_Eucli_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 1 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_1_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_1_Eucli_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_1_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_1_Eucli_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 1 de 30 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_1_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_1_Eucli_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 30 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_1_30_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_2_Eucli_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 2 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_2_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_2_Eucli_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_2_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_2_Eucli_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 2 de 30 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_2_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_2_Eucli_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 30 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_2_30_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -268,7 +309,6 @@ Valledupar
     \caption{Fitness individual para el entrenamiento 3 de 30 generaciones aplicando la distancia Euclidiana}
     \label{fig:Fitnes_ecu_3_30_inv}
 \end{figure}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{Euclidiana/Fitness_individual_30/Fitness_3_Eucli_30Gen_Sombra.png}
@@ -290,18 +330,18 @@ Valledupar
     \label{fig:eucli_4_30_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_5_Eucli_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_5_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_5_Eucli_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 30 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_5_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_5_Eucli_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 30 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_5_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_30/Fitness_5_Eucli_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 30 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_5_30_sombra}
+% \end{figure}
 
 
 \subsection{Generación 20}
@@ -313,18 +353,19 @@ Valledupar
 % 3 8773
 % 4 9237
 % 5 8782
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_1_Eucli_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 1 de 20 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_1_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_1_Eucli_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 20 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_1_20_sombra}
-\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_1_Eucli_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 1 de 20 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_1_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_1_Eucli_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 20 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_1_20_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -352,31 +393,31 @@ Valledupar
     \label{fig:eucli_3_20_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_4_Eucli_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 20 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_4_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_4_Eucli_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 20 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_4_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_4_Eucli_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 4 de 20 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_4_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_4_Eucli_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 20 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_4_20_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_5_Eucli_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 20 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_5_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_5_Eucli_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Euclidiana}
-    \label{fig:eucli_5_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_5_Eucli_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 20 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_5_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Euclidiana/Fitness_individual_20/Fitness_5_Eucli_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Euclidiana}
+%     \label{fig:eucli_5_20_sombra}
+% \end{figure}
 
 \section{Resultados de las simulaciones para la distancia Manhattan}
 \subsection{Generación 50}
@@ -395,31 +436,31 @@ Valledupar
     \label{fig:manhattan_1_50_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_2_Manh_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 2 de 50 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_2_50}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_2_Manh_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 50 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_2_50_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_2_Manh_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 2 de 50 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_2_50}
+% \end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_2_Manh_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 50 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_2_50_sombra}
+% \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_3_Manh_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 3 de 50 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_3_50}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_3_Manh_50Gen_Sombra.png} 
-    \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 50 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_3_50_sombra}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_3_Manh_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 3 de 50 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_3_50}
+% \end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_3_Manh_50Gen_Sombra.png} 
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 50 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_3_50_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -434,18 +475,18 @@ Valledupar
     \label{fig:manhattan_4_50_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_5_Manh_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 50 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_5_50}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_5_Manh_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 50 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_5_50_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_5_Manh_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 50 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_5_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_50Gen/Fitness_5_Manh_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 50 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_5_50_sombra}
+% \end{figure}
 
 \subsection{Generación 30}
 \setcounter{figure}{0}
@@ -464,18 +505,19 @@ Valledupar
     \label{fig:manhattan_1_30_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_2_Mahn_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 2 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_2_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_2_Mahn_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_2_30_sombra}
-\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_2_Mahn_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 2 de 30 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_2_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_2_Mahn_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 30 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_2_30_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -490,32 +532,32 @@ Valledupar
     \label{fig:manhattan_3_30_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_4_Mahn_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_4_30}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_4_Mahn_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 4 de 30 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_4_30}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_4_Mahn_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_4_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_4_Mahn_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 30 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_4_30_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_5_Mahn_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_5_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_5_Mahn_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 30 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_5_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_5_Mahn_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 30 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_5_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_30Gen/Fitness_5_Mahn_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 30 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_5_30_sombra}
+% \end{figure}
 
 \subsection{Generación 20}
 \setcounter{figure}{0}
@@ -548,45 +590,44 @@ Valledupar
 \end{figure}
 
 
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_3_Manh_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 3 de 20 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_3_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_3_Manh_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 20 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_3_20_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_3_Manh_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 3 de 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_3_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_3_Manh_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_3_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_4_Manh_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 4 de 20 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_4_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_4_Manh_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 20 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_4_20_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_4_Manh_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_4_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_4_Manh_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_4_20_sombra}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_5_Manh_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_5_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_5_Manh_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Manhattan}
-    \label{fig:manhattan_5_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_5_Manh_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 20 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_5_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Manhattan/Fitness_individual_20Gen/Fitness_5_Manh_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Manhattan}
+%     \label{fig:manhattan_5_20_sombra}
+% \end{figure}
 
 \section{Resultados de las simulaciones para la distancia Chebyshev}
 \subsection{Generación 50}
@@ -605,18 +646,18 @@ Valledupar
     \label{fig:cheb_1_50_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_2_Cheby_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 2 de 50 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_2_50}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_2_Cheby_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 50 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_2_50_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_2_Cheby_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 2 de 50 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_2_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_2_Cheby_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 2 de 50 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_2_50_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -631,48 +672,48 @@ Valledupar
     \label{fig:cheb_3_50_sombra}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_4_Cheby_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_4_50}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_4_Cheby_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 50 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_4_50_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_4_Cheby_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 4 de 50 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_4_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_4_Cheby_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 50 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_4_50_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_5_Cheby_50Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 50 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_5_50}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_5_Cheby_50Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 50 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_5_50_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_5_Cheby_50Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 50 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_5_50}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_50Gen/Fitness_5_Cheby_50Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 50 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_5_50_sombra}
+% \end{figure}
 
 \subsection{Generación 30}
 \setcounter{figure}{0}
 \renewcommand{\thefigure}{S\arabic{figure}B-C}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_1_Cheby_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 1 de 30 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_1_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_1_Cheby_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 30 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_1_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_1_Cheby_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 1 de 30 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_1_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_1_Cheby_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 1 de 30 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_1_30_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -688,31 +729,31 @@ Valledupar
 \end{figure}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_3_Cheby_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 3 de 30 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_3_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_3_Cheby_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 30 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_3_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_3_Cheby_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 3 de 30 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_3_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_3_Cheby_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 30 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_3_30_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_4_Cheby_30Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 30 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_4_30}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_4_Cheby_30Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 30 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_4_30_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_4_Cheby_30Gen.png}
+%     \caption{Fitness individual para el entrenamiento 4 de 30 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_4_30}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_30Gen/Fitness_4_Cheby_30Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 30 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_4_30_sombra}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -759,44 +800,44 @@ Valledupar
 \end{figure}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_3_Cheby_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 3 de 20 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_3_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_3_Cheby_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 20 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_3_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_3_Cheby_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 3 de 20 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_3_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_3_Cheby_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 3 de 20 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_3_20_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_4_Cheby_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 4 de 20 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_4_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_4_Cheby_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 20 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_4_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_4_Cheby_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 4 de 20 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_4_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_4_Cheby_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 4 de 20 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_4_20_sombra}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_5_Cheby_20Gen.png}
-    \caption{Fitness individual para el entrenamiento 5 de 20 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_5_20}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_5_Cheby_20Gen_Sombra.png}
-    \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Chebyshev}
-    \label{fig:cheb_5_20_sombra}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_5_Cheby_20Gen.png}
+%     \caption{Fitness individual para el entrenamiento 5 de 20 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_5_20}
+% \end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9 \linewidth]{Chebyshev/Fitness_individual_20Gen/Fitness_5_Cheby_20Gen_Sombra.png}
+%     \caption{Fitness promedio y desviaciones para el entrenamiento 5 de 20 generaciones aplicando la distancia Chebyshev}
+%     \label{fig:cheb_5_20_sombra}
+% \end{figure}
 
 \section{Resultados de las simulaciones con el primer mapa sin el Refuerzo Forzado}
 \subsection{Distancia Euclidiana}
@@ -850,10 +891,37 @@ Valledupar
 
 
 \section{Resultados de las simulaciones con el segundo mapa y Refuerzo Forzado}
-\subsection{Distancia Euclidiana}
 \setcounter{figure}{0}
 \renewcommand{\thefigure}{S\arabic{figure}-EM2}
 
+\begin{figure*}[ht]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Euclidiana/Mapa2/Fitness_Prrm_Map2_Eucli_50Gen.png}
+        \caption{Distancia Euclidiana}
+        \label{fig:ecuclidiana_mapa2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Manhattan/Mapa2/Fitness_Prom_Map2_Manh_50Gen.png}
+        \caption{Distancia Manhattan}
+        \label{fig:manhattan_mapa2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Chebyshev/Mapa2/Fitness_Prom_Map2_Cheby_50Gen.png}
+        \caption{Distancia Chebyshev}
+        \label{fig:chebyshev_mapa2}
+    \end{subfigure}
+    \caption{Gráficas generales de promedios fitness y desviaciones para el segundo mapa}
+    \label{fig:graficas_generales_mapa2}
+
+\end{figure*}
+
+\subsection{Distancia Euclidiana}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9 \linewidth]{Euclidiana/Mapa2/Fitness_1_Map2_Eucli_50Gen.png}

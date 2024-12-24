@@ -60,7 +60,7 @@ Este proyecto se centra en el desarrollo de un sistema de navegación para vehí
 \end{abstract}
 
 \begin{IEEEkeywords}
-NEAT, autonomous vehicle,
+NEAT, autonomous vehicle, fitness function, distance metrics, reinforcement learning.
 \end{IEEEkeywords}
 
 \section{Introducción}
@@ -323,22 +323,22 @@ El archivo de configuración para NEAT consta de distintas secciones, cada una d
     \end{tabular}
     \vspace{0.5cm}
     
-    % Segunda tabla
-    \captionof{table}{\texttt{[DefaultReproduction]}}
-    \label{tab:DefaultReproduction}
-    \begin{tabular}{ll}
-    \toprule
-    \textbf{Variable} & \textbf{Valor} \\
-    \midrule
-    excess\_coeff            & 1.0 \\
-    disjoint\_coeff          & 1.0 \\
-    weight\_diff\_coeff      & 0.5 \\
-    compatibility\_threshold & 3.0 \\
-    elitism                  & 5 \\
-    survival\_threshold      & 0.2 \\
-    \bottomrule
-    \end{tabular}
-    \vspace{0.5cm}
+    % % Segunda tabla
+    % \captionof{table}{\texttt{[DefaultReproduction]}}
+    % \label{tab:DefaultReproduction}
+    % \begin{tabular}{ll}
+    % \toprule
+    % \textbf{Variable} & \textbf{Valor} \\
+    % \midrule
+    % excess\_coeff            & 1.0 \\
+    % disjoint\_coeff          & 1.0 \\
+    % weight\_diff\_coeff      & 0.5 \\
+    % compatibility\_threshold & 3.0 \\
+    % elitism                  & 5 \\
+    % survival\_threshold      & 0.2 \\
+    % \bottomrule
+    % \end{tabular}
+    % \vspace{0.5cm}
 
     \captionof{table}{\texttt{[DefaultGenome]}}
     \label{tab:DefaultGenome_1}
@@ -442,21 +442,21 @@ La Tabla \ref{tab:fitness_generaciones} contine los resultados obtenidos para la
     \centering
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
+        \includegraphics[width=\textwidth, height=2.74cm]{Euclidiana/Fitness_Acumulado_Eucli_50Gen.png}
         \caption{50 Generaciones}
         \label{fig:eucli_50gen}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Euclidiana/Fitness_Acumulado_Eucli_30Gen.png}
+        \includegraphics[width=\textwidth, height=2.74cm]{Euclidiana/Fitness_Acumulado_Eucli_30Gen.png}
         \caption{30 Generaciones}
         \label{fig:eucli_30gen}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth, height=3.6cm]{Euclidiana/Fitness_Acumulado_Eucli_20Gen.png}
+        \includegraphics[width=\textwidth, height=2.74cm]{Euclidiana/Fitness_Acumulado_Eucli_20Gen.png}
         \caption{20 Generaciones}
         \label{fig:eucli_20gen}
     \end{subfigure}
@@ -557,8 +557,7 @@ La Tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
     \label{fig:graficas_generales_chebyshev}
 \end{figure*}
 
-En la Tabla \ref{tab:fitness_generaciones_maximos_minimos} se presentan los fitness maximos y minimos obtenidos para cada distancia, en cada generación.
-
+En la Tabla \ref{tab:fitness_generaciones_maximos_minimos} se presentan los fitness maximos y minimos obtenidos para cada distancia, en cada generación, en la columna \textbf{Mejor Fitness}, se toma al agente con el mayor figness obtenido en la ultima generación, mientras que en \textbf{Mejor Fitness}, el menor. Durante un entrenamiento de 50 generaciones, en cada genración, sea la pirmera, luego la segunda y así sucesivamente, se obtiene un promedio fitness de todos los agentes generados, ese promedio general se presenta en la columna \textbf{Promedio}.
 \begin{table}[ht]
 \centering
 \caption{Fitness maximos y minimos}
@@ -567,17 +566,17 @@ En la Tabla \ref{tab:fitness_generaciones_maximos_minimos} se presentan los fitn
 %\hline
  & \multicolumn{1}{c|}{Gen.} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
 
-\multirow{2}{*}{Euclidiada} & 50 & 9990 & x & 9626\\ \cline{2-5}
-                            & 30 & 9986 & x & 8544\\ \cline{2-5}
-                            & 20 & 9981 & x & 8773\\ \hhline{=====}
+\multirow{2}{*}{Euclidiada} & 50 & 9990 & 8898 & 9626\\ \cline{2-5}
+                            & 30 & 9986 & 8718 & 8544\\ \cline{2-5}
+                            & 20 & 9981 & 8631 & 8773\\ \hhline{=====}
 
-\multirow{3}{*}{Manhattan}  & 50 & 9978 & x & 9621\\ \cline{2-5}
-                            & 30 & 9990 & x & 9618\\ \cline{2-5}
-                            & 20 & 9980 & x & 8766\\ \hhline{=====}
+\multirow{3}{*}{Manhattan}  & 50 & 9978 & 8544 & 9621\\ \cline{2-5}
+                            & 30 & 9990 & 8558 & 9618\\ \cline{2-5}
+                            & 20 & 9980 & 8489 & 8766\\ \hhline{=====}
 
-\multirow{3}{*}{Chebyshev}  & 50 & 9988 & x & 8777\\ \cline{2-5}
-                            & 30 & 9994 & x & 8787\\ \cline{2-5}
-                            & 20 & 9990 & x & 8543\\ \hline
+\multirow{3}{*}{Chebyshev}  & 50 & 9988 & 8803 & 8777\\ \cline{2-5}
+                            & 30 & 9994 & 8708 & 8787\\ \cline{2-5}
+                            & 20 & 9990 & 8655 & 8543\\ \hline
 
 \end{tabular}
 \end{table}
@@ -599,56 +598,64 @@ Implementando la distancia Manhattan el puntaje solo se diferencia en 1 de la di
 Por último, en esta sección la distancia de Chebyshev presentó los mejores resultados, con un puntaje fitness máximo obtenido de 9885 (Fig. \ref{fig:cheby_no_ref_50}), y una desviación que ronda los 8800 puntos. La diferencia principal con respecto a las otras metricas de distancias radica en el aprendizaje constante de los agentes con cada genración, como se observa en la Figura \ref{fig:no_refoice_chy_desv}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen_Sombra.png}
+    \includegraphics[width=0.8\linewidth]{Sin_Refuerzo_50Gen/Cheby_NoRef_50Gen_Sombra.png}
     \caption{Desviación y promedio fitness para la distancia Chebyshev sin la aplicación del Refuerzo forzado}
     \label{fig:no_refoice_chy_desv}
 \end{figure}
 
 \subsection{Simulaciones de 50 generaciones realizadas en el segundo mapa con el Refuerzo Forzado}
-Se realizaron 5 simulaciones de 50 genraciónes para cada sistema de recompensas en el segundo mapa ver figura \ref{fig:mapa2}, Euclidiano, Manhattan y Chebyshev. Con los datos recopilados de estas simulaciones, se analizan las gráficas generales, y basándose en los resultados previos se hace una descripción
+Se realizaron 5 simulaciones de 50 genraciónes para cada sistema de recompensas en el segundo mapa ver figura \ref{fig:mapa2}, Euclidiana, Manhattan y Chebyshev. Con los datos recopilados de estas simulaciones, se analizan las gráficas generales, y se presentan los resultados obtenidos en la Tabla \ref{tab:fitness_generaciones_maximos_minimos_mapa2}. La gráfica general obtenida después de cada entrenamiento para las distintas distancias la puede observar en Fig. \ref{fig:graficas_generales_mapa2}.
 
-\subsubsection{Distancia Euclidiana}
-La gráfica general obtenida después de cada entrenamiento para la distancia Euclidiana es la Figura \ref{fig:graficas_generales_mapa2} \textit{(a) Distancia Ecuclidiana}.
-
-El mejor fitness obtenido es de 9684, por el tercer y quinto entrenamiento. El quito entrenamiento en comparación con el tercero presenta una desviación que supera los 9100 puntos, por otra parte el tercer entrenamento no supera los 9000 puntos en desviación, quedandose incluso por debajo del primer entrenamiento. El primer entrenamiento obtuvo un fitness de 9456 puntos, seguido del segundo con 9443, pot último el menor fitness fue obtenido por el cuarto entrenamiento con 8933 puntos (Fig. \ref{fig:eucli_1_50_m2} hasta \ref{fig:eucli_5_50_m2})
-
-
-
-\subsubsection{Distancia Manhattan}
-La gráfica general obtenida después de cada entrenamiento para la distancia Manhattan puede observarla en la Figura \ref{fig:graficas_generales_mapa2} \textit{(b) Distancia Manhattan}.
-
-Para la distancia Manhattan el fitness más alto obtenido en estas simulaciones realizadas para es para el entrenamiento numero 2, con un puntaje máximo de 9890 y una desviación que supera los 8900 puntos. Además obvtuvo un incremento en el fitness promedio a partir de la genración 47. Con un fitness maximo de 9679, los entenamientos 4 y 3 obtuvieron los siguiente puntajes más altos. El cuarto entrenamiento empezó a disminuir su fitness promedio a partir de la genración 30, mientras que el tercer entrenamiento mantuvo un fitness ascendente. El quinnto y primer entrenamiento obtuvieron los puntajes mas bajos, con 9507 y 8532 respectivamente. Las desviaciones presentadas por el quinto entrenamiento superan los 8800 puntos, mientras que el primer entrenamiento no pasa de los 8550 puntos (Fig. \ref{fig:manh_1_50_m2} hasta \ref{fig:manh_5_50_sombra_m2})
-
-\subsubsection{Distancia Chebyshev}
-La gráfica general obtenida después de cada entrenamiento para la distancia Chebyshev es la Figura \ref{fig:graficas_generales_mapa2} \textit{(c) Distancia Chebyshev}.
-
-El entrenamiento que mayor fitness obtuvo en esta sección corresponde al cuarto entrenamiento con un puntaje de 9683, con una desviación que se acerca a los 9100 puttos. El segundo entrenamiento obtuvo el segundo mejor puntaje con 9671, con una desviación que no supera los 9000 puntos, sin embargo una característica particular de este entenamiento es que no posee desviaciones elevadas hasta la cuarta genración, sin embargo a partir de la generación numero 5, la desviacón se despira a los 8700 puntos hata llegar de forma gradual a los 8900. El entrenamiento numero 3 y 1 obtuvieron un puntaje fitness muy cercano entre ellos, solo con una diferencia de tres puntos. Para el tercer entrenamiento el fitness maximo obtenido es de 9764, mientras que para el primero fue de 9571 además de poseer una desvición mayor. Por último el peor fitness obtenido lo obtuvo el entrenamietno numero 5 con 8985 puntos y un decrecisimiento en la desviación a partir de la genración 30 (Fig. \ref{fig:cheb_1_50_m2} hasta \ref{fig:cheb_5_50_sombra_m2}).
-\begin{figure*}[ht]
+\begin{table}[ht]
     \centering
-    \begin{subfigure}{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{Euclidiana/Mapa2/Fitness_Prrm_Map2_Eucli_50Gen.png}
-        \caption{Distancia Euclidiana}
-        \label{fig:ecuclidiana_mapa2}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{Manhattan/Mapa2/Fitness_Prom_Map2_Manh_50Gen.png}
-        \caption{Distancia Manhattan}
-        \label{fig:manhattan_mapa2}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{Chebyshev/Mapa2/Fitness_Prom_Map2_Cheby_50Gen.png}
-        \caption{Distancia Chebyshev}
-        \label{fig:chebyshev_mapa2}
-    \end{subfigure}
-    \caption{Gráficas generales de promedios fitness y desviaciones para el segundo mapa}
-    \label{fig:graficas_generales_mapa2}
-\end{figure*}
+    \caption{Fitness maximos y minimos segundo mapa}
+    \label{tab:fitness_generaciones_maximos_minimos_mapa2}
+    \begin{tabular}{c|c|c|c|c}
+    %\hline
+     & \multicolumn{1}{c|}{Gen.} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
+    
+    \multirow{1}{*}{Euclidiada} & 50 & 9684 & 8686 & 8933\\ \cline{2-5} \hhline{=====}    
+    \multirow{1}{*}{Manhattan}  & 50 & 9890 & 8534 & 8532\\ \cline{2-5} \hhline{=====}
+    
+    \multirow{1}{*}{Chebyshev}  & 50 & 9683 & 8694 & 8985\\ \cline{2-5} \hline
+    
+    \end{tabular}
+\end{table}
+    
 
+
+\subsubsection{Fitness para la distancia Euclidiana, Manhattan y Chebyshev}
+El mejor fitness obtenido es de 9684, por el tercer y quinto entrenamiento. El menor fitness fue obtenido por el cuarto entrenamiento con 8933 puntos (Fig. \ref{fig:eucli_3_50_m2}, \ref{fig:eucli_3_50_sombra_m2}, \ref{fig:eucli_4_50_m2} y \ref{fig:eucli_4_50_sombra_m2}).
+
+Para la distancia Manhattan el fitness más alto obtenido en estas simulaciones realizadas para es para el entrenamiento numero 2, con un puntaje máximo de 9890 y una desviación que supera los 8900 puntos.  El primer entrenamiento obtuvo el puntaje mas bajo con 8532. Las desviaciones del primer entrenamiento no pasan de los 8550 puntos (Fig. \ref{fig:manh_2_50_m2}, \ref{fig:manh_2_50_sombra_m2}, \ref{fig:manh_1_50_m2} y \ref{fig:manh_1_50_sombra_m2}).
+
+El entrenamiento que mayor fitness obtuvo en la distancia Chebyshev corresponde al cuarto entrenamiento con un puntaje de 9683, con una desviación que se acerca a los 9100 puttos. El fitness mas bajo obtenido le corresponde el entrenamietno numero 5 con 8985 puntos y un decrecisimiento en la desviación a partir de la genración 30 (Fig. \ref{fig:cheb_4_50_m2}, \ref{fig:cheb_4_50_sombra_m2}, \ref{fig:cheb_5_50_m2} y \ref{fig:cheb_5_50_sombra_m2}).
+
+% \begin{figure*}[ht]
+%     \centering
+%     \begin{subfigure}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=0.9\linewidth]{Euclidiana/Mapa2/Fitness_Prrm_Map2_Eucli_50Gen.png}
+%         \caption{Distancia Euclidiana}
+%         \label{fig:ecuclidiana_mapa2}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=0.9\linewidth]{Manhattan/Mapa2/Fitness_Prom_Map2_Manh_50Gen.png}
+%         \caption{Distancia Manhattan}
+%         \label{fig:manhattan_mapa2}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=0.9\linewidth]{Chebyshev/Mapa2/Fitness_Prom_Map2_Cheby_50Gen.png}
+%         \caption{Distancia Chebyshev}
+%         \label{fig:chebyshev_mapa2}
+%     \end{subfigure}
+%     \caption{Gráficas generales de promedios fitness y desviaciones para el segundo mapa}
+%     \label{fig:graficas_generales_mapa2}
+% \end{figure*}
 
 
 \section{Conclusiones}
