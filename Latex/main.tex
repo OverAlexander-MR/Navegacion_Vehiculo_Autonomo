@@ -64,7 +64,7 @@ NEAT, autonomous vehicle, fitness function, distance metrics, reinforcement lear
 \end{IEEEkeywords}
 
 \section{Introducción}
-Uno de los mayores problemas del transporte moderno es el alto indice de accidentes en el tránsito terrestre, la gran cantidad de trafico atribuida a factores como errores humanos, falla mecánicas y fenómenos naturales. Según la Organización Mundial de la Salud (OMS) en 2023, entre 2010 y 2021 el número de vehículos a nivel mundial se duplicó, superando los mil millones \cite{Accidentes}, con 1,19 millones de muertes en todo el mundo, y una tasa de mortalidad de 15 personas por cada 100,000 habitantes. Además, cerca del 80\% de las vías de tránsito a nivel mundial no cumplen con los estándares básicos de seguridad para peatones y ciclistas, lo que incrementa el riesgo para ciclistas y peatones, especialmente en entornos urbanos con alta densidad de tráfico, generando congestión y emisiones contaminantes. \cite{montezuma2008derecho, diaz2015infraestructuras}.
+\IEEEPARstart{U}{no} de los mayores problemas del transporte moderno es el alto indice de accidentes en el tránsito terrestre, la gran cantidad de trafico atribuida a factores como errores humanos, falla mecánicas y fenómenos naturales. Según la Organización Mundial de la Salud (OMS) en 2023, entre 2010 y 2021 el número de vehículos a nivel mundial se duplicó, superando los mil millones \cite{Accidentes}, con 1,19 millones de muertes en todo el mundo, y una tasa de mortalidad de 15 personas por cada 100,000 habitantes. Además, cerca del 80\% de las vías de tránsito a nivel mundial no cumplen con los estándares básicos de seguridad para peatones y ciclistas, lo que incrementa el riesgo para ciclistas y peatones, especialmente en entornos urbanos con alta densidad de tráfico, generando congestión y emisiones contaminantes. \cite{montezuma2008derecho, diaz2015infraestructuras}.
 
 %Estos factores resaltan la necesidad de intervenciones más efectivas, como la automatización y los sistemas inteligentes de tráfico, que permitan reducir las cifras de mortalidad y mejorar la eficiencia del tránsito mediante sistemas coordinados.
 
@@ -102,43 +102,44 @@ Este trabajo desarrolla un sistema de navegación para vehículos autónomos bas
 %La implementación de estos sistemas autónomos incorpora herramientas de retroalimentación como el aprendizaje reforzado y redes neuronales, que permiten evaluar cada acción tomada por el agente inteligente y ajustar parámetros para mejorar las decisiones y alcanzar los objetivos propuestos \cite{Smart_Car}.
 
 \section{Metodología}
-Para la construcción del sistema de navegación adaptativa, se uso el entorno con la librería \href{https://www.pygame.org/wiki/GettingStarted}{Pygame} de python. Se asigna un mapa y un agente principal (Vehículo Autónomo). El entorno implementado es una fracción del mapa clásico del video juego \href{https://www.rockstargames.com/games/gta2}{GTAII}, además la imagen del agente (ver Figura \ref{fig:agente}), y parámetros iniciales de configuración es proporcionada por el repositorio \href{https://github.com/NeuralNine/ai-car-simulation}{NeuralNine}, también se hace uso de algunas imagenes que pertenecen al repositorio \href{https://github.com/mihir-m-gandhi/Traffic-Intersection-Simulation-with-Stats}{Mihir Gandhi}.
+Para la construcción del sistema de navegación adaptativa, se uso el entorno con la librería \href{https://www.pygame.org/wiki/GettingStarted}{Pygame} de python. Se asigna un mapa y un agente principal (Vehículo Autónomo). El entorno implementado es una fracción del mapa clásico del video juego \href{https://www.rockstargames.com/games/gta2}{GTAII}, además la imagen del agente, y parámetros iniciales de configuración es proporcionada por el repositorio \href{https://github.com/NeuralNine/ai-car-simulation}{NeuralNine}, también se hace uso de algunas imagenes que pertenecen al repositorio \href{https://github.com/mihir-m-gandhi/Traffic-Intersection-Simulation-with-Stats}{Mihir Gandhi}.
 Se establecen los estados, un estado inicial donde se ubica el vehículo autónomo y un estado final. Se asignan pixeles verdes RBG (0, 0, 255) al mapa, que será el objetivo.
-\begin{figure}[H]
-    \centering    \includegraphics[width=0.3\linewidth]{images/car.png}
-    \caption{Agente previo a la aplicación de la red neuronal}
-    \label{fig:agente}
-\end{figure}
+% \begin{figure}[H]
+%     \centering    \includegraphics[width=0.3\linewidth]{images/car.png}
+%     \caption{Agente previo a la aplicación de la red neuronal}
+%     \label{fig:agente}
+% \end{figure}
 
 
 \subsection{NEAT-Python}
-El agente debe aprender a moverse en el entorno, NEAT permite que el agente recorra el espacio asignándoles valores de salida dependiendo de los valores de entrada. Los valores de entrada son valores que se toman del entorno, para este caso en particular, las entradas estarían dadas por el color de cada pixel, dependiendo del color del pixel, el agente cambia o no de dirección,  a esto se le conoce como acción o salida. NEAT le otorga al agente sensores que le permiten el reconocimiento del entrono, estos sensores son asignados para determinar cuando este sale de las vías, y la distancias entre puntos \cite{sensores}. En este articulo implementamos el uso de 5 sensores, asignados a una lista; -90°, -45,° 0°, 45° y 90°. Estas son las principales entradas para nuestro algoritmo NEAT aplicado al agente (Figura \ref{fig:agente}), ver Figura \ref{fig:agente_sensores}.
+El agente debe aprender a moverse en el entorno, NEAT permite que el agente recorra el espacio asignándoles valores de salida dependiendo de los valores de entrada. Los valores de entrada son valores que se toman del entorno, para este caso en particular, las entradas estarían dadas por el color de cada pixel, dependiendo del color del pixel, el agente cambia o no de dirección,  a esto se le conoce como acción o salida. NEAT le otorga al agente sensores que le permiten el reconocimiento del entrono, estos sensores son asignados para determinar cuando este sale de las vías, y la distancias entre puntos \cite{sensores}. En este articulo implementamos el uso de 5 sensores, asignados a una lista; -90°, -45,° 0°, 45° y 90°. Estas son las principales entradas para nuestro algoritmo NEAT aplicado al agente ver Figura \ref{fig:agente_sensores}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/sensores.png}
+    \includegraphics[width=0.4\linewidth]{images/sensores.png}
     \caption{Asignación de sensores al agente}
     \label{fig:agente_sensores}
 \end{figure}
 
-En la Figura \ref{fig:Red-neuronal},  Hidden o capas ocultas, son nodos que aplican un procesado a la entrada, con cada generación las capas aumentan dependiendo de la ganancia, esta ganancia está dada por las acciones previas del agente. Si el agente se desplaza en el mapa sin exceder las limitaciones, se mantiene en la generación. Las generaciones en NEAT es el umbral con el que se desea finalizar la simulación, por ejemplo, si se establecen 50 generaciones cada valor del umbral se le asocian a los agentes creados por la red neural aplicando distintos valores de configuración, si en la primera generación todos los carros chocan, se pasa a la siguiente generación, en este caso la segunda, así sucesivamente hasta llegar a la ultima que sería la generación 50. En el entrono se crean distintos agentes, cada agente recorre el mapa, si un agente choca o se sale de la vía, esta configuración tendrá menos probabilidad de replicarse, de esta manera se garantiza una generación final donde el o los agentes aprenda a desplazarse por el entorno de forma autónoma.
+En la Figura \ref{fig:Red-neuronal},  Hidden o capas ocultas, son nodos que aplican un procesado a la entrada, con cada generación las capas aumentan dependiendo de la ganancia, esta ganancia está dada por las acciones previas del agente. Si el agente se desplaza en el mapa sin exceder las limitaciones, se mantiene en la generación. Las generaciones en NEAT es el umbral con el que se desea finalizar la simulación, si se establecen 50 generaciones cada valor del umbral se le asocian a los agentes creados por la red neural aplicando distintos valores de configuración, si en la primera generación todos los carros chocan, empeiza a la siguiente generación,así sucesivamente hasta llegar a la ultima que sería la generación 50. En el entrono se crean distintos agentes, cada agente recorre el mapa, si un agente choca o se sale de la vía, esta configuración tendrá menos probabilidad de replicarse.
 
 En la configuración inicial, Hidden es igual a 0, puesto que se inicia con una configuración sencilla, con cada generación Hidden aumenta para que la salida dada la entrada sea la mas óptima.
 
 \begin{figure}
-    \centering    \includegraphics[width=0.5\linewidth]{images/neural_network.png}
+    \centering    \includegraphics[width=0.4\linewidth]{images/neural_network.png}
     \caption{Estructura general de una red neuronal multicapa \cite{red_neuronal}}
     \label{fig:Red-neuronal}
 \end{figure}
 
 \subsection{Fitness function}
-Para evaluar que tan bien son los genomas (próximas generaciones) NEAT implementa una función que evalúa que tan bien resuelve el problema en cuestión, esta función es llamada \textit{Fitness function}. Si un genoma A resuelve el problema de manera más exitosa que un genoma B, entonces el valor de aptitud de A debe ser mayor que el de B. La magnitud absoluta y los signos de estas aptitudes no son importantes, solo sus valores relativos, los pasos estarían dados por:
-\begin{itemize}
-    \item Crear una red neuronal: Basada en el genoma.
-    \item Proveer entradas y calcular salidas: Por ejemplo, para cada caso en la tabla de verdad del XOR, se proporcionan las entradas a la red y se calcula la salida.
-    \item Calcular el error: El error se calcula entre las salidas esperadas y las salidas reales de la red.
-    \item Asignar aptitud: Si la red produce exactamente la salida esperada, su aptitud es 1. De lo contrario, es un valor menor a 1, disminuyendo más cuanto más incorrectas sean las respuestas de la red \cite{neat_python}.
-\end{itemize}
+Para evaluar que tan bien son los genomas (próximas generaciones) NEAT implementa una función que evalúa que tan bien se resuelve el problema en cuestión, esta función es llamada \textit{Fitness function}. Si un genoma A resuelve el problema de manera más exitosa que un genoma B, entonces el valor de aptitud de A debe ser mayor que el de B. La magnitud absoluta y los signos de estas aptitudes no son importantes, solo sus valores relativos.
+% , los pasos estarían dados por:
+% \begin{itemize}
+%     \item Crear una red neuronal: Basada en el genoma.
+%     \item Proveer entradas y calcular salidas: Por ejemplo, para cada caso en la tabla de verdad del XOR, se proporcionan las entradas a la red y se calcula la salida.
+%     \item Calcular el error: El error se calcula entre las salidas esperadas y las salidas reales de la red.
+%     \item Asignar aptitud: Si la red produce exactamente la salida esperada, su aptitud es 1. De lo contrario, es un valor menor a 1, disminuyendo más cuanto más incorrectas sean las respuestas de la red \cite{neat_python}.
+% \end{itemize}
 
 La ecuación de actitud sería:
 \begin{align*}
@@ -146,17 +147,17 @@ La ecuación de actitud sería:
 \end{align*}
 donde, $e_i$ (salidas esperadas): Son los valores que se esperan obtener de la red neuronal o agente autónomo. Las salidas esperadas son las posiciones ideales o los movimientos óptimos que el agente debería realizar para alcanzar el objetivo de la manera más eficiente posible. 
 
-$a_i$ (salidas reales): Son los valores que realmente se obtienen de la red neuronal o agente autónomo. Estas son las posiciones o movimientos que el agente realiza durante su desplazamiento en el mapa.
-
+$a_i$ (salidas reales): Son los valores que realmente se obtienen de la red neuronal o agente autónomo. 
+% Estas son las posiciones o movimientos que el agente realiza durante su desplazamiento en el mapa.
 
 %%%
-\textit{Función de Aptitud}. En el contexto de nuestro proyecto, la función de aptitud es fundamental para evaluar y guiar el proceso de evolución de los agentes autónomos (vehículos) controlados por redes neuronales generadas mediante el algoritmo NEAT. 
+\textit{Función de Aptitud}. En el contexto de nuestro proyecto, la función de aptitud es fundamental para evaluar y guiar el proceso de evolución de los agentes autónomos controlados por redes neuronales generadas mediante el algoritmo NEAT. 
 
 Los pasos para calcular la aptitud de cada genoma son los siguientes:
 
 \begin{itemize} 
 \item \textbf{Crear una red neuronal}: Se genera una red neuronal basada en el genoma actual. 
-\item \textbf{Simular el agente}: La red neuronal controla al agente autónomo en el entorno simulado (ver Figura \ref{fig:Mapa}), recibiendo entradas del entorno (como las distancias detectadas por los sensores del agente) y produciendo acciones (como cambios en la dirección y velocidad del agente). 
+\item \textbf{Simular el agente}: La red neuronal controla al agente autónomo en el entorno simulado (ver Figura \ref{fig:Mapa}), recibiendo entradas del entorno (como las distancias detectadas por los sensores del agente) y produciendo acciones, cambios en la dirección y velocidad. 
 \item \textbf{Recopilar métricas}: Durante la simulación, se registran métricas relevantes, como la distancia mínima al objetivo, el tiempo de supervivencia y si el agente ha colisionado. 
 \item \textbf{Calcular la aptitud}: Se utiliza una función de aptitud definida para calcular el valor de aptitud del genoma, basándose en las métricas recopiladas. 
 La función de aptitud implementada es:
@@ -216,47 +217,34 @@ Entre mayor sea la aptitud, los genomas con sus características aumentan las pr
 
 \subsection{Implementación de asignación entrada  salida}
 Dadas las entradas de los sensores, se le asigna un angulo de rotación y una velocidad al agente autónomo, es un esquema básico, pero funcional. %ver Figura \ref{fig:Bucle_basico}.
-Sin embargo, que pasa si las variaciones de los ángulos son muy altas, o tal vez muy bajas, o quizá la velocidad es muy lenta?
+Sin embargo, que pasa si las variaciones de los ángulos son muy altas, o tal vez muy bajas, o quizá la velocidad es muy lenta.
 % \begin{figure}
 %     \centering
 %     \includegraphics[scale=0.25]{images/bucle_inicial.png}
 %     \caption{Bucle básico de como el agente autónomo es retroalimentado con las entradas}
 %     \label{fig:Bucle_basico}
 % \end{figure} 
-Las altas variaciones de los ángulos genera inconvenientes, uno de ellos es causar que el agente gire sin parar. Si el agente recibe una entrada constante de ángulos en una misma dirección, ocasiona que la suma constante de esos ángulos lo haga girar, más si dichas entradas se presentan en las primeras generaciones. Por contraparte, su desplazamiento se ve disminuido, lo que implica un estancamiento del agente. En el caso de que la entrada sea demasiada alterada pero iterando la dirección de los ángulos, su velocidad también es reducida, ya que si no lo hace, el carro será eliminado debido al inminente hecho de chocar con los bordes fuera de la zona establecida como carretera.
+ Si el agente recibe una entrada constante de ángulos en una misma dirección, ocasiona que la suma constante de esos ángulos lo haga girar, más si dichas entradas se presentan en las primeras generaciones. Por contraparte, su desplazamiento se ve disminuido, lo que implica un estancamiento del agente. En el caso de que la entrada sea demasiada alterada pero iterando la dirección de los ángulos, su velocidad también es reducida, ya que si no lo hace, el carro será eliminado debido al inminente hecho de chocar con los bordes fuera de la zona establecida como carretera.
 
-Para evitar alguna de las singularidades (asúmase singularidad como estancamiento, rotación sin parar) se asigna un \textbf{Set\_Valor} a la velocidad si la velocidad previa del agente es menor a 0.1, esto evita que el agente avance demasiado lento, optimizando en medida el tiempo de cada simulación, en este articulo, \textbf{Set\_Valor} es igual a 5. A esta asignación la denominamos \textit{Refuerzo forzado} o \textit{Método de aceleración}, y su diagrama es presentado en la Figura \ref{fig:reforce}.
+Para evitar alguna de las singularidades (asúmase singularidad como estancamiento, rotación sin parar) se asigna un \textbf{Set\_Valor} a la velocidad si la velocidad previa del agente es menor a 0.1, esto evita que el agente avance demasiado lento, optimizando el tiempo de cada simulación, en este articulo, \textbf{Set\_Valor} es igual a 5. A esta asignación la denominamos \textit{Refuerzo forzado} o \textit{Método de aceleración}, y su diagrama es presentado en la Figura \ref{fig:reforce}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{images/reforce.png}
+    \includegraphics[width=0.6\linewidth]{images/reforce.png}
     \caption{Diagrama de flujo de la función de aceleración o refuerzo forzado, diseñada para optimizar y reducir el estancamiento de algunos agentes en primeras generaciones.}
     \label{fig:reforce}
 \end{figure}
 
-Una vez establecidos los parámetros iniciales, se realizan distintas simulaciones con el fin de recopilar datos para analizar el comportamiento de los agentes. Se realizaron un total de 48 simulaciones para el primer mapa (Figura \ref{fig:Mapa}), distribuidas en grupos de tres, 20 simulaciones para la distancia Manhattan, 20 para la Euclidiana y 20 para la distancia Chebyshev. Se distribuyen de como se muestra en la Tabla \ref{tab:fds}. A cada número de generación le corresponden 5 simulaciones, es decir en la distancia Euclidiada según la tabla fue un total de $3*5 = 15$ simulaciones realizadas, donde 5 fueron las simulaciones realizadas con una generación de 20, otras 5 para la generación de 30 y por último otras 5 para la generación de 50; así para la distancia Manhattan y Chebyshev. Estas fueron realizadas con la aplicación del método \textbf{Refuerzo forzado} (ver Figura \ref{fig:reforce}), además se realizaron tres simulaciones adicionales sin este método. Corresponden a una simulación de 50 generaciones para las tres distancias aplicadas, por ende el total de simulaciones son las 45 contadas anteriormente, más 3 simulaciones sin la aplicación de este método, como se observa en la Tabla \ref{tab:fds_1}.
-
-\begin{table}
-\centering
-\caption{Configuración de simulaciones del agente en el entorno por cada métrica}
-\label{tab:fds}
-\begin{tabular}{ll}
-\toprule
-\textbf{Simulaciones} & \textbf{Generaciones} \\
-\midrule
-Euclidiana (5)   &  20, 30, 50 \\
-Manhattan (5)    & 30, 30, 50 \\
-Chebyshev (5)    & 20, 30, 50 \\
-\bottomrule
-\end{tabular}
-\end{table}
+Una vez establecidos los parámetros iniciales, se realizan distintas simulaciones con el fin de recopilar datos para analizar el comportamiento de los agentes. Se realizaron un total de 63 simulaciones para el primer mapa (Figura \ref{fig:Mapa}), distribuidas en grupos de tres, simulaciones para la distancia Manhattan, Euclidiana y Chebyshev. A cada número de generación le corresponden 5 simulaciones, es decir que en la distancia Euclidiada fue un total de $3*5 = 15$ simulaciones realizadas, donde 5 fueron las simulaciones realizadas con una generación de 20, otras 5 para la generación de 30 y por último otras 5 para la generación de 50; así para la distancia Manhattan y Chebyshev. Estas fueron realizadas con la aplicación del método \textbf{Refuerzo forzado} (ver Figura \ref{fig:reforce}), además se realizaron tres simulaciones adicionales sin este método. Corresponden a una simulación de 50 generaciones para las tres distancias aplicadas, por ende el total de simulaciones son las 45 contadas anteriormente, más 3 simulaciones sin la aplicación de este método, como se observa en la Tabla \ref{tab:fds_1}.
 
 
 \begin{table}
 \centering
-\caption{Orden de simulaciones}
+\caption{}
 \label{tab:fds_1}
 \begin{tabular}{lll}
+\multicolumn{3}{c}{\texttt{DISTRUBUCIÓN DE LOS ENTRENAMIENTOS}}
+\\
 \toprule
 \textbf{Simulaciones} & 
 \textbf{Generaciones}  &
@@ -273,13 +261,15 @@ Chebyshev  (1)    & 50 & NO\\
 \end{tabular}
 \end{table}
 
-También se realizaron 15 simulaciones adicionales para un segundo mapa ver Figura \ref{fig:mapa2}, en estas simulaciones solo se realizaron para una generación de 50, como se indica en la Tabla \ref{tab:fds_2},donde (5) representan las simulaciones realizadas, siguiendo el orden planteado anteriormente, 5 simulaciones realizadas para la distancia Euclidiana con una generación de 50, y así para la distancia Manhattan y Chebyshev, para un total de $5*3=15$ simulaciones.
+También se realizaron 15 simulaciones adicionales para un segundo mapa ver Fig \ref{fig:mapa2}, en estas simulaciones solo se realizaron para una generación de 50, como se indica en la Tabla \ref{tab:fds_2}, donde (5) representan las simulaciones realizadas, siguiendo el orden planteado anteriormente, 5 simulaciones realizadas para la distancia Euclidiana con una generación de 50, y así para la distancia Manhattan y Chebyshev, para un total de $5*3=15$ simulaciones.
 
 \begin{table}
 \centering
-\caption{Orden de simulaciones}
+\caption{}
 \label{tab:fds_2}
 \begin{tabular}{lll}
+\multicolumn{3}{c}{\texttt{DISTRUBUCIÓN DE LOS ENTRENAMIENTOS MAPA 2}}
+\\
 \toprule
 \textbf{Simulaciones} & 
 \textbf{Generaciones}  &
@@ -293,11 +283,11 @@ Chebyshev (5)     &50 & SI\\
 \end{table}
 
 
-\begin{figure}
-    \centering    \includegraphics[width=0.8\linewidth]{Simulacion/gta.png}
-    \caption{Mapa con bloqueo de vía inferior}
-    \label{fig:mapa2}
-\end{figure}
+% \begin{figure}
+%     \centering    \includegraphics[width=0.8\linewidth]{Simulacion/gta.png}
+%     \caption{Mapa con bloqueo de vía inferior}
+%     \label{fig:mapa2}
+% \end{figure}
 
 \section{Resultados}
 Los registros obtenidos de las simulaciones contienen el fitness promedio de los genomas, el mejor fitness de la simulación, por últimos las máximas y mínimas recompensas. Con estos datos, se obtiene la gráfica el fitness promedio con las desviaciones presentadas.
@@ -306,12 +296,12 @@ Los registros obtenidos de las simulaciones contienen el fitness promedio de los
 % Durante la preparación del mapa para la simulación, a los bordes principales de la carretera se les asigno un color RGB(20, 23.5, 21.6). Sin embargo, en la configuración para determinar los limites de la vía se opta por establecer que los limites son todos los colores distintos del negro.
 
 \subsection{Configuraciones principales del algoritmo NEAT}
-El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome_1}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate vea la tabla completa en Tabla \ref{tab:DefaultGenome}.
+El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT_1}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome_1}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate vea la tabla completa en Tabla \ref{tab:DefaultGenome}.
 \begin{table}[H]
     \centering
     % Primera tabla
     \captionof{table}{\texttt{[NEAT]}}
-    \label{tab:NEAT}
+    \label{tab:NEAT_1}
     \begin{tabular}{ll}
     \toprule
     \textbf{Variable} & \textbf{Valor} \\
@@ -561,23 +551,24 @@ La Tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
 En la Tabla \ref{tab:fitness_generaciones_maximos_minimos} se presentan los fitness maximos y minimos obtenidos para cada distancia, en cada generación, en la columna \textbf{Mejor Fitness}, se toma al agente con el mayor figness obtenido en la ultima generación, mientras que en \textbf{Mejor Fitness}, el menor. Durante un entrenamiento de 50 generaciones, en cada genración, sea la pirmera, luego la segunda y así sucesivamente, se obtiene un promedio fitness de todos los agentes generados, ese promedio general se presenta en la columna \textbf{Promedio}.
 \begin{table}[ht]
 \centering
-\caption{Fitness maximos y minimos}
+\caption{}
 \label{tab:fitness_generaciones_maximos_minimos}
-\begin{tabular}{c|c|c|c|c}
+\begin{tabular}{c c c c c}
 %\hline
- & \multicolumn{1}{c|}{Gen.} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
+\multicolumn{5}{c}{\texttt{FITNESS MAXIMOS, PROMEDIOS Y MINIMOS}}\\\toprule
+ & \multicolumn{1}{c}{Gen.} &\multicolumn{1}{c}{Mejor Fitness} & \multicolumn{1}{c}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \toprule
 
-\multirow{2}{*}{Euclidiada} & 50 & 9990 & 8898 & 9626\\ \cline{2-5}
-                            & 30 & 9986 & 8718 & 8544\\ \cline{2-5}
-                            & 20 & 9981 & 8631 & 8773\\ \hhline{=====}
+\multirow{2}{*}{Euclidiada} & 50 & 9990 & 8898 & 9626\\ 
+                            & 30 & 9986 & 8718 & 8544\\
+                            & 20 & 9981 & 8631 & 8773\\ \toprule
 
-\multirow{3}{*}{Manhattan}  & 50 & 9978 & 8544 & 9621\\ \cline{2-5}
-                            & 30 & 9990 & 8558 & 9618\\ \cline{2-5}
-                            & 20 & 9980 & 8489 & 8766\\ \hhline{=====}
+\multirow{3}{*}{Manhattan}  & 50 & 9978 & 8544 & 9621\\
+                            & 30 & 9990 & 8558 & 9618\\ 
+                            & 20 & 9980 & 8489 & 8766\\ \toprule
 
-\multirow{3}{*}{Chebyshev}  & 50 & 9988 & 8803 & 8777\\ \cline{2-5}
-                            & 30 & 9994 & 8708 & 8787\\ \cline{2-5}
-                            & 20 & 9990 & 8655 & 8543\\ \hline
+\multirow{3}{*}{Chebyshev}  & 50 & 9988 & 8803 & 8777\\ 
+                            & 30 & 9994 & 8708 & 8787\\ 
+                            & 20 & 9990 & 8655 & 8543\\ \toprule
 
 \end{tabular}
 \end{table}
@@ -609,16 +600,16 @@ Se realizaron 5 simulaciones de 50 genraciónes para cada sistema de recompensas
 
 \begin{table}[ht]
     \centering
-    \caption{Fitness maximos y minimos segundo mapa}
+    \caption{}
     \label{tab:fitness_generaciones_maximos_minimos_mapa2}
-    \begin{tabular}{c|c|c|c|c}
+    \begin{tabular}{c c c c c}
     %\hline
-     & \multicolumn{1}{c|}{Gen.} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
+    \multicolumn{5}{c}{\texttt{FITNESS MAXIMOS, PROMEDIOS Y MINIMOS SEGUNDO MAPA}}\\\toprule
+     & \multicolumn{1}{c}{Gen.} &\multicolumn{1}{c }{Mejor Fitness} & \multicolumn{1}{c}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \toprule
     
-    \multirow{1}{*}{Euclidiada} & 50 & 9684 & 8686 & 8933\\ \cline{2-5} \hhline{=====}    
-    \multirow{1}{*}{Manhattan}  & 50 & 9890 & 8534 & 8532\\ \cline{2-5} \hhline{=====}
-    
-    \multirow{1}{*}{Chebyshev}  & 50 & 9683 & 8694 & 8985\\ \cline{2-5} \hline
+    \multirow{1}{*}{Euclidiada} & 50 & 9684 & 8686 & 8933\\\toprule    
+    \multirow{1}{*}{Manhattan}  & 50 & 9890 & 8534 & 8532\\ \toprule
+    \multirow{1}{*}{Chebyshev}  & 50 & 9683 & 8694 & 8985\\ \toprule
     
     \end{tabular}
 \end{table}

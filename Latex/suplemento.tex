@@ -1,40 +1,55 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[lettersize, journal]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{enumerate}
 \usepackage{graphicx}
-\usepackage{float}
-\usepackage{xr}
-\usepackage{hyperref}
-\usepackage{fontawesome5}
-\usepackage{caption}
-\usepackage[backend=biber]{biblatex}
+\usepackage[colorlinks]{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{graphicx}
+%Necesario para el parametro H en las figuras 
 \usepackage{float}
-\usepackage{multirow}
+% Numeros periodicos
+\usepackage{yhmath}
+\usepackage{fontawesome5}
+\usepackage{csquotes} %Relación con el idimoa
+\usepackage[backend=biber, style=ieee]{biblatex}
+\renewcommand{\bibfont}{\small}
+\usepackage{xr}
+\usepackage{cuted}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{xcolor}
 \usepackage{subcaption}  % Para subfiguras
-
+\usepackage{booktabs}
+\usepackage{hhline}
 
 \begin{document}
 \title{Graficas suplementarias de los entrenamientos realizados}
 
-\author{\IEEEauthorblockN{1\textsuperscript{er} Over Alexander Mejia Rosado \textsuperscript{\href{mailto:omejiar@unal.edu.co}{\faIcon{envelope}}}}
-\IEEEauthorblockA{\textit{Inteligencia Artificial} \\
-\textit{Universidad Nacional de Colombia - De La Paz}\\
-San Diego
+\definecolor{orcidcolor}{HTML}{A6CE39}
+
+\author{Over Alexander Mejia-Rosado \textsuperscript{\href{https://orcid.org/0009-0008-8152-2754}{\textcolor{orcidcolor}{\faOrcid}}}, 
+Ronald Mateo Ceballos Lozano \textsuperscript{\href{https://orcid.org/0009-0003-6478-3286}{\textcolor{orcidcolor}{\faOrcid}}}, 
+Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}, y 
+Juan Pablo Hoyos Sanchez \textsuperscript{\href{mailto:jhoyoss@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}
+
+\thanks{Over Alexander Mejia-Rosado (omejiar@unal.edu.co), Ronald Mateo Ceballos Lozano (rceballosl@unal.edu.co), Rhonald José Torres Diaz (rhtorresd@unal.edu.co) and Juan P. Hoyos (e-mail: jhoyoss@unal.edu.co) are with Universidad Nacional de Colombia, sede De La Paz, Colombia.}%
 }
-\and
-\IEEEauthorblockN{2\textsuperscript{do} Ronald Mateo Ceballos Lozano \textsuperscript{\href{mailto:rceballosl@unal.edu.co}{\faIcon{envelope}}}}
-\IEEEauthorblockA{\textit{Inteligencia Artificial} \\
-\textit{Universidad Nacional de Colombia - De La Paz}\\
-Valledupar
-}   
-\and
-\IEEEauthorblockN{3\textsuperscript{er} Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\faIcon{envelope}}}}
-\IEEEauthorblockA{\textit{Inteligencia Artificial} \\
-\textit{Universidad Nacional de Colombia - De La Paz}\\
-Valledupar
-}}
 
 \maketitle
-\section{Configuración NEAT, y mejores resultados de cada entrenamiento por distancia implementada}
+\section{Segundo mapa de entrenamiento}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}-MAP}
+\begin{figure}[H]
+    \centering    \includegraphics[width=1\linewidth]{Simulacion/gta.png}
+    \caption{Mapa con bloqueo de vía inferior}
+    \label{fig:mapa2}
+\end{figure}
+
+\section{Configuración NEAT}
+
 \renewcommand{\thetable}{S\arabic{table}T}
 \begin{table}[H]
     \centering
