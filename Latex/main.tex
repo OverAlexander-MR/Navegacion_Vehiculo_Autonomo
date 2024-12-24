@@ -557,15 +557,17 @@ La Tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
     \label{fig:graficas_generales_chebyshev}
 \end{figure*}
 
-\begin{table*}[ht]
+En la Tabla \ref{tab:fitness_generaciones_maximos_minimos} se presentan los fitness maximos y minimos obtenidos para cada distancia, en cada generación.
+
+\begin{table}[ht]
 \centering
-\caption{Título de la Tabla}
+\caption{Fitness maximos y minimos}
+\label{tab:fitness_generaciones_maximos_minimos}
 \begin{tabular}{c|c|c|c|c}
 %\hline
- & \multicolumn{1}{c|}{N° Generaciones} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Fitness promedio} &
-\multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
+ & \multicolumn{1}{c|}{Gen.} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Promedio} & \multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
 
-\multirow{3}{*}{Euclidiada} & 50 & 9990 & x & 9626\\ \cline{2-5}
+\multirow{2}{*}{Euclidiada} & 50 & 9990 & x & 9626\\ \cline{2-5}
                             & 30 & 9986 & x & 8544\\ \cline{2-5}
                             & 20 & 9981 & x & 8773\\ \hhline{=====}
 
@@ -578,7 +580,7 @@ La Tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
                             & 20 & 9990 & x & 8543\\ \hline
 
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Entrenamiento sin el Refuerzo forzado}
 Para esta sección solo se realizó un entrenamiento de 50 generaciones para cada metrica de distancia con el fin de analizar que tan optimo era realizar las simulaciones sin la aplicación del método descrito en la Figura \ref{fig:reforce}.
