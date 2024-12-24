@@ -29,7 +29,7 @@ Valledupar
 }}
 
 \maketitle
-\section{Configuracion NEAT}
+\section{Configuración NEAT, y mejores resultados de cada entrenamiento por distancia implementada}
 \renewcommand{\thetable}{S\arabic{table}T}
 \begin{table}[H]
     % Tercera tabla
@@ -88,6 +88,70 @@ Valledupar
     \bottomrule
     \end{tabular}
 \end{table}
+
+\begin{table*}[ht]
+    \centering
+    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Euclidiana}
+    \label{tab:fitness_generaciones}
+    \begin{tabular}{cccccc}
+        \toprule
+        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
+        \midrule
+        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
+        \midrule
+        1 & 9990 & 1 & 9981 & 1 & 9632 \\
+        2 & 9626 & 2 & 9883 & 2 & 9881 \\
+        3 & 9985 & 3 & 9986 & 3 & 8773 \\
+        4 & 9990 & 4 & 8544 & 4 & 9237 \\
+        5 & 9982 & 5 & 9984 & 5 & 8782 \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
+
+\begin{table*}[ht]
+    \centering
+    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Manhattan}
+    \label{tab:fitness_generaciones_manhattan}
+    \begin{tabular}{cccccc}
+        \toprule
+        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
+        \midrule
+        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
+        \midrule
+        1 & 8531 & 1 & 9990 & 1 & 8766 \\
+        2 & 9688 & 2 & 9987 & 2 & 9980 \\
+        3 & 9621 & 3 & 9618 & 3 & 8771 \\
+        4 & 9978 & 4 & 9623 & 4 & 8799 \\
+        5 & 8677 & 5 & 9630 & 5 & 9360 \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
+
+\begin{table*}[ht]
+    \centering
+    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Chebyshev}
+    \label{tab:fitness_generaciones_chebyshev}
+    \begin{tabular}{cccccc}
+        \toprule
+        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
+        \midrule
+        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
+        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
+        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
+        \midrule
+        1 & 9988 & 1 & 9665 & 1 & 8543 \\
+        2 & 9973 & 2 & 9994 & 2 & 9990 \\
+        3 & 8777 & 3 & 9974 & 3 & 9906 \\
+        4 & 9984 & 4 & 9884 & 4 & 9680 \\
+        5 & 9986 & 5 & 8787 & 5 & 9882 \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
+
 
 
 \section{Resultados de las simulaciones para la distancia Euclidiana}

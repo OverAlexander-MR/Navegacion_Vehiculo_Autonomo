@@ -1,4 +1,4 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[lettersize, journal]{IEEEtran}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{enumerate}
@@ -15,6 +15,7 @@
 \usepackage{fontawesome5}
 \usepackage{csquotes} %Relación con el idimoa
 \usepackage[backend=biber, style=ieee]{biblatex}
+\renewcommand{\bibfont}{\small}
 \usepackage{xr}
 \usepackage{cuted}
 \usepackage{caption}
@@ -23,6 +24,14 @@
 \usepackage{xcolor}
 \usepackage{subcaption}  % Para subfiguras
 \usepackage{booktabs}
+\usepackage{hhline}
+
+
+
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{array}
+
 
 %\renewcommand{\tablename}{Tabla}
 \captionsetup[table]{name=Tabla} 
@@ -37,12 +46,11 @@
 \definecolor{orcidcolor}{HTML}{A6CE39}
 
 \author{Over Alexander Mejia-Rosado \textsuperscript{\href{https://orcid.org/0009-0008-8152-2754}{\textcolor{orcidcolor}{\faOrcid}}}, 
-
 Ronald Mateo Ceballos Lozano \textsuperscript{\href{https://orcid.org/0009-0003-6478-3286}{\textcolor{orcidcolor}{\faOrcid}}}, 
-
-Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}, y\\
-
+Rhonald José Torres Diaz \textsuperscript{\href{mailto:rhtorresd@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}, y 
 Juan Pablo Hoyos Sanchez \textsuperscript{\href{mailto:jhoyoss@unal.edu.co}{\textcolor{orcidcolor}{\faIcon{envelope}}}}
+
+\thanks{Over Alexander Mejia-Rosado (omejiar@unal.edu.co), Ronald Mateo Ceballos Lozano (rceballosl@unal.edu.co), Rhonald José Torres Diaz (rhtorresd@unal.edu.co) and Juan P. Hoyos (e-mail: jhoyoss@unal.edu.co) are with Universidad Nacional de Colombia, sede De La Paz, Colombia.}%
 }
 
 \maketitle
@@ -50,6 +58,11 @@ Juan Pablo Hoyos Sanchez \textsuperscript{\href{mailto:jhoyoss@unal.edu.co}{\tex
 \begin{abstract}
 Este proyecto se centra en el desarrollo de un sistema de navegación para vehículos autónomos utilizando NEAT (NeuroEvolution of Augmenting Topologies). El objetivo principal es diseñar e implementar un vehículo capaz de desplazarse en un mapa en 2D, el cual consta de un punto inical y un objetivo para el vehiculo autonomo. A través de sensores virtuales, el vehículo es capaz de identificar la vía por la cual puede avanzar y cuales los los limites de esta. Se utilizan métricas de distancia como la Euclidiana, Manhattan y Chebyshev cómo sistema de recompensas, que constantemente calculan las posiciones de los agentes, entre más cercano esté el vehiculo del objetivo, su fitness incrementa, de esa manera se esttablece la función aptitud. Se crea y se implementa un sistema de refuerzo forzado, que permite al vehículo avanzar en caso de que su velocidad sea menor a 0.1, evitando así que el vehículo se estanque. Los resultados obtenidos muestran que el vehículo autónomo es capaz de desplazarse de manera autónoma en el mapa, aumentando su aptitud en cada generación dependiendo de la metrica de distancia utilizada.
 \end{abstract}
+
+\begin{IEEEkeywords}
+NEAT, autonomous vehicle,
+\end{IEEEkeywords}
+
 \section{Introducción}
 Uno de los mayores problemas del transporte moderno es el alto indice de accidentes en el tránsito terrestre, la gran cantidad de trafico atribuida a factores como errores humanos, falla mecánicas y fenómenos naturales. Según la Organización Mundial de la Salud (OMS) en 2023, entre 2010 y 2021 el número de vehículos a nivel mundial se duplicó, superando los mil millones \cite{Accidentes}, con 1,19 millones de muertes en todo el mundo, y una tasa de mortalidad de 15 personas por cada 100,000 habitantes. Además, cerca del 80\% de las vías de tránsito a nivel mundial no cumplen con los estándares básicos de seguridad para peatones y ciclistas, lo que incrementa el riesgo para ciclistas y peatones, especialmente en entornos urbanos con alta densidad de tráfico, generando congestión y emisiones contaminantes. \cite{montezuma2008derecho, diaz2015infraestructuras}.
 
@@ -288,14 +301,8 @@ Chebyshev (5)     &50 & SI\\
 \section{Resultados}
 Los registros obtenidos de las simulaciones contienen el fitness promedio de los genomas, el mejor fitness de la simulación, por últimos las máximas y mínimas recompensas. Con estos datos, se obtiene la gráfica el fitness promedio con las desviaciones presentadas.
 
-\subsection{Configuración del mapa implementado en la simulación}
-Durante la preparación del mapa para la simulación, a los bordes principales de la carretera se les asigno un color RGB(20, 23.5, 21.6) (ver Figura \ref{fig:Bordes}.) Sin embargo, en la configuración para determinar los limites de la vía se opta por establecer que los limites son todos los colores distintos del negro.
-\begin{figure}[ht]
-    \centering    \includegraphics[width=0.4\linewidth]{Simulacion/Bordes.png}
-    \caption{Bordes laterales de la vía usada en el mapa}
-    \label{fig:Bordes}
-\end{figure}
-
+% \subsection{Configuración del mapa implementado en la simulación}
+% Durante la preparación del mapa para la simulación, a los bordes principales de la carretera se les asigno un color RGB(20, 23.5, 21.6). Sin embargo, en la configuración para determinar los limites de la vía se opta por establecer que los limites son todos los colores distintos del negro.
 
 \subsection{Configuraciones principales del algoritmo NEAT}
 El archivo de configuración para NEAT consta de distintas secciones, cada una de ellas orientada a como será la creación de generaciones en cada simulación. En la sección [NEAT] \ref{tab:NEAT}, se pueden encontrar los parámetros fitness y el tamaño de la población en cada generación; en la sección [DefaultReproduction] \ref{tab:DefaultReproduction}, podemos encontrar la configuración de elitism y survival threshold, que permiten determinar el numero de especies mas aptas de cada generación que se desea conservar, y la proporción de cada especie permitida para reproducirse en cada generación; en la sección [DefaultGenome] \ref{tab:DefaultGenome_1}, se define los parámetros específicos para la estructura de los genemoas (redes neuronales) que Neat evolucionará, como el modo de activación o activation defauld y activation mutate rate vea la tabla completa en Tabla \ref{tab:DefaultGenome}.
@@ -405,24 +412,31 @@ El archivo de configuración para NEAT consta de distintas secciones, cada una d
 %     \end{tabular}
 % \end{table}
 
-\subsection{Resultados de las simulaciones aplicando la distancia Euclidiana}
-Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente a esta distancia, las primeras 5 simulaciones realizadas correspondieron a un número de 50 generaciones, luego 5 para 30 generaciones y por ultimo 5 para 20 generaciones, un total de 15 simulaciones realizadas. Como resultados se obtienen las figura presentadas en la Figura \ref{fig:graficas_generales_euclidiana}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio. Basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
+Durante las simulaciones realizadas se almacenaron los datos del fitness correspondiente, las primeras 5 simulaciones realizadas correspondieron a un número de 50 generaciones, luego 5 para 30 generaciones y por ultimo 5 para 20 generaciones, un total de 15 simulaciones realizadas para cada distancia.
+Como resultados se obtienen las graficas presentadas en las Figuras \ref{fig:graficas_generales_euclidiana}, \ref{fig:graficas_generales_manhattan} y \ref{fig:graficas_generales_chebyshev}. La zona sombreada corresponde a las desviaciones de cada simulación, estas desviaciones indican agentes alejados del promedio. Basándose en ello se puede observar que simulaciones obtuvieron la mayor cantidad de puntos.
 
-Para los entrenamientos realizados con 50 generaciones, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990, como se aprecia en la Figura \ref{fig:Fitnes_ecu_4_50_inv}. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.
+\subsection{Resultados de las simulaciones usando la distancia Euclidiana}
+Con un fitness maximo total obtenido para la distancia Euclidiana de 9990, se obtuvo en el entrenamiento 4 con 50 generaciones (Fig. \ref{fig:Fitnes_ecu_4_50_inv} y \ref{fig:Fitnes_ecu_4_50_inv_sombra}), seguido de este entrenamiento, el entrenamiento 3 obtuvo el segundo fitness mas alto con 9986 para 30 generaciones (Fig. \ref{fig:Fitnes_ecu_3_30_inv} y \ref{fig:Fitnes_ecu_3_30_inv_sombra})
+, y por último el entrenamiento 2 obtuvo el tercer fitness mas alto con 9881, con 20 generaciones (Fig. \ref{fig:eucli_2_20} y \ref{fig:eucli_2_20_sombra}). La diferencia en 50 genraciones y 30 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 50 generaciones y 20 generaciones es de 109 puntos
+
+% Para los entrenamientos realizados con 50 generaciones, el entrenamiento 4 obtuvo el fitness máximo, con un valor exacto de 9990, como se aprecia en la Figura \ref{fig:Fitnes_ecu_4_50_inv}. Ademas, este entrenamiento presentó la mayor desviación, como se observa en la Figura \ref{fig:Fitnes_ecu_4_50_inv_sombra}.
 
 %El segundo fitness más alto le corresponde al entrenamiento 1, con un valor de 9988, además otra característica para el primer entrenamiento corresponde a la desviación, esta sobrepasa los 9400, sin embargo respecto al cuarto entrenamiento su desviación son 200 puntos por debajo (Fig. \ref{fig:eucli_1_50} y \ref{fig:eucli_1_50_sombra}). Seguido de este entrenamiento, el tercer entrenamiento obtuvo un fitness de 9985, con una desviación de 9600, misma desviación que el cuarto entrenamiento (Fig. \ref{fig:eucli_3_50} y \ref{fig:eucli_3_50_sombra}). El quinto entrenamiento obtuvo un fitness de 9982, con una desviación de 9400, en el mismo rango de desviación que el primer entrenamiento (Fig. \ref{fig:eucli_5_50} y \ref{fig:eucli_5_50_sombra}). Para finalizar, el entrenamiento 2 obtuvo el fitnes más bajo con un puntaje de 9626, con la menor desviación de las 5 simulaciones (Fig. \ref{fig:eucli_2_50} y \ref{fig:eucli_2_50_sombra}).
 
 %%%%%%%%%%%%%%%%
 
-Para los datos recopilados con un número de generaciones igual a 30, la gráfica obtenida se observa en la Figura \ref{fig:graficas_generales_euclidiana} sección \textit{(B) 30 Genraciones}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
+% (Fig. \ref{fig:Fitnes_ecu_3_30_inv} y Fig. \ref{fig:Fitnes_ecu_3_30_inv_sombra})
+
+% Para los datos recopilados con un número de generaciones igual a 30, la gráfica obtenida se observa en la Figura \ref{fig:graficas_generales_euclidiana} sección \textit{(B) 30 Genraciones}. Los entrenamientos que presentan las mayores desviaciones fueron el primer, tercer y quinto entrenamiento. El fitness máximo corresponde al tercer entrenamiento con 9986 como se aprecia en la Figura \ref{fig:Fitnes_ecu_3_30_inv}, ademas presentó la mayor desviación de todas para esta sección, con un valor de 9400 (ver Figura \ref{fig:Fitnes_ecu_3_30_inv_sombra}).
+
 % El segundo fitness mas alto le corresponde al entrenamiento 5, con un valor de 9984, seguido de este entrenamiento, el primer entrenamiento obtuvo un fitness de 9981, con una desviación que se aproxima a los 9100, 100 puntos menos que la desviación correspondiente al quinto entrenamiento (Fig. \ref{fig:eucli_5_30}, \ref{fig:eucli_5_30_sombra}, \ref{fig:eucli_1_30} y  \ref{fig:eucli_1_30_sombra}).
 
-La gráfica general de las desviaciones y promedios obtenidos para 20 genraciónes establecidas puede observarla en la sección \textit{(C) 20 Genraciones} en la Figura \ref{fig:graficas_generales_euclidiana}.
-Como se puede observar, la desviación con mayor valor se obtuvo en el segundo entrenamiento, además su puntaje fitness fue el mas alto de todos los demás con un valor de 9881, con una desviación que no sobrepasa los 9100 puntos (Fig. \ref{fig:eucli_2_20} y \ref{fig:eucli_2_20_sombra}).
+% La gráfica general de las desviaciones y promedios obtenidos para 20 genraciónes establecidas puede observarla en la sección \textit{(C) 20 Genraciones} en la Figura \ref{fig:graficas_generales_euclidiana}.
+% Como se puede observar, la desviación con mayor valor se obtuvo en el segundo entrenamiento, además su puntaje fitness fue el mas alto de todos los demás con un valor de 9881, con una desviación que no sobrepasa los 9100 puntos (Fig. \ref{fig:eucli_2_20} y \ref{fig:eucli_2_20_sombra}).
 
-Con un fitness maximo total obtenido para la distancia Euclidiana de 9990, se obtuvo en el entrenamiento 4 con 50 generaciones, seguido de este entrenamiento, el entrenamiento 3 obtuvo el segundo fitness mas alto con 9986 para 30 generaciones, y por último el entrenamiento 2 obtuvo el tercer fitness mas alto con 9881, con 20 generaciones. La diferencia en 50 genraciones y 30 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 50 generaciones y 20 generaciones es de 109 puntos. 
+% Con un fitness maximo total obtenido para la distancia Euclidiana de 9990, se obtuvo en el entrenamiento 4 con 50 generaciones, seguido de este entrenamiento, el entrenamiento 3 obtuvo el segundo fitness mas alto con 9986 para 30 generaciones, y por último el entrenamiento 2 obtuvo el tercer fitness mas alto con 9881, con 20 generaciones. La diferencia en 50 genraciones y 30 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 50 generaciones y 20 generaciones es de 109 puntos. 
 
-La tabla \ref{tab:fitness_generaciones} contine los resultados obtenidos para las simulaciones realizadas con la distancia Euclidiana, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
+La Tabla \ref{tab:fitness_generaciones} contine los resultados obtenidos para las simulaciones realizadas con la distancia Euclidiana, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
 
 \begin{figure*}[ht]
     \centering
@@ -450,42 +464,25 @@ La tabla \ref{tab:fitness_generaciones} contine los resultados obtenidos para la
     \label{fig:graficas_generales_euclidiana}
 \end{figure*}
 
-\begin{table*}[ht]
-    \centering
-    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Euclidiana}
-    \label{tab:fitness_generaciones}
-    \begin{tabular}{cccccc}
-        \toprule
-        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
-        \midrule
-        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
-        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
-        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
-        \midrule
-        1 & 9990 & 1 & 9981 & 1 & 9632 \\
-        2 & 9626 & 2 & 9883 & 2 & 9881 \\
-        3 & 9985 & 3 & 9986 & 3 & 8773 \\
-        4 & 9990 & 4 & 8544 & 4 & 9237 \\
-        5 & 9982 & 5 & 9984 & 5 & 8782 \\
-        \bottomrule
-    \end{tabular}
-\end{table*}
-
 \subsection{Resultados de las simulaciones aplicando la distancia Manhattan}
-Principalmente se iniciaron las simulaciones para las 50 generaciones, de estas simulaciones se graficaron los mejores promedios y las desviaciones de cada entrenamiento, de esta manera la grafica que reúne cada uno de los entrenamientos es la Figura \ref{fig:graficas_generales_manhattan} \textit{(A) 50 Generaciones}.
-En el entrenamiento número 4 se presentó el fitness mas alto con 9978 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9100 puntos, con una desviación cercana a los 9200 (Fig \ref{fig:manhattan_4_50} y \ref{fig:manhattan_4_50_sombra}).
-
-En la gráfica general para las simulaciones con 30 generaciones se observa los fitness promedio de cada entrenamiento y las desviaciones ver la Figura \ref{fig:graficas_generales_manhattan} \textit{(B) 30 Generaciones}.
-El primer entrenamiento presento el fitness mas alto de todos los entrenamientos, con un puntaje de 9990, con una desviación que supera los 9200 puntos (Fig. \ref{fig:manhattan_1_30} y \ref{fig:manhattan_1_30_sombra}).
+El valor de fitness maximo obetnido en la distancia Manhattan corresponde al entrenamiento numero 1 con 9990 para 30 generaciones  (Fig. \ref{fig:manhattan_1_30} y \ref{fig:manhattan_1_30_sombra}), seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9980 para 20 generaciones (Fig. \ref{fig:manhattan_2_20} y \ref{fig:manhattan_2_20_sombra}), y por último el entrenamiento 4 obtuvo el tercer fitness mas alto con 9978, con 50 generaciones  (Fig \ref{fig:manhattan_4_50} y \ref{fig:manhattan_4_50_sombra}). 
+La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 10 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 12 puntos.
 
 
-En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_manhattan} \textit{(C) 20 Generaciones}.
-El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9980, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no suoera los 8900 puntos (Fig. \ref{fig:manhattan_2_20} y \ref{fig:manhattan_2_20_sombra}). El entrenamiento número 4 obtuvo un fitness maximo de 8879, sin embargo su fitness promedio y desviación empezó a disminuir a partir de la genreación numero 15 ver (Fig. \ref{fig:manhattan_4_20_sombra})
+% Principalmente se iniciaron las simulaciones para las 50 generaciones, de estas simulaciones se graficaron los mejores promedios y las desviaciones de cada entrenamiento, de esta manera la grafica que reúne cada uno de los entrenamientos es la Figura \ref{fig:graficas_generales_manhattan} \textit{(A) 50 Generaciones}.
+% En el entrenamiento número 4 se presentó el fitness mas alto con 9978 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9100 puntos, con una desviación cercana a los 9200 (Fig \ref{fig:manhattan_4_50} y \ref{fig:manhattan_4_50_sombra}).
 
-El valor de fitness maximo obetnido en la distancia Manhattan corresponde al entrenamiento numero 1 con 9990 para 30 generaciones, seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9980 para 20 generaciones, y por último el entrenamiento 4 obtuvo el tercer fitness mas alto con 9978, con 20 generaciones. La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 10 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 12 puntos.
+% En la gráfica general para las simulaciones con 30 generaciones se observa los fitness promedio de cada entrenamiento y las desviaciones ver la Figura \ref{fig:graficas_generales_manhattan} \textit{(B) 30 Generaciones}.
+% El primer entrenamiento presento el fitness mas alto de todos los entrenamientos, con un puntaje de 9990, con una desviación que supera los 9200 puntos (Fig. \ref{fig:manhattan_1_30} y \ref{fig:manhattan_1_30_sombra}).
 
 
-La tabla \ref{tab:fitness_generaciones_manhattan} contine los resultados obtenidos para las simulaciones realizadas con la distancia Manhattan, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
+% En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_manhattan} \textit{(C) 20 Generaciones}.
+% El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9980, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no suoera los 8900 puntos (Fig. \ref{fig:manhattan_2_20} y \ref{fig:manhattan_2_20_sombra}). El entrenamiento número 4 obtuvo un fitness maximo de 8879, sin embargo su fitness promedio y desviación empezó a disminuir a partir de la genreación numero 15 ver (Fig. \ref{fig:manhattan_4_20_sombra})
+
+% El valor de fitness maximo obetnido en la distancia Manhattan corresponde al entrenamiento numero 1 con 9990 para 30 generaciones, seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9980 para 20 generaciones, y por último el entrenamiento 4 obtuvo el tercer fitness mas alto con 9978, con 20 generaciones. La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 10 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 12 puntos.
+
+
+La Tabla \ref{tab:fitness_generaciones_manhattan} contine los resultados obtenidos para las simulaciones realizadas con la distancia Manhattan, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
 \begin{figure*}[ht]
     \centering
     \begin{subfigure}{0.3\textwidth}
@@ -512,43 +509,27 @@ La tabla \ref{tab:fitness_generaciones_manhattan} contine los resultados obtenid
     \label{fig:graficas_generales_manhattan}
 \end{figure*}
 
-\begin{table*}[ht]
-    \centering
-    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Manhattan}
-    \label{tab:fitness_generaciones_manhattan}
-    \begin{tabular}{cccccc}
-        \toprule
-        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
-        \midrule
-        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
-        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
-        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
-        \midrule
-        1 & 8531 & 1 & 9990 & 1 & 8766 \\
-        2 & 9688 & 2 & 9987 & 2 & 9980 \\
-        3 & 9621 & 3 & 9618 & 3 & 8771 \\
-        4 & 9978 & 4 & 9623 & 4 & 8799 \\
-        5 & 8677 & 5 & 9630 & 5 & 9360 \\
-        \bottomrule
-    \end{tabular}
-\end{table*}
 
 
 \subsection{Resultados de las simulaciones aplicando la distancia de Chebyshev}
-Para las simulaciones realizadas con la distancia de Chebyshev, se obtuvieron los resultados de las gráficas generales para las 50 generaciones, 30 generaciones y 20 generaciones, como se observa en la Figura \ref{fig:graficas_generales_chebyshev}.
-La grafica que reúne cada uno de los entrenamientos realizados para las 50 Generaciones es la Figura \ref{fig:graficas_generales_chebyshev} \textit{(A) 50 Generaciones}.
-En el entrenamiento número 1 se presentó el fitness mas alto con 9988 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9400 puntos (Fig \ref{fig:cheb_1_50} y \ref{fig:cheb_1_50_sombra}).
+El valor de fitness maximo obtenido en la distancia Chebyshev corresponde al entrenamiento numero 2 con 9994 para 30 generaciones (Fig. \ref{fig:cheb_2_30} y \ref{fig:cheb_2_30_sombra}), seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9990 para 20 generaciones (Fig. \ref{fig:cheb_2_20} y \ref{fig:cheb_2_20_sombra}), y por último el entrenamiento 1 obtuvo el tercer fitness mas alto con 9988, con 50 generaciones (Fig \ref{fig:cheb_1_50} y \ref{fig:cheb_1_50_sombra}).
+La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 6 puntos.
 
-En la gráfica general para las simulaciones con 30 generaciones se observa los fitness promedio de cada entrenamiento y las desviaciones ver la Figura \ref{fig:graficas_generales_chebyshev} \textit{(B) 30 Generaciones}.
-El segundo entrenamiento presento el fitness mas alto de todos los entrenamientos, con un puntaje de 9994, con una desviación que supera los 9400 puntos (Fig. \ref{fig:cheb_2_30} y \ref{fig:cheb_2_30_sombra}).
+% Para las simulaciones realizadas con la distancia de Chebyshev, se obtuvieron los resultados de las gráficas generales para las 50 generaciones, 30 generaciones y 20 generaciones, como se observa en la Figura \ref{fig:graficas_generales_chebyshev}.
+% La grafica que reúne cada uno de los entrenamientos realizados para las 50 Generaciones es la Figura \ref{fig:graficas_generales_chebyshev} \textit{(A) 50 Generaciones}.
+% En el entrenamiento número 1 se presentó el fitness mas alto con 9988 junto con las desviaciones mas altas de todos los entrenamientos, de aproximadamente 9400 puntos (Fig \ref{fig:cheb_1_50} y \ref{fig:cheb_1_50_sombra}).
+
+% En la gráfica general para las simulaciones con 30 generaciones se observa los fitness promedio de cada entrenamiento y las desviaciones ver la Figura \ref{fig:graficas_generales_chebyshev} \textit{(B) 30 Generaciones}.
+% El segundo entrenamiento presento el fitness mas alto de todos los entrenamientos, con un puntaje de 9994, con una desviación que supera los 9400 puntos (Fig. \ref{fig:cheb_2_30} y \ref{fig:cheb_2_30_sombra}).
 
 
-En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_chebyshev} \textit{(C) 20 Generaciones}.
-El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9990, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no supera los 9100 puntos (Fig. \ref{fig:cheb_2_20} y \ref{fig:cheb_2_20_sombra}).
+% En la gráfica general para las simulaciones con 20 generaciones se observan los fitness promedio de cada entrenamiento y las desviaciones Figura \ref{fig:graficas_generales_chebyshev} \textit{(C) 20 Generaciones}.
+% El entrenamiento número dos obtuvo el mejor fitness, con un puntaje de 9990, este entrenamiento también posee la mayor desviación de todas, sin embargo esta desviación no supera los 9100 puntos (Fig. \ref{fig:cheb_2_20} y \ref{fig:cheb_2_20_sombra}).
 
-El valor de fitness maximo obetnido en la distancia Chebyshev corresponde al entrenamiento numero 2 con 9994 para 30 generaciones, seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9990 para 20 generaciones, y por último el entrenamiento 1 obtuvo el tercer fitness mas alto con 9988, con 50 generaciones. La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 6 puntos.
+% El valor de fitness maximo obetnido en la distancia Chebyshev corresponde al entrenamiento numero 2 con 9994 para 30 generaciones, seguido de este entrenamiento, el entrenamiento 2 obtuvo el segundo fitness mas alto con 9990 para 20 generaciones, y por último el entrenamiento 1 obtuvo el tercer fitness mas alto con 9988, con 50 generaciones.
+% La diferencia entre el fitness maximo obtenido para 30 generaciones y 20 generaciones es de 4 puntos, mientras que la diferencia del fitness maximo para las 30 generaciones y 50 generaciones es de 6 puntos.
 
-La tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenidos para las simulaciones realizadas con la distancia Manhattan, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
+La Tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenidos para las simulaciones realizadas con la distancia Manhattan, donde se presentan los fitness maximos obtenidos para cada entrenamiento.
 
 \begin{figure*}[ht]
     \centering
@@ -577,24 +558,26 @@ La tabla \ref{tab:fitness_generaciones_chebyshev} contine los resultados obtenid
 \end{figure*}
 
 \begin{table*}[ht]
-    \centering
-    \caption{Resumen de Fitness por Generaciones y Entrenamientos para la distancia Chebyshev}
-    \label{tab:fitness_generaciones_chebyshev}
-    \begin{tabular}{cccccc}
-        \toprule
-        \multicolumn{6}{c}{Generaciones y Fitness por Entrenamiento} \\
-        \midrule
-        \multicolumn{2}{c}{50 Generaciones} & \multicolumn{2}{c}{30 Generaciones} & \multicolumn{2}{c}{20 Generaciones} \\
-        \cmidrule(lr){1-2} \cmidrule(lr){3-4} \cmidrule(lr){5-6}
-        \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} & \textbf{N° Entrenamiento} & \textbf{Fitness} \\
-        \midrule
-        1 & 9988 & 1 & 9665 & 1 & 8543 \\
-        2 & 9973 & 2 & 9994 & 2 & 9990 \\
-        3 & 8777 & 3 & 9974 & 3 & 9906 \\
-        4 & 9984 & 4 & 9884 & 4 & 9680 \\
-        5 & 9986 & 5 & 8787 & 5 & 9882 \\
-        \bottomrule
-    \end{tabular}
+\centering
+\caption{Título de la Tabla}
+\begin{tabular}{c|c|c|c|c}
+%\hline
+ & \multicolumn{1}{c|}{N° Generaciones} &\multicolumn{1}{c|}{Mejor Fitness} & \multicolumn{1}{c|}{Fitness promedio} &
+\multicolumn{1}{c}{Menor Fitness} \\ \cline{1-5}
+
+\multirow{3}{*}{Euclidiada} & 50 & 9990 & x & 9626\\ \cline{2-5}
+                            & 30 & 9986 & x & 8544\\ \cline{2-5}
+                            & 20 & 9981 & x & 8773\\ \hhline{=====}
+
+\multirow{3}{*}{Manhattan}  & 50 & 9978 & x & 9621\\ \cline{2-5}
+                            & 30 & 9990 & x & 9618\\ \cline{2-5}
+                            & 20 & 9980 & x & 8766\\ \hhline{=====}
+
+\multirow{3}{*}{Chebyshev}  & 50 & 9988 & x & 8777\\ \cline{2-5}
+                            & 30 & 9994 & x & 8787\\ \cline{2-5}
+                            & 20 & 9990 & x & 8543\\ \hline
+
+\end{tabular}
 \end{table*}
 
 \subsection{Entrenamiento sin el Refuerzo forzado}
@@ -638,8 +621,6 @@ Para la distancia Manhattan el fitness más alto obtenido en estas simulaciones 
 La gráfica general obtenida después de cada entrenamiento para la distancia Chebyshev es la Figura \ref{fig:graficas_generales_mapa2} \textit{(c) Distancia Chebyshev}.
 
 El entrenamiento que mayor fitness obtuvo en esta sección corresponde al cuarto entrenamiento con un puntaje de 9683, con una desviación que se acerca a los 9100 puttos. El segundo entrenamiento obtuvo el segundo mejor puntaje con 9671, con una desviación que no supera los 9000 puntos, sin embargo una característica particular de este entenamiento es que no posee desviaciones elevadas hasta la cuarta genración, sin embargo a partir de la generación numero 5, la desviacón se despira a los 8700 puntos hata llegar de forma gradual a los 8900. El entrenamiento numero 3 y 1 obtuvieron un puntaje fitness muy cercano entre ellos, solo con una diferencia de tres puntos. Para el tercer entrenamiento el fitness maximo obtenido es de 9764, mientras que para el primero fue de 9571 además de poseer una desvición mayor. Por último el peor fitness obtenido lo obtuvo el entrenamietno numero 5 con 8985 puntos y un decrecisimiento en la desviación a partir de la genración 30 (Fig. \ref{fig:cheb_1_50_m2} hasta \ref{fig:cheb_5_50_sombra_m2}).
-
-
 \begin{figure*}[ht]
     \centering
     \begin{subfigure}{0.3\textwidth}
@@ -659,7 +640,7 @@ El entrenamiento que mayor fitness obtuvo en esta sección corresponde al cuarto
     \begin{subfigure}{0.3\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{Chebyshev/Mapa2/Fitness_Prom_Map2_Cheby_50Gen.png}
-        \caption{20 Generaciones}
+        \caption{Distancia Chebyshev}
         \label{fig:chebyshev_mapa2}
     \end{subfigure}
     \caption{Gráficas generales de promedios fitness y desviaciones para el segundo mapa}
@@ -673,4 +654,9 @@ La implementación de la librería NEAT para un vehículo autónomo permitió an
 
 Por otro lado, la implementación del refuerzo forzado generó mejoras importantes, como disminuir el tiempo requerido para que el agente alcanzara un fitness significativo. Sin la aplicación del refuerzo forzado, el agente no lograba obtener fitness altos, lo que se traduce en un aprendizaje más lento y menos eficiente. Sin embargo la distancia de Chebyshev demostró ser las más eficiente sin la aplicación del refuerzo forzado, obteniendo un fitness de 9885, superando a la Euclidiana y Manhattan. La metrica con los mejores resultados generales fue la distancia Chebyshev, demostrando el incremeto del fitness en cada generación, con la aplicación o no del Refuerzo Forzado.
 \printbibliography
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/JPH}}]{Juan~P.~Hoyos}
+Received the Engineer, Magister in Electronics and Telecommunications and Doctor in Electronic Sciences degrees from Universidad del Cauca, Popayan, Colombia, in 2010, 2016, and 2018 respectively. From 2019 to 2021, he was a Postdoctoral fellow at the GNTT of the of the Universidad del Cauca, and from 2020 to 2022 he was a Postdoctoral Researcher at the Center for Mathematical Modeling (CMM) at Universidad de Chile. He is currently an assistant professor at the Universidad Nacional de Colombia, sede De La Paz. His research interests are in signal processing, artificial intelligence, and convex optimization.
+\end{IEEEbiography}
+
 \end{document}
