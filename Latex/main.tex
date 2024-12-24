@@ -215,13 +215,14 @@ Entre mayor sea la aptitud, los genomas con sus características aumentan las pr
 \end{figure} 
 
 \subsection{Implementación de asignación entrada  salida}
-Dadas las entradas de los sensores, se le asigna un angulo de rotación y una velocidad al agente autónomo, es un esquema básico, pero funcional ver Figura \ref{fig:Bucle_basico}. Sin embargo, que pasa si las variaciones de los ángulos son muy altas, o tal vez muy bajas, o quizá la velocidad es muy lenta?
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.25]{images/bucle_inicial.png}
-    \caption{Bucle básico de como el agente autónomo es retroalimentado con las entradas}
-    \label{fig:Bucle_basico}
-\end{figure} 
+Dadas las entradas de los sensores, se le asigna un angulo de rotación y una velocidad al agente autónomo, es un esquema básico, pero funcional. %ver Figura \ref{fig:Bucle_basico}.
+Sin embargo, que pasa si las variaciones de los ángulos son muy altas, o tal vez muy bajas, o quizá la velocidad es muy lenta?
+% \begin{figure}
+%     \centering
+%     \includegraphics[scale=0.25]{images/bucle_inicial.png}
+%     \caption{Bucle básico de como el agente autónomo es retroalimentado con las entradas}
+%     \label{fig:Bucle_basico}
+% \end{figure} 
 Las altas variaciones de los ángulos genera inconvenientes, uno de ellos es causar que el agente gire sin parar. Si el agente recibe una entrada constante de ángulos en una misma dirección, ocasiona que la suma constante de esos ángulos lo haga girar, más si dichas entradas se presentan en las primeras generaciones. Por contraparte, su desplazamiento se ve disminuido, lo que implica un estancamiento del agente. En el caso de que la entrada sea demasiada alterada pero iterando la dirección de los ángulos, su velocidad también es reducida, ya que si no lo hace, el carro será eliminado debido al inminente hecho de chocar con los bordes fuera de la zona establecida como carretera.
 
 Para evitar alguna de las singularidades (asúmase singularidad como estancamiento, rotación sin parar) se asigna un \textbf{Set\_Valor} a la velocidad si la velocidad previa del agente es menor a 0.1, esto evita que el agente avance demasiado lento, optimizando en medida el tiempo de cada simulación, en este articulo, \textbf{Set\_Valor} es igual a 5. A esta asignación la denominamos \textit{Refuerzo forzado} o \textit{Método de aceleración}, y su diagrama es presentado en la Figura \ref{fig:reforce}.
