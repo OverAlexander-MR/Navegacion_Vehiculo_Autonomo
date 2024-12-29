@@ -61,13 +61,12 @@ def run_neat(self, config):
    pip install -r requirements.txt
    ```
 
-## Ejeción
+## Ejecución
 
-Si ha isntaldo correctamente las dependencias, el sigueinte paso es ejecutar el archivo para vesualizar la simulación:
+Si ha isntaldo correctamente las dependencias, el sigueinte paso es ejecutar el archivo para vesualizar la simulación, por ejemplo en Windows:
 
 ```bash
-cd Euclidiana
-python Euclidiana.py
+python .\Euclidiana\Euclidiana.py
 ```
 
 En el directorio de ejecución, se generan dos archivos csv que continen los fitness obtenidos por los agentes en la simulación. Con estos archivos usted podra analizar los fitness promedio de cada simulacion, las desviaciones y fitness maximos. Cómo por ejemplo:
