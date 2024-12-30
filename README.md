@@ -97,6 +97,18 @@ Como resultado obtendrá la siguinte grafica:
 
 ![Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones](img/Fitness_Acumulado_Eucli_50Gen.png "Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones")
 
+Para graficar los resultados obtenidos de cada simulación por separado, configrure la ruta de los archivos **_.csv_** en `graphical_best_fitness.py`. Como resultado:
+
+![Mejor Fitness con Distancia Euclidiana y Refuerzo Forzado durante el entrenamiento 4 con 50 generaciones](img/fitness_individual.png)
+
+Si desea saber, el primedio y desviación por entrenamiento, tambien puede usar `graphical_all_fitness.py`, especificando que entrenamiendo quiere graficar, por ejmeplo para el cuarto entrenamiento
+
+```python
+   directorio="./Euclidiana/Eucli_50Gen",
+   prefix="fitness_individual4",
+   extension=".csv",
+```
+
 ## Autores
 
 - Over Alexander Mejia Rosado

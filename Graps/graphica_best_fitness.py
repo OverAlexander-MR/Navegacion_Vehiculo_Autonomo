@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 
 def graficar_datos_acumulados():
     try:
-        df_fitness = pd.read_csv("Map2_Eucli_50Gen/datos_fitness5.csv")
+        # Leer los datos de fitness que necesita
+        df_fitness = pd.read_csv("./Euclidiana/Eucli_50Gen/datos_fitness4.csv")
         if df_fitness.empty:
             print("No hay datos de fitness para graficar.")
             return
@@ -33,13 +34,20 @@ def graficar_datos_acumulados():
         linestyle="--",
     )
 
-    #plt.title("Mejor Fitness con Distancia Manhattan y refuerzo forzado durante el entrenamiento 2 con 20 generaciones")
-    plt.xlabel("Generación", fontsize=30, fontname="Times New Roman")
-    plt.ylabel("Fitness", fontsize=30, fontname="Times New Roman")
-    plt.xticks(fontsize=30, fontname="Times New Roman")
-    plt.yticks(fontsize=30, fontname="Times New Roman")
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=2, fontsize=20)
+    # Cambiar el titulo segun sea el caso
+    plt.title(
+        "Mejor Fitness con Distancia Euclidiana y Refuerzo Forzado durante el entrenamiento 4 con 50 generaciones",
+        fontsize=20,
+        fontname="Times New Roman",
+    )
+    plt.xlabel("Generación", fontsize=20, fontname="Times New Roman")
+    plt.ylabel("Fitness", fontsize=20, fontname="Times New Roman")
+    plt.xticks(fontsize=20, fontname="Times New Roman")
+    plt.yticks(fontsize=20, fontname="Times New Roman")
+    plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.3), ncol=2, fontsize=20)
     plt.grid(True, linestyle="--", alpha=1)
+    plt.tight_layout()
     plt.show()
+
 
 graficar_datos_acumulados()

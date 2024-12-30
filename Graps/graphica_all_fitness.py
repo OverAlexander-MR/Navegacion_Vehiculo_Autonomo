@@ -52,7 +52,7 @@ def graficar_fitness_multiples_simulaciones(
             print(f"Error al procesar el archivo {archivo}: {e}")
 
     plt.title(
-        "Fitness Promedios y Desciaciones con Distancia Euclidiana en 50 Generaciones",
+        "Fitness Promedios y Desviaciones con Distancia Euclidiana en 50 Generaciones",
         fontsize=20,
         fontname="Times New Roman",
     )
@@ -66,16 +66,7 @@ def graficar_fitness_multiples_simulaciones(
     plt.grid(True, linestyle="--", alpha=1)
     # Ajustar el layout para que no se corte la leyenda
     plt.tight_layout()
-    # Crear el directorio para las gráficas si no existe
-    # ruta_guardado = os.path.join(directorio, "Graficas")
-    # if not os.path.exists(ruta_guardado):
-    #     os.makedirs(ruta_guardado)
-    # Guardar la gráfica
-    # ruta_grafica = os.path.join(
-    #     ruta_guardado, "Fitness_Promedio_Multiples_Simulaciones.png"
-    # )
     plt.show()
-    # print(f"Gráfica guardada en: {ruta_grafica}")
 
 
 # Ejecutar las funciones
