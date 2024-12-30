@@ -94,6 +94,7 @@ Para finalizar, ejecute, si está en Wondows:
 ```
 
 Como resultado obtendrá la siguinte grafica:
+
 ![Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones](img/Fitness_Acumulado_Eucli_50Gen.png "Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones")
 
 ## Autores
