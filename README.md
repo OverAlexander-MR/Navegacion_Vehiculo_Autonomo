@@ -101,13 +101,15 @@ Para graficar los resultados obtenidos de cada simulación por separado, configr
 
 ![Mejor Fitness con Distancia Euclidiana y Refuerzo Forzado durante el entrenamiento 4 con 50 generaciones](img/fitness_individual.png)
 
-Si desea saber, el primedio y desviación por entrenamiento, tambien puede usar `graphical_all_fitness.py`, especificando que entrenamiendo quiere graficar, por ejmeplo para el cuarto entrenamiento
+Si desea saber, el primedio y desviación por entrenamiento, tambien puede usar `graphical_all_fitness.py`, especificando que entrenamiendo quiere graficar, por ejmeplo para el cuarto entrenamiento:
 
 ```python
    directorio="./Euclidiana/Eucli_50Gen",
    prefix="fitness_individual4",
    extension=".csv",
 ```
+
+![Promedio y Desviación con Distancia Euclidiana y Refuerzo Forzado durante el entrenamiento 4 con 50 generaciones](img/fitness_individual_desv_4.png)
 
 ## Autores
 
