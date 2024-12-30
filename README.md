@@ -71,17 +71,30 @@ python .\Euclidiana\Euclidiana.py
 
 En el directorio de ejecución, se generan dos archivos .csv que continen los fitness obtenidos por los agentes en la simulación. Con estos archivos usted podra analizar los fitness promedio de cada simulacion, las desviaciones y fitness maximos.
 
-![Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones](img/Fitness_Acumulado_Eucli_50Gen.png "Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones")
-
 ### Crear las graficas
 
 Dentro del repositorio podrá observar la carpeta `📂 Graps`, en ella encontrará el script `graphical_all_fitness.py` que le permitirá graficar de forma conjunta todas las simulaciones que usted ha realizado, por otra parte el script `graphical_best_fitness.py` le permite graficar los resultados de cada simulación.
 
 #### Aplicación:
 
-Se realizaron distintas simulaciones, los resultados se guardaron como `datos_fitness{index}.csv` y `fitness_individual{index}.csv` donde `{index}` pertenece al numero de la simulacion, es decir, si ejecuta por primera vez el script `Euclidiana.py`, a los **_.csv_** generados, se les asigno el nombre de `datos_fitness1.csv` y `fitness_individual1.csv`, así para cada ejecución.
+Se realizaron distintas simulaciones, los resultados se guardaron como `datos_fitness{index}.csv` y `fitness_individual{index}.csv` donde `{index}` pertenece al numero de la simulacion, es decir, si ejecuta por primera vez el script `Euclidiana.py`, a los **_.csv_** generados, se les asigno el nombre de `datos_fitness1.csv` y `fitness_individual1.csv`, así para cada ejecución. Observe el directorio `📂 Euclidiana/Eucli_50Gen`, ahí se encuentran todos los datos generados en cada ejecución de forma ordenada.
 
-Observe el directorio `📂 Euclidiana/Eucli_50Gen`, ahí se encuentran todos los datos generados en cada ejecución de forma ordenada
+Para graficar los datos dirijase al script `graphical_all_fitness.py`, establezca el directorio donde estan los datos y como los nombró, asegúsere de guardar los cambios:
+
+```python
+   directorio="./Euclidiana/Eucli_50Gen",
+   prefix="fitness_individual",
+   extension=".csv",
+```
+
+Para finalizar, ejecute, si está en Wondows:
+
+```bash
+   python .\Graps\graphica_all_fitness.py
+```
+
+Como resultado obtendrá la siguinte grafica:
+![Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones](img/Fitness_Acumulado_Eucli_50Gen.png "Fitness promedios y desviaciones para un total de 5 simualciones realizadas aplicando la distancia Euclidiana con 50 generaciones")
 
 ## Autores
 
