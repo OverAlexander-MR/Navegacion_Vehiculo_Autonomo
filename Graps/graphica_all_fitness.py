@@ -50,26 +50,32 @@ def graficar_fitness_multiples_simulaciones(
             )
         except Exception as e:
             print(f"Error al procesar el archivo {archivo}: {e}")
-    # plt.title("Fitness Promedio con Distancia Euclidiana en 50 Generaciones")
-    plt.xlabel("Generación", fontsize=30, fontname="Times New Roman")
-    plt.ylabel("Fitness", fontsize=30, fontname="Times New Roman")
-    plt.xticks(fontsize=30, fontname="Times New Roman")
-    plt.yticks(fontsize=30, fontname="Times New Roman")
+
+    plt.title(
+        "Fitness Promedios y Desciaciones con Distancia Euclidiana en 50 Generaciones",
+        fontsize=20,
+        fontname="Times New Roman",
+    )
+    plt.xlabel("Generación", fontsize=20, fontname="Times New Roman")
+    plt.ylabel("Fitness", fontsize=20, fontname="Times New Roman")
+    plt.xticks(fontsize=20, fontname="Times New Roman")
+    plt.yticks(fontsize=20, fontname="Times New Roman")
+
     # Ubicar la leyenda debajo de la gráfica
-    # plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=2, fontsize=20)
+    plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.4), ncol=2, fontsize=12)
     plt.grid(True, linestyle="--", alpha=1)
     # Ajustar el layout para que no se corte la leyenda
-    plt.tight_layout(rect=[0, 0, 1, 1])
+    plt.tight_layout()
     # Crear el directorio para las gráficas si no existe
-    ruta_guardado = os.path.join(directorio, "Graficas")
-    if not os.path.exists(ruta_guardado):
-        os.makedirs(ruta_guardado)
+    # ruta_guardado = os.path.join(directorio, "Graficas")
+    # if not os.path.exists(ruta_guardado):
+    #     os.makedirs(ruta_guardado)
     # Guardar la gráfica
-    ruta_grafica = os.path.join(
-        ruta_guardado, "Fitness_Promedio_Multiples_Simulaciones.png"
-    )
+    # ruta_grafica = os.path.join(
+    #     ruta_guardado, "Fitness_Promedio_Multiples_Simulaciones.png"
+    # )
     plt.show()
-    print(f"Gráfica guardada en: {ruta_grafica}")
+    # print(f"Gráfica guardada en: {ruta_grafica}")
 
 
 # Ejecutar las funciones
