@@ -2,8 +2,9 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 def graficar_fitness_multiples_simulaciones(
-    directorio="Sin",
+    directorio="./Euclidiana/Eucli_50Gen",
     prefix="fitness_individual",
     extension=".csv",
 ):
@@ -17,7 +18,7 @@ def graficar_fitness_multiples_simulaciones(
         print("No se encontraron archivos de fitness para graficar.")
         return
     plt.figure(figsize=(12, 8))
-    linestyles = ['-', '--', '-.', ':']
+    linestyles = ["-", "--", "-.", ":"]
     for i, archivo in enumerate(archivos):
         ruta_archivo = os.path.join(directorio, archivo)
         try:
@@ -36,8 +37,8 @@ def graficar_fitness_multiples_simulaciones(
                 df_grouped["generacion"],
                 df_grouped["mean"],
                 label=f"Entrenamiento {simulacion_num} - Promedio",
-                linewidth=3.5,  # Aumentar el tamaño de la línea            
-                linestyle=linestyles[i % len(linestyles)]  # Cambiar el estilo de línea            
+                linewidth=3.5,  # Aumentar el tamaño de la línea
+                linestyle=linestyles[i % len(linestyles)],  # Cambiar el estilo de línea
             )
             # Graficar la desviación estándar como área sombreadas
             plt.fill_between(
@@ -49,13 +50,13 @@ def graficar_fitness_multiples_simulaciones(
             )
         except Exception as e:
             print(f"Error al procesar el archivo {archivo}: {e}")
-    #plt.title("Fitness Promedio con Distancia Euclidiana en 50 Generaciones")
+    # plt.title("Fitness Promedio con Distancia Euclidiana en 50 Generaciones")
     plt.xlabel("Generación", fontsize=30, fontname="Times New Roman")
     plt.ylabel("Fitness", fontsize=30, fontname="Times New Roman")
     plt.xticks(fontsize=30, fontname="Times New Roman")
     plt.yticks(fontsize=30, fontname="Times New Roman")
     # Ubicar la leyenda debajo de la gráfica
-    #plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=2, fontsize=20)
+    # plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=2, fontsize=20)
     plt.grid(True, linestyle="--", alpha=1)
     # Ajustar el layout para que no se corte la leyenda
     plt.tight_layout(rect=[0, 0, 1, 1])
@@ -69,6 +70,7 @@ def graficar_fitness_multiples_simulaciones(
     )
     plt.show()
     print(f"Gráfica guardada en: {ruta_grafica}")
+
 
 # Ejecutar las funciones
 graficar_fitness_multiples_simulaciones()
