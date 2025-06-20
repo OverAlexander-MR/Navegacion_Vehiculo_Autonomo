@@ -1,4 +1,6 @@
-# Navegacion_Vehiculo_Autonomo
+# Adaptive Navigation System for an Autonomous Vehicle in a Goal-Oriented Environment ID: 9559
+
+#### Autores: Over Alexander Mejia-Rosado (omejiar@unal.edu.co), Ronald Mateo Ceballos-Lozano (rceballosl@unal.edu.co), Rhonald Jose Torres-Diaz (rhtorresd@unal.edu.co) and Juan Pablo Hoyos-Sanchez (jhoyoss@unal.edu.co) hacen parte de la Universidad Nacional de Colombia, Sede De La Paz.
 
 Proyecto en desarrollo de Inteligencia Artificial que se enfoca en la creación de un sistema de navegación para vehículos autónomos. Este sistema utiliza NEAT para el aprendizaje automático y técnicas de procesamiento de datos para permitir que un vehículo se desplace en un mapa de 2D.
 
