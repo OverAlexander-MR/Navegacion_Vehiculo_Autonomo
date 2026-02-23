@@ -124,3 +124,7 @@ Si desea saber, el primedio y desviación por entrenamiento, tambien puede usar 
 - Ronald Mateo Ceballos Lozano
 - Rhonald Jose Torres Diaz
 - Juan Pablo Hoyos Sanchez (Docente)
+  
+## Articulo
+O. Mejia, R. Ceballos, R. Torres and J. Hoyos, "Adaptive Navigation System for an Autonomous Vehicle in a Goal-Oriented Environment," in IEEE Latin America Transactions, vol. 23, no. 10, pp. 848-855, Oct. 2025, doi: 10.1109/TLA.2025.11150628.
+
